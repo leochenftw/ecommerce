@@ -74,3 +74,5 @@ salted-cropper/
 silverstripe-js-manager/
 silverstripe-rest-api/
 translatable/
+themes/default/build/
+themes/default/js/components/
