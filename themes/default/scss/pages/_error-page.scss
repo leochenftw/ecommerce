@@ -1,0 +1,31 @@
+.error-hero {
+	background: url(../images/page-not-found.jpg) no-repeat center center;
+	background-size: cover;
+	min-height: rem(400);
+	position: relative;
+	&:before {
+		content: ' ';
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background-color: rgba(0,0,0,0.5);
+		z-index: 0;
+	}
+	.container {
+		position: relative;
+		z-index: 1;
+		h1 {
+			color: #fff;
+			margin-bottom: rem(20);
+			font-weight: lighter;
+		}
+		
+		p {
+			font-size: rem(16);
+			margin-bottom: 0;
+			color: rgba(255,255,255,0.6);
+		}
+	}
+}

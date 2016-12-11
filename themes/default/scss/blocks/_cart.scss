@@ -1,0 +1,137 @@
+#CartForm_CartForm {
+	border: 4px solid $light-grey;
+	margin: 2em 0;
+	.td-left {
+		padding: 1.5em 1em;
+		width: calc(100% - 420px);
+		background-color: $light-grey;
+		.field {
+			margin-bottom: 1em;
+			&.CompositeField.fieldgroup {
+				margin-bottom: 0;
+			}
+			.description {
+				font-size: rem(12);
+				padding-left: rem(11);
+			}
+			
+			.text,
+			.dropdown {
+				padding: 0.5em;
+				border: none;
+				display: block;
+				width: 100%;
+			}
+			
+			.text {
+				font-size: rem(22);
+				&.hide {
+					display: none;
+				}
+			}
+			
+			label {
+				padding-left: rem(11);
+				font-size: rem(14);
+				margin-bottom: rem(5);
+				display: block;
+			}
+			
+			&#CartForm_CartForm_Surname_Holder,
+			&#CartForm_CartForm_FirstName_Holder {
+				width: 50%;
+				float: left;
+			}
+			
+			&#CartForm_CartForm_Surname_Holder {
+				padding-right: 0.5em;
+			}
+			
+			&#CartForm_CartForm_FirstName_Holder {
+				padding-left: 0.5em;
+			}
+			
+			&#CartForm_CartForm_Phone_Holder {
+				position: relative;
+				.description {
+					position: absolute;
+					top: rem(2);
+					right: 0;
+				}
+			}
+			
+			&#CartForm_CartForm_AlsoSignup_Holder {
+				label {
+					display: inline;
+				}
+			}
+		}
+	}
+	
+	.td-right {
+		width: rem(420);
+		font-size: rem(14);
+		padding: 1.5em 2em;
+		.field {
+			@extend .clearfix;
+			&.readonly {
+				label,
+				.middleColumn {
+					float: left;
+					display: block;
+					width: 50%;
+				}
+				
+				.middleColumn {
+					text-align: right;
+					font-weight: bold;
+				}
+			}
+			
+			&#CartForm_CartForm_FreightCost_Holder {
+				margin-bottom: 0.5em;
+			}
+			
+			&#Freight {
+				background-color: $light-grey;
+				padding: 0.5em;
+				margin: 2em 0;
+				.optionset {
+					@extend .neat-ul;
+					margin: 0;
+					padding: 0;
+				}
+			}
+			
+			&#CartForm_CartForm_Total_Holder {
+				border-top: 2px solid $light-grey;
+				margin: 2em 0;
+				padding-top: 2em;
+				
+				label,
+				.middleColumn {
+					color: $red;
+					font-weight: bold;
+					font-size: rem(20);
+				}
+			}
+		}
+		
+		#CartForm_CartForm_action_doCheckout {
+			@extend .button;
+			display: block;
+			width: 100%;
+			background-color: $red !important;
+			color: $white;
+			font-weight: lighter;
+		}
+	}
+	
+	#subtotal-wrapper {
+		.float-left,
+		.float-right {
+			width: 50%;
+			padding: 0;
+		}
+	}
+}

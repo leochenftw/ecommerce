@@ -1,0 +1,20 @@
+---
+Name: apiroutes
+After: framework/routes#coreroutes
+---
+Director:
+  rules:
+    'groupon-action': 'GrouponActionController'
+    'cart': 'CartController'
+    'signup': 'SignupController'
+    'signin': 'SigninController'
+    'member': 'DashboardController'
+    'storist/v1/products': 'StoristProductController'
+    'api/v/1/products/$ID': 'ProdctAPI'
+    'api/v/1/payment-methods': 'PaymentMethodController'
+    'api/v/1/subscribe/$ID': 'SubscribeAPI'
+    'api/v/1/freights/$ID': 'FreightAPI'
+    'api/v/1/order-items/$ID': 'OrderItemAPI'
+    'api/v/1/addresses/$ID': 'AddressAPI'
+    'api/v/1/pricings/$ID': 'PricingAPI'
+    'api/v/1/variants/$ID': 'VariantAPI'

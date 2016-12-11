@@ -1,0 +1,173 @@
+.content-area {
+	.gmap {
+		margin-bottom: rem(30);
+		width: 100%;
+		padding: 0 rem(15);
+		#map-wrapper {
+			width: 100%;
+			padding: rem(5);
+			background-color: #f7f7f7;
+			height: rem(315);
+			#map {
+				width: 100%;
+				height: 100%;
+				a[href^="http://maps.google.com/maps"]{display:none !important}
+				a[href^="https://maps.google.com/maps"]{display:none !important}
+				
+				.gmnoprint a, .gmnoprint span, .gm-style-cc {
+					display:none;
+				}
+			}
+		}
+	}
+	
+	.contact {
+		@include display-flex;
+		@incldue flex-wrap;
+		.info, .form {
+			width: 100%;
+			padding: 0 rem(15);
+			.title {
+				font-size: rem(20);
+				color: #545454;
+				margin: 0 0 rem(22);
+			}
+		}
+		
+		.info {
+			max-width: rem(400);
+			
+			p {
+				font-size: rem(16);
+				color: #545454;
+				line-height: 1.4;
+			}
+			
+			.contact-ul {
+				@extend .neat-ul;
+				padding: rem(14) 0;
+				border: 1px solid #e9e9e9;
+				border-right: none;
+				border-left: none;
+				margin: rem(20) 0 rem(15);
+				li {
+					color: #545454;
+					font-size: rem(14);
+					@include transition(color ease-in-out 0.25s);
+					text-indent: 0;
+					padding-left: rem(35);
+					position: relative;
+					margin-bottom: rem(12);
+					line-height: 1.4;
+					&:before {
+						font-size: rem(14);
+						position: absolute;
+						top: 0.3em;
+						left: 0;
+					}
+					
+					&.icon-phone:before,
+					&.icon-home:before {
+						font-size: rem(16);
+					}
+					
+					&:hover {
+						color: $red;
+						a {
+							color: $red;
+						}
+					}
+					
+					a {
+						@include transition(color ease-in-out 0.25s);
+						color: #545454;
+						text-decoration: none;
+					}
+					
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+			
+			.social-icons {
+				
+				a {
+					@include transition(all ease-in-out 0.25s);
+					text-decoration: none;
+					border: 1px solid #dadada;
+					display: block;
+					text-indent: 0;
+					color: #898989;
+					padding: rem(10);
+					margin: 0 rem(10) rem(10) 0;
+					width: rem(40);
+					height: rem(40);
+					text-align: center;
+					&:before {
+						font-size: rem(14);
+						line-height: 1.5;
+					}
+					
+					&:hover {
+						color: $white;
+						background-color: $red;
+						border-color: $red;
+					}
+				}
+			}
+		}
+		
+		.form {
+			max-width: rem(800);
+			
+			.field {
+				margin-bottom: rem(15);
+				label {
+					display: none;
+				}
+				
+				&#ContactForm_ContactForm_Message_Holder label {
+					display: block;
+					margin: rem(15) 0;
+					color: #545454;
+				}
+				
+				.text, .textarea {
+					display: block;
+					width: 100%;
+					outline: none;
+					border: none;
+					font-size: rem(16);
+					color: #545454;
+				}
+				
+				.text {
+					max-width: rem(460);
+					border-bottom: 1px solid #e9e9e9;
+					border-radius: 0;
+					padding: 0 0 rem(10);
+				}
+				
+				.textarea {
+					background-color: #f3f3f3;
+					height: rem(120);
+					padding: rem(5) rem(10);
+					font-size: rem(14);
+				}
+			}
+			
+			.actions {
+				@include display-flex;
+				@incldue flex-wrap;
+				@include justify-content(space-between);
+				@include align-items(center);
+			}
+			
+			#ContactForm_ContactForm_action_SendEmail {
+				@extend .button;
+				border-radius: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,66 @@
+#all-tags {
+	.tag-tile {
+		margin-bottom: rem(10);
+		text-decoration: none;
+		color: #000;
+		.tag-tile__caro-count-wrapper {
+			position: relative;
+			border: 1px solid $light-grey;
+			.tag-tile__carousel {
+				z-index: 0;
+			}
+			
+			.tag-tile__count {
+				@include transition(all ease-in-out 0.25s);
+				@include opacity(1);
+				z-index: 1;
+				text-align: center;
+				font-weight: lighter;
+				font-size: rem(120);
+				position: absolute;
+				color: #fff;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				line-height: rem(160);
+				background-color: rgba(50,50,50,0.9);
+				.mini {
+					font-size: rem(14);
+				}
+				
+				.own-line {
+					display: block;
+					line-height: 1;
+					font-size: 32px;
+					position: absolute;
+					bottom: rem(30);
+					width: 100%;
+					font-weight: bold;
+				}
+			}
+		}
+		.tag-tile__texts {
+			@include transition(all ease-in-out 0.25s);
+			margin: rem(20) 0;
+			font-size: rem(20);
+			font-weight: bold;
+			span {
+				font-weight: lighter;
+				margin-left: 0.25em;
+				font-size: rem(16);
+				color: $grey;
+			}
+		}
+		
+		&:hover {
+			.tag-tile__count {
+				@include opacity(0);
+			}
+			
+			.tag-tile__texts {
+				color: $red;
+			}
+		}
+	}
+}

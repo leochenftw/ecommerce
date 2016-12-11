@@ -1,0 +1,45 @@
+@import '../js/components/owl.carousel/dist/assets/owl.carousel.min.css';
+.owl-carousel {
+	.owl-carousel-item {
+		display: block;
+		img {
+			display: block;
+		}
+	}
+}
+
+.owl-nav {
+	@extend .vertical-centered;
+	width: 100%;
+	left: 0;	
+}
+
+.owl-dots {
+	position: absolute;
+	bottom: 1em;
+	width: 100%;
+	text-align: center;
+	.owl-dot {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 rem(5);
+		span {
+			display: block;
+			border-radius: 50%;
+			width: rem(10);
+			height: rem(10);
+			background-color: $light-red;
+			@include transition(all ease-in-out 0.5s);
+		}
+		
+		&.active,
+		&:hover {
+			span {
+				width: rem(15);
+				height: rem(15);
+				background-color: $red;
+			}
+		}
+		
+	}
+}

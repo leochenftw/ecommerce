@@ -1,0 +1,17 @@
+#header {
+	background-color: $white;
+	height: $header_height;
+	border-bottom: 1px solid #e1e1e1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	.container {
+		height: 100%;
+		position: relative;
+        @include breakpoint($phone) {
+            padding-right: 0;
+        }
+	}
+}

@@ -1,0 +1,147 @@
+/**
+ * @file styles.scss
+ *
+ * Main stylesheet.
+ * */
+
+/**
+ * Import external libraries.
+ * */
+@import 'compass';
+@import 'susy';
+@import 'breakpoint';
+@import 'h5bp';
+
+/**
+ * import config.
+ * */
+@import 'config/variables',
+		'config/colours',
+		'config/mixins',
+		'config/grid',
+		'config/fonts',
+		'config/sprite';
+
+/**
+ * Import Sprite sheet.
+ * */
+@include retina-sprite-add(icons, "sprites/*.png", "retina_sprites/*.png");
+
+@include h5bp-normalize;
+@include h5bp-base-styles;
+@include h5bp-helpers;
+@include h5bp-media;
+
+/**
+ * Blocks.
+ * */
+@import 'blocks/owlcarousel',
+		'blocks/promotional',
+		'blocks/header',
+		'blocks/cart',
+		'blocks/simplayer',
+		'blocks/payment',
+		'blocks/product-tiles',
+		'blocks/best-sales',
+		'blocks/up-coming',
+		'blocks/latest-update',
+		'blocks/all-tags',
+		'blocks/top-up',
+		'blocks/all-freights',
+		'blocks/page-closure',
+		'blocks/product-images',
+		'blocks/product-carousel',
+		'blocks/product-hero',
+		'blocks/blog-tile',
+		'blocks/plugable-content',
+		'blocks/signin-form',
+		'blocks/dash-panel',
+		'blocks/fav-list',
+		'blocks/footer';
+
+/**
+ * Elements.
+ * */
+@import 'elements/logo',
+		'elements/nav',
+		'elements/parallax',
+		'elements/lightbox',
+		'elements/nprogress';
+/**
+ * Modules
+ * */
+@import 'config/modifiers';
+@import 'typography';
+
+
+/**
+ * Pages.
+ * */
+
+html {
+    touch-action: manipulation;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+a {
+    touch-action: manipulation;
+}
+
+body {
+	padding-top: $header_height;
+}
+
+body.page-homepage {
+// 	@import 'pages/homepage';
+}
+
+body.page-cartcontroller {
+	@import 'pages/cart';
+}
+
+body.page-type-product-page {
+	@import 'pages/product-page';
+}
+
+body.page-type-product-landing-page {
+	@import 'pages/product-landing';
+}
+
+body.page-type-soft-ads-landing-page {
+	@import 'pages/softads-landing';
+}
+
+body.page-type-soft-ads-page {
+	@import 'pages/ads-page';
+}
+
+body.page-type-contact-page {
+	@import 'pages/contact-page';
+}
+
+body.page-type-error-page {
+	@import 'pages/error-page';
+}
+
+body.page-storistproductcontroller {
+	padding-top: 0;
+	background-color: #f1f1f1;
+    &.form-mode {
+        #header {
+            @include breakpoint($phone) {
+                height: 0;
+                overflow: hidden;
+                border: none;
+            }
+        }
+    }
+	@import 'pages/storist';
+}
+
+body.page-security.page-type-page {
+	.section form + p {
+		font-size: rem(14);
+		text-align: center;
+	}
+}

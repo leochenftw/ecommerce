@@ -1,0 +1,147 @@
+#promotional-wrapper {
+	overflow: hidden;
+	.owl-nav {
+		@include breakpoint($container) {
+			display: none;
+		}
+	}
+	.owl-prev,
+	.owl-next {
+		height: rem(60);
+		width: rem(60);
+		position: absolute;
+		background-color: $grey;
+		@include transition(all ease-in-out 0.25s);
+		&:hover {
+			background-color: $red;
+		}
+		&:before {
+			display: block;
+			line-height: rem(60);
+			font-size: rem(16);
+			color: $white;
+		}
+	}
+	
+	.owl-prev {
+		@extend .icon-left;
+		left: -#{rem(60)};
+	}
+	
+	.owl-next {
+		@extend .icon-right;
+		right: -#{rem(60)};
+	}
+	
+	&:hover {
+		.owl-prev {
+			left: 0;
+		}
+		
+		.owl-next {
+			right: 0;
+		}
+	}
+}
+
+.promotional-item {
+	width: 100%;
+	height: rem(600);
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	
+	@include breakpoint($container) {
+		height: rem(400);
+	}
+	
+	&:before {
+		content: ' ';
+		top: 0;
+		left: 0;
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+		background: -moz-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.5)), color-stop(100%, rgba(0,0,0,0)));
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: -o-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: -ms-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+	}
+	
+	.promotional-bg {
+		z-index: -1;
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.container {
+		height: 100%;
+		position: relative;
+		z-index: 1;
+		
+		.promotional-lines {
+			padding: rem(30) 40% rem(30) rem(65);
+			@include breakpoint($container) {
+				padding: rem(30) rem(65);
+				.promo-content {
+					padding-right: 40%;
+				}
+			}
+			
+			@include breakpoint($fifth-break) {
+				padding: rem(10) rem(30);
+				.promo-content {
+					padding-right: 0;
+				}
+			}
+			
+			.promo-content,
+			.promo-title {
+				font-weight: lighter;
+				color: $white;
+				text-shadow: 0 0 5px $black;
+			}
+			
+			.promo-title {
+				font-size: rem(72);
+				line-height: 1.4;
+				margin: 0;
+			}
+			.promo-content {
+				font-weight: lighter;
+				font-size: rem(32);
+				color: rgba(255,255,255,0.8);
+				@include breakpoint($fifth-break) {
+					font-size: rem(24);
+				}
+			}
+			
+			
+		}
+		
+		.call-to-action {
+			margin-top: rem(55);
+			a {
+				font-size: rem(20);
+				font-weight: lighter;
+				border-radius: 5px;
+				text-decoration: none;
+				padding: 0.5em 3em 0.75em;
+				border: 1px solid $white;
+				color: $white;
+				text-shadow: 0 0 5px $black;
+				background-color: rgba(255,255,255,0);
+				@include transition(all ease-in-out 0.25s);
+				&:hover {
+					background-color: rgba(255,255,255,0.2);
+				}
+			}
+			
+		}
+	}
+}

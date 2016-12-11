@@ -1,0 +1,27 @@
+.section.hero {
+	padding: rem(90) 0;
+	text-align: center;
+	background: url(../images/bg-title-shop.jpg) no-repeat center center;
+	background-size: cover;
+	h1 {
+		font-size: rem(32);
+		margin-bottom: rem(16);
+	}
+	
+	.breadcrumb {
+		a {
+			text-decoration: none;
+			color: #545454;
+			@include transition(color ease-in-out 0.25s);
+			&:hover {
+				color: $red;
+			}
+		}
+		
+		i {
+			margin: 0 0.5em;
+			color: #545454;
+			font-size: rem(14);
+		}
+	}
+}

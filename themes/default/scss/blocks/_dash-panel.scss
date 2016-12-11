@@ -1,0 +1,312 @@
+.member-area {
+	@include display-flex;
+	@include flex-wrap;
+	@include justify-content(center);
+
+	&__sidebar,
+	&__content {
+		width: 100%;
+		padding: 0 rem(15);
+	}
+
+	&__sidebar {
+		max-width: rem(200);
+		ul {
+			margin: 0;
+			padding: 0;
+			li {
+				border-bottom: 1px solid #dedede;
+			    padding: rem(6) 0 rem(5);
+				&:last-child {
+					border-bottom: none;
+				}
+
+				a {
+					display: block;
+					text-decoration: none;
+					color: #545454;
+					line-height: rem(30);
+					text-decoration: none;
+					@include transition(color ease-in-out 0.25s);
+					&.active,
+					&:hover {
+						color: $red;
+					}
+				}
+			}
+		}
+	}
+
+	&__content {
+		max-width: rem(1000);
+		.title {
+			font-size: rem(24);
+		}
+
+		&__group {
+			padding-bottom: rem(15);
+			border-bottom: 1px solid #dedede;
+			margin-bottom: rem(30);
+			&:last-child {
+				border: none;
+			}
+
+			form.mini-watch-form {
+				@include transition(background-color ease-in-out 0.25s);
+				padding: rem(10) rem(10) rem(9);
+				border-bottom: 1px solid #dedede;
+				&:hover {
+					background-color: #dedede;
+				}
+				max-width: none;
+				.fields {
+					@include display-flex;
+					@include flex-wrap;
+					@include justify-content(space-between);
+					@include align-items(center);
+					.field.checkbox {
+						width: 100%;
+						max-width: rem(150);
+						margin-bottom: 0;
+						input, label {
+							margin-bottom: 0;
+							display: inline-block;
+						}
+					}
+
+					.product-thumbnail {
+						width: rem(50);
+						margin-right: rem(20);
+					}
+
+					.product-title {
+						a {
+							@include transition(color ease-in-out 0.25s);
+							text-decoration: none;
+							color: #545454;
+							&:hover {
+								color: $red;
+							}
+						}
+						width: 100%;
+						max-width: rem(500);
+					}
+				}
+				.Actions {
+					display: none;
+				}
+			}
+
+		}
+		#cb-subscrib-site + span {
+			@extend .icon-uncheck;
+			font-size: rem(16);
+			text-indent: 0;
+			line-height: 1;
+			&:before {
+				font-size: rem(18);
+				color: #222;
+				margin-right: 0.5em;
+			}
+		}
+
+		#cb-subscrib-site:checked + span {
+			@extend .icon-check;
+			font-size: rem(16);
+			text-indent: 0;
+			line-height: 1;
+			&:before {
+				font-size: rem(19);
+				color: #222;
+				margin-right: 0.5em;
+			}
+		}
+
+		.sub-link {
+			font-size: rem(12);
+			color: $red;
+			text-decoration: none;
+			margin-left: 0.25em;
+			@include transition(color ease-in-out 0.25s);
+			&:hover {
+				color: #545454
+			}
+		}
+
+
+		table {
+			margin: rem(30) 0;
+
+			th {
+				text-align: left;
+				padding: 0 1em 0.5em;
+			}
+
+			td {
+				padding: 0.5em 1em;
+				font-size: rem(14);
+			}
+
+			tr {
+				th, td {
+					border-bottom: 1px solid #dedede;
+					&:first-child {
+						padding-left: 0;
+					}
+				}
+
+				td {
+					vertical-align: top;
+					padding-top: 1em;
+					padding-bottom: 1em;
+				}
+			}
+
+			&.addresses {
+				tr {
+					th, td {
+						vertical-align: middle;
+					}
+				}
+
+				.addresses__is-default {
+					width: rem(80);
+					padding-right: 0;
+					padding-left: 0;
+					text-align: center;
+					input {
+						display: none;
+					}
+
+					label {
+						@extend .icon-star;
+						&:before {
+							font-size: rem(24);
+						}
+						color: #dedede;
+						@include transition(color ease-in-out 0.25s);
+						cursor: pointer;
+						width: 100%;
+					}
+
+					input:checked + label {
+						color: $red;
+					}
+				}
+
+				td.addresses__details {
+					color: #545454;
+					line-height: 1.6;
+					strong {
+						color: #222;
+					}
+				}
+
+				.addresses__actions {
+					width: rem(100);
+					color: #545454;
+					a {
+						text-decoration: none;
+						color: #545454;
+						@include transition(color ease-in-out 0.25s);
+						&:hover {
+							color: $red;
+						}
+					}
+				}
+
+			}
+		}
+
+		form {
+			max-width: rem(460);
+			.current-balance {
+				margin: rem(15) 0 rem(30);
+				font-size: rem(14);
+				color: #333;
+				span {
+					margin-left: rem(15);
+					font-size: rem(64);
+					font-weight: lighter;
+					color: #000;
+				}
+			}
+
+			.current-email {
+				color: #333;
+				margin: rem(15) 0 rem(30);
+				span {
+					color: $red;
+					font-size: rem(24);
+				}
+			}
+
+			.field {
+				margin-bottom: rem(15);
+
+				label {
+					font-size: rem(18);
+					color: #333;
+					display: block;
+					margin-bottom: 0.625rem;
+					font-weight: lighter;
+				}
+
+				input.text {
+					background-color: #f1f1f1;
+					border: none;
+					outline: none;
+					width: 100%;
+					display: block;
+					padding: 0.625rem;
+					font-size: 1.25rem;
+				}
+
+				&#MemberProfileForm_MemberProfileForm_Email_Holder {
+					padding-bottom: rem(15);
+					border-bottom: 1px solid #dedede;
+					margin-bottom: rem(30);
+					.middleColumn,
+					.description {
+						display: inline-block;
+						vertical-align: sub;
+					}
+
+					.description {
+						margin-left: 0.25em;
+						font-size: rem(12);
+					}
+
+					#MemberProfileForm_MemberProfileForm_Email {
+						display: block;
+						font-size: rem(20);
+					}
+				}
+
+				.description {
+					display: block;
+					margin: rem(10) 0 0;
+					font-size: rem(14);
+					a {
+						color: $red;
+						text-decoration: none;
+						@include transition(color ease-in-out 0.25s);
+						&.active,
+						&:hover {
+							color: #545454;
+						}
+					}
+				}
+			}
+
+			.Actions {
+				padding-top: rem(15);
+				input[type="submit"] {
+					@extend .button;
+					border-radius: 0 !important;
+					font-size: rem(20) !important;
+				}
+			}
+		}
+	}
+}

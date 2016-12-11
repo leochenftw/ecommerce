@@ -1,0 +1,49 @@
+.product-carousel-section {
+	header {
+		h2 {
+			font-size: rem(48);
+		}
+	}
+	.product-carousel {
+		overflow: visible;
+		.product-tile__brand {
+			display: none;
+		}
+		.owl-nav {
+			@include transform(none);
+			top: 35%;
+			.owl-next,
+			.owl-prev {
+				@include transition(background-color ease-in-out 0.25s);
+				position: absolute;
+				width: rem(50);
+				height: rem(50);
+				background-color: rgba(237, 28, 36, 0.4);
+				@include transform(translateY(-50%));
+				&:before {
+					display: block;
+					line-height: rem(50);
+					font-size: rem(16);
+					color: $white;
+				}
+				
+				&:hover {
+					background-color: rgba(237, 28, 36, 1);
+				}
+			}
+			.owl-prev {
+				left: -#{rem(72)};
+				@extend .icon-left;
+			}
+			
+			.owl-next {
+				right: -#{rem(72)};
+				@extend .icon-right;
+			}
+		}
+	}
+	
+	&.no-top-padding {
+		padding-top: 0;
+	}
+}

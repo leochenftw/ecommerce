@@ -1,0 +1,11 @@
+#all-freights {
+	padding: rem(30) 0;
+	background-color: $light-grey;
+	.container {
+		align-items: center;
+		justify-content: space-around;
+		img {
+			display: block;
+		}
+	}
+}

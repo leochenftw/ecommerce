@@ -1,0 +1,132 @@
+	#up-coming {
+	&:before {
+		content: ' ';
+		top: 0;
+		left: 0;
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0);
+		background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.6)));
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+		background: -o-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+		background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+		background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+	}
+
+	.container {
+		position: relative;
+		padding-left: 29%;
+
+		h2, p {
+			text-shadow: 0 0 5px #1b1b1b;
+		}
+
+		header {
+			max-width: none;
+			margin-bottom: 0;
+			h2 {
+				font-size: rem(72);
+				color: $white;
+				line-height: 1.2;
+				margin: 0 0 rem(10);
+			}
+		}
+		p {
+			margin: 0;
+			font-size: rem(32);
+			color: $white;
+			span {
+				font-weight: bold;
+			}
+		}
+
+		.up-coming__countdown {
+			padding: rem(60) 0;
+			font-size: 0;
+			.time-cell {
+				display: inline-block;
+				background: #fff;
+				margin-right: rem(43);
+				width: rem(110);
+				height: rem(110);
+				color: $red;
+				font-size: rem(40);
+				font-weight: bold;
+				padding-top: rem(16);
+				span {
+					display: block;
+					&.sub {
+						color: #444;
+						font-size: rem(14);
+						text-transform: uppercase;
+					}
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+		form {
+			label {
+				display: none;
+			}
+			font-size: 0;
+
+			fieldset,
+			.Actions {
+				vertical-align: middle;
+				font-size: rem(24);
+				display: inline-block;
+			}
+
+			fieldset {
+				.field.email.text {
+					@include transition(width ease-in-out 0.25s);
+					overflow: hidden;
+					width: 0;
+					opacity: 0;
+					&.require-email {
+						opacity: 1;
+						width: rem(280);
+					}
+				}
+
+				input.email.text {
+					border: none;
+					background-color: #fff;
+					height: rem(50);
+					padding-left: rem(10);
+					padding-right: rem(10);
+					outline: none;
+					color: $black;
+					width: 100%;
+				}
+			}
+
+			.Actions {
+				.action {
+					outline: none;
+					padding: 0.25em 2em;
+					height: rem(50);
+					display: block;
+					background-color: $red;
+					border: none;
+					color: #fff;
+					span {
+						&:before {
+							line-height: 0.6;
+							font-size: rem(20);
+							display: block;
+						}
+					}
+				}
+			}
+		}
+
+	}
+}

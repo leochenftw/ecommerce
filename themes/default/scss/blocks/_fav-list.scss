@@ -1,0 +1,146 @@
+#favourite-list {
+	
+	padding-left: 0;
+	
+	.favourited-item {
+		@include display-flex;
+		@include flex-wrap;
+		margin-bottom: rem(50);
+		
+		.product-image,
+		.product-form-wrapper {
+			width: 100%;
+			padding: 0 rem(15);
+		}
+		
+		
+		.product-image {
+			max-width: rem(270);
+			padding-left: 0;
+			a {
+				display: block;
+				border: 1px solid #e5e5e5;
+				img {
+					display: block;
+				}
+			}
+		}
+		
+		.product-form-wrapper {
+			max-width: rem(700);
+			.miscs {
+				margin-top: rem(30);
+				span {
+					margin-right: 1em;
+					&:before {
+						font-size: rem(18);
+						color: $red;
+					}
+				}
+			}
+			
+			.title {
+				margin-top: rem(15);
+				font-size: rem(24);
+				font-weight: normal;
+				a {
+					text-decoration: none;
+					color: #000;
+					@include transition(color ease-in-out 0.25s);
+					&:hover {
+						color: $red;
+					}
+				}
+			}
+			
+			.price {
+				font-size: 2rem;
+				font-weight: bold;
+				color: #000;
+				margin-bottom: 1.25rem;
+			}
+			
+			.content {
+				margin-bottom: rem(30);
+				p, li {
+					font-size: rem(14);
+				}
+			}
+			
+			.field {
+				label,
+				.middleColumn {
+					vertical-align: middle;
+    				display: inline-block;
+				}
+				
+				label {
+					line-height: 1.875rem;
+					margin-right: 2.6875rem;
+					margin-bottom: 0;
+					font-size: 1rem;
+					color: #000000;
+				}
+				
+				.middleColumn {
+					width: 100%;
+					max-width: 5rem;
+					
+					select,
+					input {
+						width: 100%;
+						display: block;
+						background-color: #fff;
+						border: 1px solid #ccc;
+					}
+					
+					select {
+						padding: 0.2em 0 0.2em 0.2em;
+					}
+					
+					input {
+						padding: 0.2em 0;
+						text-align: center;
+					}
+				}
+			}
+			
+			.Actions {
+				.action {
+					vertical-align: middle;
+					height: rem(40);
+					&.button {
+						border-radius: 0;
+						margin-right: rem(9);
+					}
+					&.icon-fav {
+						&:before {
+							@include transition(color ease-in-out 0.25s);
+							display: block;
+							color: #545454;
+							font-size: rem(16);
+							line-height: rem(36);
+						}
+						
+						width: rem(40);
+						display: inline-block;
+						border: 1px solid #dadada;
+						border-radius: 0;
+						text-align: center;
+						background-color: rgba(237, 28, 36, 0);
+						@include transition(all ease-in-out 0.25s);
+						&.is-fav,
+						&:hover {
+							border-color: $red;
+							background-color: rgba(237, 28, 36, 1);
+							&:before {
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}

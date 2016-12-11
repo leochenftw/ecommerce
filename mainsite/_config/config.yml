@@ -1,0 +1,70 @@
+---
+Name: mainsite
+After: 'framework/*','cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+SiteVersion:
+  version: 1.0
+SSViewer:
+  theme: 'default'
+Page:
+  extensions:
+    - OpenGraphExtension
+    - TwitterCardExtension
+    - SeoObjectExtension
+    - SEOExtension
+GoogleAPIs:
+  Recaptcha: 6LdGBgoUAAAAAEFnUtntMq2DNHPqueVLw2WRr4Mk
+SiteConfig:
+  extensions:
+    - CustomSiteConfig
+    - OpenGraphExtension
+    - TwitterCardExtension
+Page_Controller:
+  extensions:
+    - PageControllerDecorator
+ModelAdmin:
+  extensions:
+    - ModelAdminExtension
+DataList:
+  extensions:
+    - DataListExt
+SeoConfig:
+    Page: true
+    ErrorPage: false
+    RedirectorPage: false
+    VirtualPage: false
+Image:
+  extensions:
+    - ImageExt
+Member:
+  extensions:
+    - MemberExt
+OrderProgress:
+  Steps:
+    '0': 'In Cart'
+    '1': 'upon Payment'
+    '2': 'Paid'
+    '3': 'Payment Received'
+    '4': 'Shipped'
+    '5': 'Shipped (not paid)'
+    '6': 'Completed'
+    '7': 'Refunded'
+ProductPage:
+  Measurements:
+    '克': '克'
+    '千克': '千克'
+    '毫升': '毫升'
+    '升': '升'
+    '个': '个'
+    '袋': '袋'
+    '件': '件'
+    '条': '条'
+    '包': '包'
+    '粒': '粒'
+    '份': '份'
+    '罐': '罐'
+    '箱': '箱'
+    '瓶': '瓶'

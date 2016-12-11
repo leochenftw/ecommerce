@@ -1,0 +1,11 @@
+#logo {
+	text-decoration: none;
+	color: $black;
+	display: block;
+	text-indent: -9999px;
+	overflow: hidden;
+	@include retina-sprite(nz-yogo-logo, icons, $dimensions: true, $nonRetina: true);
+	@include vertical-align(absolute);
+	left: rem(10);
+}
+

@@ -1,0 +1,13 @@
+#latest-update {
+	.latest-updates {
+		padding: 3em 0;
+		.latest-updates__item {
+			text-decoration: none;
+			p {
+				margin: 0;
+				font-size: rem(14);
+				color: $grey;
+			}
+		}
+	}
+}

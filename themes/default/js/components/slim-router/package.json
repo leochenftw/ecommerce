@@ -1,0 +1,48 @@
+{
+  "name": "slim-router",
+  "version": "1.1.0",
+  "description": "Easy routing for your ajax Web applications",
+  "main": "dist/router.js",
+  "jsnext:main": "src/router.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node watch",
+    "build": "browserify src/router.js -s Router -t babelify -o dist/router.js && uglifyjs dist/router.js -cmo dist/router.min.js",
+    "test": "./node_modules/.bin/karma start --single-run --no-auto-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:haithembelhaj/slim-router.git"
+  },
+  "keywords": [
+    "router",
+    "browser",
+    "history.js"
+  ],
+  "author": "Haithem Bel Haj <haythem.belhaj@gmail.com> (http://haithembelhaj.github.io)",
+  "license": "ISC",
+  "bugs": {
+    "url": "git@github.com:haithembelhaj/slim-router/issues"
+  },
+  "homepage": "git@github.com:haithembelhaj/slim-router#readme",
+  "devDependencies": {
+    "babelify": "^6.4.0",
+    "browserify": "^11.2.0",
+    "chai": "^3.4.0",
+    "karma": "^0.13.14",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sinon": "^1.0.4",
+    "mocha": "^2.3.3",
+    "phantomjs": "^1.9.18",
+    "sinon": "^1.17.2",
+    "uglify-js": "^2.5.0"
+  },
+  "dependencies": {
+    "history.js": "git+https://github.com/browserstate/history.js.git"
+  }
+}

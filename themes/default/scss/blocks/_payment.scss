@@ -1,0 +1,183 @@
+#payment-handler-wrapper {
+	min-height: rem(560);
+	border: 1px solid $grey;
+	.as-cell {
+		position: relative;
+		&.amount-col {
+			width: 38%;
+			text-align: center;
+			overflow: hidden;
+			&:before,
+			&:after {
+				content: ' ';
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+			
+			&:before {
+				background-image: url(../images/bg-gold.jpg);
+				background-size: cover;
+				background-position: bottom center;
+				z-index: 0;
+				@include filter(blur(10px));
+			}
+			
+			&:after {
+				position: absolute;
+				z-index: 1;
+				background-color: rgba(0,0,0,0.7);
+			}
+			
+			.amount {
+				color: $white;
+				z-index: 2;
+				font-size: rem(48);
+				font-weight: lighter;
+				span {
+					margin-bottom: rem(16);
+					display: block;
+					font-size: rem(14);
+					color: rgba(255,255,255,0.6);
+				}
+				width: 100%;
+				margin-top: -#{rem(42)};
+			}
+		}
+		
+		&.payment-detail-col {
+			padding: rem(60) 2em 2em;
+			h2 {
+				font-size: rem(32);
+				left: 0;
+				padding: 0 1em;
+				line-height: rem(60);
+				width: 100%;
+				top: 0;
+				margin: 0;
+			}
+			
+			#PaymentForm_PaymentForm_PaymentMethod {
+				@extend .neat-ul;
+				padding: 0;
+				margin: 0;
+			}
+			
+			#PaymentForm_PaymentForm {
+				width: 100%;
+				#PaymentMethod {
+					label.left {
+						display: none;
+					}
+				}
+				
+				#payment-details {
+					padding-top: 2em;
+					h3 {
+						margin-top: 0;
+					}
+					p{
+						font-size: rem(14);
+					}
+					.payment-method__item {
+						position: relative;
+						margin-bottom: 1.5em;
+						input[type="text"] {
+							display: block;
+							width: 100%;
+							height: rem(55);
+							padding: 0.25em 0.5em;
+							padding-right: rem(72);
+							font-size: rem(32);
+							border-radius: 0;
+							border: 1px solid #999;
+							font-weight: normal;
+						}
+						.btn-copy {
+							height: rem(55);
+							border: none;
+							border-radius: 0;
+							background-color: #333;
+							color: #fff;
+							outline: none;
+							position: absolute;
+							right: 0;
+							top: 0;
+							padding: 0 rem(20);
+							line-height: rem(54);
+							@include transition(all ease-in-out 0.25s);
+							&:active,
+							&.copied,
+							&:hover {
+								background-color: $red;
+							}
+						}
+					}
+					
+					.yo-gold {
+						text-align: center;
+						.yo-gold__balance {
+							color: $grey;
+							font-size: rem(14);
+							span {
+								color: $black;
+								margin-right: 0.5rem;
+								font-weight: lighter;
+								font-size: rem(80);
+							}
+						}
+						
+						.yo-gold__message {
+							font-size: rem(14);
+						}
+					}
+				}
+				
+				.actions {
+					margin-top: 2em;
+					padding-top: 2em;
+					border-top: 1px solid $light-grey;
+					text-align: center;
+					.action {
+						@include transition(background-color ease-in-out 0.25s);
+						@extend .button;
+						font-weight: lighter;
+						color: $white !important;
+						min-width: rem(300);
+						background-color: $red !important;
+						&[disabled] {
+							background-color: $light-grey !important;
+						}
+					}
+				}
+			}
+		}
+		
+		.stay-bottom {
+			z-index: 3;
+			bottom: 0;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			a {
+				border-radius: 0;
+				border-top: 1px solid rgba(255,255,255,0.2);
+				color: $white;
+				text-decoration: none;
+				display: block;
+				background-color: transparent;
+				border-radius: none;
+				font-size: rem(16);
+				padding: 0.7em 2em;
+				height: rem(57);
+				font-weight: lighter;
+				line-height: rem(32);
+				color: rgba(255,255,255,0.6);
+			}
+		}
+		
+	}
+}
