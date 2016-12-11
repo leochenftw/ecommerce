@@ -67,7 +67,6 @@ maintenance-mode
 salted-library/
 silverstripe.log
 assets
-config/
 dump.sql
 index.php
 salted-cropper/

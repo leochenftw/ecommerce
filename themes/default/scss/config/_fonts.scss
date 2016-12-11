@@ -1,0 +1,201 @@
+/**
+ * @file _fonts.scss
+ *
+ * Fonts used in the project
+ * */
+
+/**
+ * Fontello
+ * */
+/*
+@include font-face('fontello', font-files('fontello.woff', 'fontello.woff2', 'fontello.ttf', 'fontello.svg'), 'fontello.eot', normal,
+					normal);
+*/
+
+@include font-face(
+	'fontello',
+	font-files(
+		'fontello.woff',
+		'fontello.woff2',
+		'fontello.ttf',
+		'fontello.svg'
+	),
+	'fontello.eot',
+	normal,
+	normal
+);
+
+/**
+ * Example font import:
+ * */
+/*
+@include font-face('RealtimeStencil', font-files('30669F_0_0.woff', '30669F_0_0.woff2', '30669F_0_0.ttf',
+										'30669F_0_0.svg'), '30669F_0_0.eot', bold, normal);
+*/
+
+/*
+
+*/
+
+
+/**
+ * Fontello config:
+ * - Update with the values output by fontello.
+ * */
+$icons: (
+	cart:		'\e800',
+	home:		'\e801',
+	phone:		'\e802',
+	location:	'\e803',
+	clock:		'\e804',
+	mail:		'\e816',
+	right:		'\f006',
+	left:		'\f007',
+	member:		'\f061',
+	weibo:		'\f18a',
+	qq:			'\f1d6',
+	wechat: 	'\f1d7',
+	facebook: 	'\f09a',
+	check: 		'\e805',
+	x: 			'\e806',
+	fav: 		'\e807',
+	menu: 		'\f0c9',
+	grids: 		'\f00a',
+	up: 		'\f176',
+	down: 		'\f175',
+	angle-down: '\f107',
+	uncheck: 	'\f096',
+	star: 		'\e808',
+	em-star: 	'\e809',
+	loading: 	'\e838'
+);
+
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+
+@mixin icon($icon: facebook, $font-size: rem(14), $position: before, $hide-font: true) {
+
+	@if $hide-font {
+		font-size: 0;
+		line-height: 0;
+		text-indent: -1000000px;
+	}
+
+	&:#{$position} {
+		font-family: "fontello";
+		font-style: normal;
+		font-weight: normal;
+		font-size: $font-size;
+		text-indent: 0;
+		speak: none;
+
+		display: inline-block;
+		text-decoration: inherit;
+		text-align: center;
+		font-variant: normal;
+		text-transform: none;
+
+		line-height: 1em;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		content: map-get($icons, $icon);
+
+		@content;
+	}
+}
+
+@each $key, $value in $icons {
+  .icon-#{$key} {
+    @include icon($key);
+	&.font-inline {
+		font-size: rem(14);
+		line-height: 1.2;
+		text-indent: 0;
+		&:before {
+			margin-right: 0.25em;
+		}
+	}
+  }
+}

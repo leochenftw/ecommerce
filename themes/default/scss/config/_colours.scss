@@ -1,0 +1,31 @@
+/**
+ * @file _colours.scss
+ *
+ * Colours used in the site.
+ *
+ * Prefix all colours with a namespace so that we can use theming if necessary.
+ * The prefix is usually initials of the project - e.g. Salted Herring becomes $sh -> $sh-green: green.
+ * */
+
+
+
+
+/**
+ * Define Global colours - collections of colours that can be used throughout the site:
+ *
+ *  $GLOBAL_COLOURS:    ("green", $we-green), ("teal", $we-teal),
+ *						("black", $we-black), ("grey", $we-grey),
+ *						("light-grey", $we-light-grey), ("white", $we-white),
+ *						("mid-grey", $we-mid-grey);
+ * */
+
+$white: #fff;
+$black: #000;
+$red: #ed1c24;
+$light-red: #E2A4A7;
+$grey: #9B9D9C;
+$light-grey: #efefef;
+$dark-grey: #323433;
+$light-yellow: #F1D9B3;
+$text-grey: #545454;
+$subtitle-grey: #010101;
