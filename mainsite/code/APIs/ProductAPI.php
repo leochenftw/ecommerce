@@ -52,16 +52,19 @@ class ProdctAPI extends BaseRestController {
                 return $this->httpError(401, 'Alias is missing');
             }
 
+
+
             if ($prod_id = $request->param('ID')) {
-    			$prod = ProductPage::get()->byID($prod_id);
+    			$prod = Versioned::get_by_stage('ProductPage', 'Stage')->byID($prod_id);
     		}
 
             $prod = !empty($prod) ? $prod : new ProductPage();
             $prod->Title = $request->postVar('title');
             $prod->Alias = $request->postVar('alias');
+            $prod->Barcode = $request->postVar('barcode');
             $prod->Content = $request->postVar('content');
             $prod->writeToStage('Stage');
-            if (!empty($request->param('ID'))) {
+            if ($prod->isPublished()) {
                 $prod->doPublish();
             }
             return array(
@@ -72,6 +75,7 @@ class ProdctAPI extends BaseRestController {
                                         'product_id'    =>  'ID',
                                         'title'         => 'Title',
                                         'alias'         => 'Alias',
+                                        'barcode'       => 'Barcode',
                                         'content'       => 'Content',
                                         'pricings'      => 'PricingData',
                                         'variants'      => 'VariantData'
@@ -88,11 +92,12 @@ class ProdctAPI extends BaseRestController {
 			if ($prod = Versioned::get_by_stage('ProductPage', 'Stage')->byID($prod_id)){
 				return $prod->format(array(
                             'product_id'    =>  'ID',
-                            'title'         => 'Title',
-                            'alias'         => 'Alias',
-                            'content'       => 'Content',
-                            'pricings'      => 'PricingData',
-                            'variants'      => 'VariantData'
+                            'title'         =>  'Title',
+                            'alias'         =>  'Alias',
+                            'barcode'       =>  'Barcode',
+                            'content'       =>  'Content',
+                            'pricings'      =>  'PricingData',
+                            'variants'      =>  'VariantData'
         				));
 			}
 		}

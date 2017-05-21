@@ -3,4 +3,17 @@
 	color: $white;
 	font-size: rem(14);
 	font-weight: lighter;
+
+    .page-storiststorecontroller & {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        background-color: #fff;
+        padding: 2em 0;
+        color: #000;
+        @media print {
+            position: static;
+        }
+    }
 }

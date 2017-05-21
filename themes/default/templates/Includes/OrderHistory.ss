@@ -17,13 +17,13 @@
 		<td class="orders__freight">${$FrieghtCost}</td>
 		<td class="orders__freight">
 			<% if $Shipments %>
-				
+
 			<% else %>
 				---
 			<% end_if %>
 		</td>
 		<td class="orders__status">$NiceProgress</td>
-		<td class="orders__actions"><a href="#">查看</a></td>
+		<td><a data-title="会员中心 | 查看账单" class="ajax-routed orders__actions" href="/member/action/orders/$ID">查看</a></td>
 	</tr>
 <% end_loop %>
 </table>

@@ -1,7 +1,7 @@
 <% if $vertical || $bigTile %>
 <div class="category-tile<% if $reverse %> reversed<% end_if %><% if $vertical %> vertical<% end_if %>"<% if $bigTile %> style="background-image: url($SquarePoster.FillMax(960,720).URL);"<% end_if %><% if $vertical %> style="background-image: url($VertiPoster.FillMax(480,720).URL);"<% end_if %>>
 <% else %>
-<a class="category-tile<% if $reverse %> reversed<% end_if %>" href="/products?category=$ID">
+<a class="category-tile<% if $reverse %> reversed<% end_if %><% if $class %> $class<% else %> full<% end_if %>" href="/products?category=$ID">
 <% end_if %>
 
 	<% if $bigTile || $vertical %>

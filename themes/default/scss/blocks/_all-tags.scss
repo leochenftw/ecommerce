@@ -1,15 +1,16 @@
 #all-tags {
 	.tag-tile {
-		margin-bottom: rem(10);
 		text-decoration: none;
 		color: #000;
+        float: none;
+        margin: rem(10);
 		.tag-tile__caro-count-wrapper {
 			position: relative;
 			border: 1px solid $light-grey;
 			.tag-tile__carousel {
 				z-index: 0;
 			}
-			
+
 			.tag-tile__count {
 				@include transition(all ease-in-out 0.25s);
 				@include opacity(1);
@@ -25,10 +26,13 @@
 				height: 100%;
 				line-height: rem(160);
 				background-color: rgba(50,50,50,0.9);
+                @include breakpoint($iphone) {
+                    line-height: 2;
+                }
 				.mini {
 					font-size: rem(14);
 				}
-				
+
 				.own-line {
 					display: block;
 					line-height: 1;
@@ -52,12 +56,12 @@
 				color: $grey;
 			}
 		}
-		
+
 		&:hover {
 			.tag-tile__count {
 				@include opacity(0);
 			}
-			
+
 			.tag-tile__texts {
 				color: $red;
 			}

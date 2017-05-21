@@ -4,14 +4,15 @@
 }
 
 .product-list {
-	width: rem(900);
+    width: 100%;
+	max-width: rem(900);
 	margin: 0;
 	.product-options {
 		margin: 0 rem(15);
 		margin-bottom: rem(42);
 		padding-bottom: rem(20);
 		border-bottom: 1px solid #dedede;
-		@include display(flex);
+		@include display-flex;
 		align-items: center;
 		justify-content: space-between;
 		.view-modes {
@@ -30,38 +31,38 @@
 				&:hover {
 					background-color: $red;
 				}
-				
-				&:before {			
+
+				&:before {
 					line-height: rem(36);
 					font-size: rem(15);
 				}
 			}
 		}
-		
+
 		.sortings {
 			font-size: 0;
 			.select, .btn-sort {
 				display: inline-block;
 				vertical-align: middle;
 			}
-			
+
 			.select {
 				position: relative;
 				line-height: rem(40);
 				text-indent: 0;
-				
+
 				&:before {
 					@include vertical-align(absolute);
 					right: rem(10);
 					pointer-events: none;
 				}
 			}
-			
+
 			select, .btn-sort {
 				height: rem(40);
 				border: 1px solid #d7d7d7;
 			}
-			
+
 			select {
 				display: block;
 				@include appearance(none);
@@ -75,7 +76,7 @@
 					outline: none;
 				}
 			}
-			
+
 			.btn-sort {
 				text-decoration: none;
 				line-height: rem(48);
@@ -85,7 +86,7 @@
 				color: #9b9b9b;
 			}
 		}
-		
+
 		.groupon-only {
 			a {
 				font-size: rem(14);
@@ -97,21 +98,21 @@
 					font-size: rem(16);
 					margin-right: 0.5em;
 				}
-				
+
 				&.icon-check {
 					color: $red;
 				}
 			}
 		}
-		
+
 	}
-	
+
 	.product-tiles {
 		width: 100%;
-		@include display(flex);
-		@include flex-wrap;
+		@include display-flex;
+        @include flex-wrap(wrap);
 	}
-	
+
 	.product-tile {
 		width: rem(300);
 		padding: 0 rem(15);
@@ -119,22 +120,22 @@
 		.product-tile__brand {
 			display: none;
 		}
-		
+
 		.product-tile__poster {
 			padding: rem(30);
 		}
-		
+
 		.product-tile__title {
 			@include transition(color ease-in-out 0.25s);
 			font-size: rem(18);
 			color: #000;
 			font-weight: normal;
 		}
-		
+
 		.product-tile__price {
 			font-size: rem(20);
 		}
-		
+
 		&:hover {
 			.product-tile__title {
 				color: $red;
@@ -145,7 +146,8 @@
 
 .product-filters {
 	padding: 0 rem(15);
-	width: rem(300);
+	width: 100%;
+    max-width: rem(300);
 	.filter-title {
 		font-size: rem(20);
 		padding-bottom: rem(16);
@@ -161,18 +163,18 @@
 			left: 0;
 		}
 	}
-	
+
 	.promo {
 		margin: rem(40) 0;
 		a {
 			display: block;
 		}
 	}
-	
+
 	ul {
 		@extend .neat-ul;
 		padding: 0;
-		
+
 		li {
 			border-bottom: 1px solid #dedede;
     		padding: 6px 0 5px;

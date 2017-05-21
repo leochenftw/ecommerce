@@ -1,8 +1,14 @@
+window.listYpos = 0;
 class Pricing extends React.Component
 {
     constructor(props)
     {
         super(props);
+        this.state = {
+            cost: this.props.data ? this.props.data.cost : '',
+            price: this.props.data ? this.props.data.price : '',
+            prod_id: this.props.prod_id
+        };
     }
 
     componentWillMount()
@@ -135,6 +141,51 @@ class Pricing extends React.Component
     }
 }
 
+class ImageUplader extends React.Component
+{
+    onSubmit(e)
+    {
+        e.preventDefault();
+        let len = $(e.target).find('input[type="file"]').val().length;
+        if (len == 0) {
+            alert('nothing to upload');
+            return;
+        }
+        let formData    =   new FormData(e.target),
+            self        =   this;
+        console.log('uploading...');
+        $.ajax({
+            url: '/storist/v1/photos/UploadHandler',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                alert('upload completed');
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        });
+    }
+
+    render()
+    {
+        let attachTo = this.props.variant_id ? 'VariantPhotoID' : 'ProductPhotoID';
+        let id = this.props.variant_id ? this.props.variant_id : this.props.prod_id;
+
+        return (
+            <form action="storist/v1/photos/UploadHandler" method="post" encType="multipart/form-data" onSubmit={this.onSubmit.bind(this)} className="add-one-wrapper as-flex wrap variant vertical-bottom">
+                <input type="file" accept="image/*" name="photos[]" />
+                <input type="hidden" name="attach_to" value={attachTo} />
+                <input type="hidden" name="ref_id" value={id} />
+                <input type="submit" className="button" value="贴" />
+            </form>
+        );
+    }
+}
+
 class Pricings extends React.Component
 {
     constructor(props)
@@ -175,9 +226,11 @@ class Pricings extends React.Component
         });
 
         let firstRow = this.props.variant_id ? <Pricing variant_id={this.props.variant_id} prod_id={self.props.prod_id} data={null} /> : <Pricing prod_id={this.props.prod_id} data={null} />;
+        let uploader = <ImageUplader prod_id={this.props.prod_id} variant_id={this.props.variant_id} />;
 
         return (
             <div id="txt-pricing-row">
+                {uploader}
                 {firstRow}
                 {rows}
             </div>
@@ -335,6 +388,7 @@ class ProductDetail extends React.Component
             product_id: '',
             title: '',
             alias: '',
+            barcode: '',
             content: '',
             varianted: false,
             button_label: 'Submit',
@@ -353,6 +407,7 @@ class ProductDetail extends React.Component
             product_id: nextProps.data.product_id,
             title: nextProps.data.title,
             alias: nextProps.data.alias,
+            barcode: nextProps.data.barcode,
             content: nextProps.data.content,
             varianted: varianted,
             pricings: nextProps.data.pricings,
@@ -370,6 +425,7 @@ class ProductDetail extends React.Component
             product_id: this.props.data.product_id,
             title: this.props.data.title,
             alias: this.props.data.alias ? this.props.data.alias : '',
+            barcode: this.props.data.barcode ? this.props.data.barcode : '',
             content: this.props.data.content ? this.props.data.content : '',
             varianted: varianted,
             pricings: this.props.data.pricings,
@@ -387,11 +443,14 @@ class ProductDetail extends React.Component
             var content = tinymce.activeEditor.getContent({format : 'raw'});
             self.setState({content: content});
         });
+        window.listYpos = $(window).scrollTop();
+        $(window).scrollTop(0);
     }
 
     componentWillUnmount()
     {
         tinymce.remove('#txt-content');
+        $(window).scrollTop(window.listYpos);
     }
 
     onChangeHandler(e)
@@ -408,6 +467,11 @@ class ProductDetail extends React.Component
         if ($(e.target).is('#txt-title')) {
             this.setState({title: e.target.value});
         }
+
+        if (e.target.name == 'Barcode') {
+            this.setState({barcode: e.target.value});
+        }
+
     }
 
     onSubmit(e)
@@ -416,6 +480,24 @@ class ProductDetail extends React.Component
         var self = this;
         $.post('/api/v/1/products/' + (self.state.product_id ? self.state.product_id : ''), self.state, function(data) {
             window.security_id = data.security_id;
+
+            if (!self.state.product_id) {
+                var new_product = {
+                    product_alias:  data.product.alias,
+                    product_id:     data.product.product_id,
+                    product_title:  data.product.title
+                };
+                window.all_products.unshift(new_product);
+            } else {
+                window.all_products.map(function(item)
+                {
+                    if (item.product_id === data.product.product_id) {
+                        item.product_title = data.product.title;
+                        item.product_alias = data.product.alias;
+                    }
+                });
+            }
+
             self.setState({
                 product_id: data.product.product_id,
                 varianted: false,
@@ -423,13 +505,9 @@ class ProductDetail extends React.Component
                 variants: data.product.variants,
                 SecurityID: window.security_id
             });
-            var new_product = {
-                product_alias:  data.product.alias,
-                product_id:     data.product.product_id,
-                product_title:  data.product.title
-            };
-            window.all_products.unshift(new_product);
-            window.header.setState({
+
+            window.header.setState(
+            {
                 data: window.all_products,
                 active_product_id: data.product.product_id
             });
@@ -510,7 +588,7 @@ class ProductDetail extends React.Component
                 <form id="form-product" method="post" action={this.state.product_id ? "/api/v/1/products/" +  this.state.product_id : "/api/v/1/products"} onSubmit={this.onSubmit.bind(this)}>
                     <h2 className="as-flex wrap justify vertical-center">
                         <span className="as-block">{this.state.product_id ? '修改商品' : '添加商品'}</span>
-                        <button className="icon-x" onClick={this.closeProductDetails.bind(this)}>Close</button>
+                        <button type="button" className="icon-x" onClick={this.closeProductDetails.bind(this)}>Close</button>
                     </h2>
                     <div id="txt-title-row" className="field">
                         <label htmlFor="txt-title" className="as-block">品名</label>
@@ -519,6 +597,10 @@ class ProductDetail extends React.Component
                     <div id="txt-alias-row" className="field">
                         <label htmlFor="txt-alias" className="as-block">Alias</label>
                         <input onChange={this.onTextChange.bind(this)} className="text" id="txt-alias" type="text" name="Alias" value={this.state.alias ? this.state.alias : ''} />
+                    </div>
+                    <div id="txt-barcode-row" className="field">
+                        <label htmlFor="txt-barcode" className="as-block">Barcode</label>
+                        <input onChange={this.onTextChange.bind(this)} className="text" id="txt-barcode" type="text" name="Barcode" value={this.state.barcode ? this.state.barcode : ''} />
                     </div>
                     <div id="txt-content-row" className="field">
                         <label htmlFor="txt-content" className="as-block">Content</label>
@@ -563,6 +645,10 @@ class ProductList extends React.Component
     {
         if (this.state.active_product_id !== product_id) {
             this.setState({active_product_id: product_id});
+            window.main.setState({
+                show_form: false,
+                product: null
+            });
 
             $.get('/api/v/1/products/' + product_id, function(product) {
                 window.main.setState({

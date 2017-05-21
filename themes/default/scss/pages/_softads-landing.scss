@@ -1,8 +1,8 @@
 #latest-update {
 	padding: 0;
 	.latest-updates {
-		@include display(flex);
-		@include flex-wrap;
-		justify-content: center;
+		@include display-flex;
+        @include flex-wrap(wrap);
+		@include justify-content(center);
 	}
 }

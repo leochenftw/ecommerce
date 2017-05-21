@@ -3,9 +3,9 @@
 		<div class="col col-left">
 		<% loop $Categories.limit(2,0) %>
 			<% if $Last %>
-				<% include CategoryTile reverse=1 %>
+				<% include CategoryTile reverse=1,class=half %>
 			<% else %>
-				<% include CategoryTile %>
+				<% include CategoryTile class=half %>
 			<% end_if %>
 		<% end_loop %>
 		</div>
@@ -13,7 +13,7 @@
 		<% loop $Categories.limit(1,2) %>
 			<% include CategoryTile bigTile=1 %>
 		<% end_loop %>
-		</div>	
+		</div>
 	</div>
 	<div class="row">
 		<div class="col col-left big-tile">
@@ -29,6 +29,6 @@
 				<% include CategoryTile vertical=1 %>
 			<% end_if %>
 		<% end_loop %>
-		</div>	
+		</div>
 	</div>
 </div>

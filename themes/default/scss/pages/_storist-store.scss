@@ -1,0 +1,358 @@
+#header,
+#main,
+#footer {
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        @media print {
+            max-width: none;
+        }
+    }
+}
+
+#main {
+    .merchant-misc {
+        @media print {
+            p {
+                font-size: 14px;
+                line-height: 1.2;
+                margin: 0 0 2px;
+            }
+        }
+
+        @media print and (max-width: 360px) {
+            p {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+#StoreLookupForm_StoreLookupForm {
+    opacity: 0;
+    @include filter(blur(10px));
+    @include display-flex;
+    @include transition(all ease-in-out 0.5s);
+    @include justify-content(center);
+    label,
+    .message {
+        display: none;
+    }
+
+    input {
+        color: #000;
+        &[type="submit"] {
+            display: none;
+        }
+    }
+}
+
+#StoreOrderForm_StoreOrderForm {
+    width: 100%;
+    position: relative;
+    padding: 70px 0 0;
+    height: calc(100vh - 265px);
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @media print {
+        padding: 0 0 2em;
+        height: auto;
+        overflow: visible;
+    }
+
+    .to-buy {
+
+        thead {
+            max-width: 1200px;
+            display: table;
+            table-layout: fixed;
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            @include transform(translateX(-50%));
+            width: 100%;
+            th {
+                background-color: #fff;
+            }
+
+            @media print {
+                position: static;
+                display: table-header-group;
+                max-width: none;
+                @include transform(none);
+            }
+        }
+
+        tbody {
+            display: table;
+            table-layout: fixed;
+            @media print {
+                display: table-row-group;
+            }
+        }
+
+        th {
+            text-align: left;
+            padding: rem(32) rem(15) rem(15);
+            font-size: rem(16);
+            font-weight: normal;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ccc;
+
+            @media print {
+                padding: rem(5);
+                &.to-buy__title {
+                    padding-left: 0;
+                }
+            }
+
+            @media print and (max-width: 360px){
+                font-size: 8px;
+            }
+
+            &.to-buy__action {
+                // border: none;
+            }
+
+            &.to-buy__unit-price,
+            &.to-buy__quantity {
+                text-align: center;
+            }
+
+            &.to-buy__price {
+                text-align: right;
+            }
+        }
+
+        td {
+            padding: 0.5em rem(15);
+            font-size: rem(32);
+            vertical-align: top;
+            .button {
+                display: block;
+                font-size: rem(16);
+                padding: 0.5em 1em 0.65em;
+            }
+            border-bottom: 1px dashed #999;
+            &.to-buy__action {
+                // border: none;
+            }
+
+            &.to-buy__quantity {
+                padding-top: rem(12);
+            }
+
+            &.to-buy__unit-price,
+            &.to-buy__quantity,
+            &.to-buy__price,
+            &.to-buy__title {
+                @media print {
+                    font-size: 14px;
+                    padding: 5px 5px 5px 0;
+                    input {
+                        text-align: center;
+                        font-size: 14px;
+                        font-weight: normal;
+                        height: auto;
+                    }
+                }
+
+                @media print and (max-width: 360px) {
+                    font-size: 10px;
+                    input {
+                        font-size: 10px;
+                        height: 12px;
+                        line-height: 1;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        &__action {
+            width: 11%;
+        }
+
+        &__quantity {
+            width: 8%;
+            input {
+                font-size: rem(36);
+                font-weight: bold;
+            }
+        }
+
+        &__unit-price {
+            width: 15%;
+            text-align: center;
+            input {
+                &.red {
+                    color: $red;
+                }
+            }
+        }
+
+        &__unit-price,
+        &__quantity {
+            input {
+                border: none;
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        &__price {
+            width: 15%;
+            text-align: right;
+        }
+    }
+
+
+}
+
+#footer {
+    @include transition(all 0.3s);
+    @include transform-origin(center, bottom);
+    @include transform(perspective(1000px) rotate3d(1, 0, 0, 90deg));
+    opacity: 0;
+
+    .container {
+        @media print and (max-width: 360px) {
+            @include flex-wrap(wrap);
+        }
+    }
+
+    .col {
+        padding: 0 15px;
+        @media print {
+            padding: 0;
+        }
+
+        #receipt-barcode {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        &#txt-sum,
+        #txt-sum {
+            border: none;
+            font-size: 68px;
+            width: 280px;
+            text-align: right;
+            height: 70px;
+            line-height: 1;
+        }
+
+        &#payment-methods,
+        &#txt-sum {
+            @media print and (max-width: 360px) {
+                width: 50%;
+            }
+        }
+
+        &#receipt-barcode-col {
+            @media print and (max-width: 360px) {
+                order: 2;
+                width: 100%;
+                margin-top: 1em;
+            }
+        }
+
+        &#txt-sum {
+            width: auto;
+            @media print and (max-width: 360px) {
+                font-size: 36px;
+                order: 1;
+            }
+            #txt-gst {
+                margin-top: 10px;
+                font-weight: normal;
+                font-size: 14px;
+                padding-right: 10px;
+                @media print and (max-width: 360px) {
+                    padding-right: 5px;
+                }
+                &:before {
+                    content: 'incl. GST ';
+                }
+            }
+        }
+
+        label[for="do-print"] {
+            margin-right: 1em;
+        }
+
+        button {
+            font-size: 32px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: 1px solid $grey;
+            border-radius: 24px;
+            background-color: white;
+            margin-right: 0.5em;
+            margin-top: 10px;
+            @media print {
+                margin-top: 0;
+                margin-right: 0;
+            }
+            @include transition(all 0.3s);
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: $grey;
+                color: white;
+            }
+        }
+    }
+}
+
+&.has-queue #footer {
+    @include transform(perspective(1000px) rotate3d(1, 0, 0, 0deg));
+    opacity: 1;
+}
+
+&.manual-mode {
+    #StoreLookupForm_StoreLookupForm {
+        @include filter(blur(0));
+        opacity: 1;
+    }
+}
+
+.notification {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    @include transform(translateX(-50%));
+    z-index: 11;
+    width: 96%;
+    max-width: 320px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    &-heading,
+    &-body {
+        text-align: center;
+        padding: 10px 20px;
+    }
+
+    &-heading {
+        font-size: rem(20);
+        font-weight: bold;
+    }
+
+    &-body {
+        padding-bottom: rem(15);
+    }
+
+    &.is-danger {
+        background-color: $red;
+        color: #fff;
+    }
+}

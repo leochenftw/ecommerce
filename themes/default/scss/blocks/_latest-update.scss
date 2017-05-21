@@ -1,8 +1,16 @@
 #latest-update {
 	.latest-updates {
-		padding: 3em 0;
+		padding: 3em 0 1em;
 		.latest-updates__item {
+            display: block;
 			text-decoration: none;
+            margin-bottom: 3em;
+            h3 {
+                @include breakpoint($iphone) {
+                    margin-top: rem(10);
+                }
+            }
+
 			p {
 				margin: 0;
 				font-size: rem(14);

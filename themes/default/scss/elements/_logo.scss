@@ -7,5 +7,8 @@
 	@include retina-sprite(nz-yogo-logo, icons, $dimensions: true, $nonRetina: true);
 	@include vertical-align(absolute);
 	left: rem(10);
+    @include breakpoint($iphone) {
+        height: rem(30);
+        background-size: auto 100%;
+    }
 }
-

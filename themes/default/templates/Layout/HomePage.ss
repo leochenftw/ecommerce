@@ -18,7 +18,7 @@
 			<h2>最热卖</h2>
 			<p>以下上榜商品, 要么卖的最快, 要么卖的最多. 但不管是什么原因, 事实的背后总是有一个让人不能拒绝的理由 -- 还等什么? 一起加入抢购的行列吧!</p>
 		</header>
-		<div class="row">
+		<div class="as-flex wrap horizontal-centered">
 		<% loop $HotProducts %>
 			<% include ProductTile %>
 		<% end_loop %>

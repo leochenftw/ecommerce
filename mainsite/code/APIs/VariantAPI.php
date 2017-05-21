@@ -31,11 +31,12 @@ class VariantAPI extends BaseRestController {
             if ($variant_id = $request->param('ID')) {
                 $variant = Pricing::get()->byID($variant_id);
                 $variant->delete();
-                $prod = ProductPage::get()->byID($prod_id);
+                $prod = Versioned::get_by_stage('ProductPage', 'Stage')->byID($prod_id);
                 return $prod->format(array(
                             'product_id'    =>  'ID',
                             'title'         => 'Title',
                             'alias'         => 'Alias',
+                            'barcode'       => 'Barcode',
                             'content'       => 'Content',
                             'pricings'      => 'PricingData',
                             'variants'      => 'VariantData'
@@ -73,11 +74,12 @@ class VariantAPI extends BaseRestController {
             $pricing->write();
         }
 
-        $prod = ProductPage::get()->byID($prod_id);
+        $prod = Versioned::get_by_stage('ProductPage', 'Stage')->byID($prod_id);
         return $prod->format(array(
                     'product_id'    =>  'ID',
                     'title'         => 'Title',
                     'alias'         => 'Alias',
+                    'barcode'       => 'Barcode',
                     'content'       => 'Content',
                     'pricings'      => 'PricingData',
                     'variants'      => 'VariantData'

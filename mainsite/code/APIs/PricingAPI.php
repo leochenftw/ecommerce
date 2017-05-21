@@ -31,11 +31,12 @@ class PricingAPI extends BaseRestController {
             if ($pricing_id = $request->param('ID')) {
                 $pricing = Pricing::get()->byID($pricing_id);
                 $pricing->delete();
-                $prod = ProductPage::get()->byID($prod_id);
+                $prod = Versioned::get_by_stage('ProductPage', 'Stage')->byID($prod_id);
                 return $prod->format(array(
                             'product_id'    =>  'ID',
                             'title'         => 'Title',
                             'alias'         => 'Alias',
+                            'barcode'       => 'Barcode',
                             'content'       => 'Content',
                             'pricings'      => 'PricingData',
                             'variants'      => 'VariantData'
@@ -52,6 +53,7 @@ class PricingAPI extends BaseRestController {
         $cost = $request->postVar('cost');
         $price = $request->postVar('price');
         $prod_id = $request->postVar('prod_id');
+
         if ($pricing_id = $request->param('ID')) {
             $pricing = Pricing::get()->byID($pricing_id);
         } else {
@@ -74,11 +76,12 @@ class PricingAPI extends BaseRestController {
 		// 	'price'			=>	'Price',
 		// 	'created'		=>	'Created'
         // ));
-        $prod = ProductPage::get()->byID($prod_id);
+        $prod = Versioned::get_by_stage('ProductPage', 'Stage')->byID($prod_id);
         return $prod->format(array(
                     'product_id'    =>  'ID',
                     'title'         => 'Title',
                     'alias'         => 'Alias',
+                    'barcode'       => 'Barcode',
                     'content'       => 'Content',
                     'pricings'      => 'PricingData',
                     'variants'      => 'VariantData'

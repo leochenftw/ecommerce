@@ -46,7 +46,11 @@
 			<% end_if %>
 
 			<% if $tab == 'orders' %>
+                <% if $Order %>
+                <% include OrderReceipt %>
+                <% else %>
 				<% include OrderHistory %>
+                <% end_if %>
 			<% end_if %>
 
 			<% if $tab == 'watch' %>

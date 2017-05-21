@@ -35,7 +35,7 @@
 			}
 		}
 	}
-	
+
 	.content {
 		font-size: rem(16);
 		color: #545454;
@@ -52,7 +52,7 @@
 			font-size: rem(16);
 			color: #545454;
 		}
-		
+
 		.addthis_inline_share_toolbox_k6r6 {
 			.at-share-btn-elements {
 				font-size: 0 !important;
@@ -62,15 +62,15 @@
 			}
 		}
 	}
-	
+
 	h3 {
 		font-size: rem(16);
 		margin: 0 0 rem(40);
 	}
-	
+
 	.latest-updates {
 		@include display-flex;
-		@include flex-wrap;
+		@include flex-wrap(wrap);
 		@include align-items(center);
 		&__item {
 			text-decoration: none;
@@ -81,22 +81,22 @@
 			&:first-child {
 				margin-left: 0;
 			}
-			
+
 			&:last-child {
 				margin-right: 0;
 			}
-			
+
 			&:hover {
 				color: $red;
 				img {
 					@include transform(scale(1.1));
 				}
 			}
-			
+
 			time {
 				padding: rem(10) rem(15);
 			}
-			
+
 			.image-holder {
 				width: rem(270);
 				height: rem(170);
@@ -105,12 +105,12 @@
 					@include transition(all ease-in-out 0.25s);
 				}
 			}
-			
+
 			h4 {
 				margin: rem(15) 0;
 				font-size: rem(14);
 			}
-		}			
+		}
 	}
 }
 
@@ -121,7 +121,7 @@
 	.tag-filter {
 		margin-bottom: rem(60);
 	}
-	
+
 	.filter-title {
 		font-size: rem(20);
 		padding-bottom: rem(16);
@@ -137,18 +137,18 @@
 			left: 0;
 		}
 	}
-	
+
 	.promo {
 		margin: rem(40) 0;
 		a {
 			display: block;
 		}
 	}
-	
+
 	ul {
 		@extend .neat-ul;
 		padding: 0;
-		
+
 		li {
 			border-bottom: 1px solid #dedede;
     		padding: 6px 0 5px;
@@ -157,7 +157,7 @@
 				padding: 0;
 				margin-bottom: rem(20);
 			}
-			
+
 			a {
 				font-size: rem(16);
 				color: #545454;
@@ -168,7 +168,7 @@
 				&:hover {
 					color: $red;
 				}
-				
+
 				.product-thumbnail {
 					float: left;
 					width: rem(85);
@@ -177,7 +177,7 @@
 						display: block;
 					}
 				}
-				
+
 				.product-details {
 					float: left;
 					width: rem(165);
@@ -186,7 +186,7 @@
 						display: block;
 						line-height: 1.2;
 					}
-					
+
 					.title {
 						font-size: rem(20);
 						font-weight: bold;
@@ -195,12 +195,12 @@
 							margin-top: 0.5em;
 						}
 					}
-					
+
 					.price {
 						font-size: rem(18);
 						color: $red;
 					}
-					
+
 					.created {
 						font-size: rem(12);
 						color: #545454;

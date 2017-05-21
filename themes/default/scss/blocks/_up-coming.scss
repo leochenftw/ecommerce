@@ -21,6 +21,10 @@
 		position: relative;
 		padding-left: 29%;
 
+        @include breakpoint($iphone) {
+            padding: 0;
+        }
+
 		h2, p {
 			text-shadow: 0 0 5px #1b1b1b;
 		}
@@ -33,11 +37,17 @@
 				color: $white;
 				line-height: 1.2;
 				margin: 0 0 rem(10);
+                @include breakpoint($iphone) {
+                    font-size: rem(36);
+                }
 			}
 		}
 		p {
 			margin: 0;
 			font-size: rem(32);
+            @include breakpoint($iphone) {
+                font-size: rem(18);
+            }
 			color: $white;
 			span {
 				font-weight: bold;
@@ -69,6 +79,19 @@
 					margin-right: 0;
 				}
 			}
+
+            @include breakpoint($iphone) {
+                padding: rem(30) 0;
+                .row {
+                    @include display-flex;
+                    @include justify-content(center);
+                    @include flex-wrap(wrap);
+
+                    .time-cell {
+                        margin: 0 rem(10) rem(20);
+                    }
+                }
+            }
 		}
 
 		form {

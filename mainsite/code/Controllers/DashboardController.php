@@ -2,8 +2,8 @@
 
 class DashboardController extends Page_Controller {
 	private static $url_handlers = array(
-		''				=>	'index',
-		'action/$tab'	=>	'index'
+		''				        =>	'index',
+        'action/$tab/$order_id'      =>  'index'
 	);
 
 	private static $allowed_actions = array(
@@ -20,42 +20,54 @@ class DashboardController extends Page_Controller {
 		if (!Member::currentUser()) {
 			return $this->redirect('/signin?BackURL=/member');
 		}
+
 		$tab = $request->param('tab');
+        $page_data = array('tab' => $tab);
+
+        if (!empty($request->param('order_id'))) {
+            $page_data['Order'] = Order::get()->byID($request->param('order_id'));
+        }
+
+        $page_data = new ArrayData($page_data);
+
 		if ($request->isAjax()) {
 			switch ($tab) {
 
 				case 'password':
-					return $this->customise(array('tab' => $tab))->renderWith(array('UpdatePasswordForm'));
+					return $this->customise($page_data)->renderWith(array('UpdatePasswordForm'));
 					break;
 
 				case 'email-update':
-					return $this->customise(array('tab' => $tab))->renderWith(array('UpdateEmailForm'));
+					return $this->customise($page_data)->renderWith(array('UpdateEmailForm'));
 					break;
 
 				case 'address':
-					return $this->customise(array('tab' => $tab))->renderWith(array('MyAddresses'));
+					return $this->customise($page_data)->renderWith(array('MyAddresses'));
 					break;
 
 				case 'yo-gold':
-					return $this->customise(array('tab' => $tab))->renderWith(array('YoGoldPurchaseForm'));
+					return $this->customise($page_data)->renderWith(array('YoGoldPurchaseForm'));
 					break;
 
 				case 'orders':
-					return $this->customise(array('tab' => $tab))->renderWith(array('OrderHistory'));
+                    if (!empty($request->param('order_id'))) {
+                        return $this->customise($page_data)->renderWith(array('OrderReceipt'));
+                    }
+					return $this->customise($page_data)->renderWith(array('OrderHistory'));
 					break;
 
 				case 'favourites':
-					return $this->customise(array('tab' => $tab))->renderWith(array('FavouritesList'));
+					return $this->customise($page_data)->renderWith(array('FavouritesList'));
 					break;
 				case 'watch':
-					return $this->customise(array('tab' => $tab))->renderWith(array('MyWatch'));
+					return $this->customise($page_data)->renderWith(array('MyWatch'));
 					break;
 				default:
-					return $this->customise(array('tab' => $tab))->renderWith(array('MemberProfileForm'));
+					return $this->customise($page_data)->renderWith(array('MemberProfileForm'));
 			}
 		}
 
-		return $this->customise(array('tab' => $tab))->renderWith(array('Dashboard', 'Page'));
+		return $this->customise($page_data)->renderWith(array('Dashboard', 'Page'));
 	}
 
 	public function getFavourites() {

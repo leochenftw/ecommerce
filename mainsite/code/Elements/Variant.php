@@ -68,7 +68,10 @@ class Variant extends DataObject {
 				'Root.Main',
 				array(
 					Grid::makeEditable('Pricings', 'Pricings', $this->Pricings()->sort('ID', 'DESC'),false, $onflyfield),
-					$grid = Grid::make('Photos', 'Photos', $this->Photos(), false)
+					$grid = UploadField::create(
+					    'Photos',
+					    'Photos'
+					)
 				)
 			);
 

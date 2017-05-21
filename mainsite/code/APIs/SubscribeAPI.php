@@ -21,7 +21,7 @@ class SubscribeAPI extends BaseRestController {
 	public function post($request) {
 
 		if ($product_id = $request->param('ID')) {
-        	$product = ProductPage::get()->byID($product_id);
+        	$product = Versioned::get_by_stage('ProductPage', 'Stage')->byID($product_id);
             if ($watch_id = $request->postVar('WatchID')) {
                 $watch = Watch::get()->byID($watch_id);
                 $watch->WatchInventory = !empty($request->postVar('WatchInventory')) ? $request->postVar('WatchInventory') : false;

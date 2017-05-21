@@ -6,13 +6,13 @@
  * */
 
 class CustomerModelAdmin extends ModelAdmin {
-	private static $managed_models = array('Customer');
+	private static $managed_models = array('Customer', 'Supplier');
 	private static $url_segment = 'customers';
 	private static $menu_title = 'Customers';
 	private static $menu_icon = 'mainsite/images/customers.png';
-	
+
 	public function getEditForm($id = null, $fields = null) {
-		
+
 		$form = parent::getEditForm($id, $fields);
 		$grid = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
 		$grid->getConfig()

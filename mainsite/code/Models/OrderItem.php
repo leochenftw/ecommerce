@@ -1,25 +1,59 @@
 <?php use SaltedHerring\Debugger as Debugger;
 
 class OrderItem extends DataObject {
+
 	protected static $db = array(
 		'Quantity'			=>	'Int'
 	);
-	
+
+    /**
+     * Define the default values for all the $db fields
+     * @var array
+     */
+    private static $defaults = array(
+        'Quantity'			=>	1
+    );
+
 	protected static $summary_fields = array(
 		'Customer',
 		'Quantity'
 	);
-	
+
 	protected static $has_one = array(
 		'Groupon'			=>	'Groupon',
+        'Product'           =>  'ProductPage',
 		'Order'				=>	'Order',
 		'UsingPricing'		=>	'Pricing'
 	);
-	
+
+    /**
+     * Event handler called before writing to the database.
+     */
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        if (!empty($this->ProductID)) {
+            if ($pricing = $this->Product()->Pricings()->first()) {
+                $this->UsingPricingID = $pricing->ID;
+            }
+        }
+    }
+
+    /**
+     * Event handler called after writing to the database.
+     */
+    public function onAfterWrite()
+    {
+        parent::onAfterWrite();
+        if ($this->Order()->exists()) {
+            $this->Order()->write();
+        }
+    }
+
 	public function Customer() {
 		return !empty($this->Order()->CustomerID) ? $this->Order()->Customer()->Email : $this->Order()->Session;
 	}
-	
+
 	public function getSubtotal($format_output = false) {
 		$sum = $this->UsingPricing()->Price * $this->Quantity;
 		if (!$format_output) {
@@ -27,8 +61,33 @@ class OrderItem extends DataObject {
 		}
 		return number_format($sum, 2, '.', ',');
 	}
-	
+
 	public function FormattedSubtotal() {
 		return $this->getSubtotal(true);
 	}
+
+    public function getProductTitle()
+    {
+        $prod = !empty($this->GrouponID) ? $this->Groupon() : $this->Product();
+        return $prod->Title;
+    }
+
+    public function getPoster()
+    {
+        if (!empty($this->GrouponID)) {
+            return $this->Groupon()->Product()->Poster();
+        }
+
+        if (!empty($this->ProductID)) {
+            return $this->Product()->Poster();
+        }
+
+        return null;
+    }
+
+    public function getItemLink()
+    {
+        $prod = !empty($this->GrouponID) ? $this->Groupon()->Product() : $this->Product();
+        return $prod->Link();
+    }
 }

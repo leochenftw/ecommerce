@@ -10,6 +10,8 @@ Director:
     'signin': 'SigninController'
     'member': 'DashboardController'
     'storist/v1/products': 'StoristProductController'
+    'storist/v1/store': 'StoristStoreController'
+    'storist/v1/photos': 'StoristPhotoController'
     'api/v/1/products/$ID': 'ProdctAPI'
     'api/v/1/payment-methods': 'PaymentMethodController'
     'api/v/1/subscribe/$ID': 'SubscribeAPI'
@@ -18,3 +20,4 @@ Director:
     'api/v/1/addresses/$ID': 'AddressAPI'
     'api/v/1/pricings/$ID': 'PricingAPI'
     'api/v/1/variants/$ID': 'VariantAPI'
+    'loc-catcher': 'CatcherController'

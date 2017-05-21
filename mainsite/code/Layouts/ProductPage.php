@@ -10,8 +10,9 @@ class ProductPage extends Page {
 		'Measurement'	=>	'Varchar(16)',
 		'Weight'		=>	'Decimal',
 		'isHotSale'		=>	'Boolean',
-		'inStock'		=>	'Boolean',
-		'AcceptOrder'	=>	'Boolean'
+		'StockCount'    =>	'Int',
+		'AcceptOrder'	=>	'Boolean',
+        'Supplier'      =>  'Varchar(128)'
 	);
 
 	protected static $has_one = array(
@@ -44,13 +45,17 @@ class ProductPage extends Page {
 	);
 
 	protected static $defaults = array(
-		'inStock'		=>	true,
 		'AcceptOrder'	=>	true
 	);
 
 	protected static $extensions = array(
 		'ApisedExt'
 	);
+
+    public function inStock()
+    {
+        return $this->StockCount > 0;
+    }
 
 	public function thePoster() {
 		return $this->Poster()->FillMax(30,30);
@@ -85,8 +90,9 @@ class ProductPage extends Page {
 		)->setShouldLazyLoad(true)->setCanCreate(true);
 		$fields->addFieldsToTab('Root.Main', array(
 			TextField::create('Alias', '英文名称'),
+            TextField::create('Supplier', '供货方'),
             TextField::create('Barcode', '条形码'),
-			CheckboxField::create('inStock', '有货'),
+			TextField::create('StockCount', '存货'),
 			CheckboxField::create('AcceptOrder', '接受订购')->setDescription('关闭以后只能在抢购期间接受订单'),
 			CheckboxField::create('isHotSale', '设为热卖商品'),
 			DropdownField::create('CategoryID', '分类', Category::get()->map('ID', 'Title'))->setEmptyString('- 选一个 -'),
@@ -108,7 +114,7 @@ class ProductPage extends Page {
 
 		if (!empty($this->ID)) {
 			$fields->addFieldsToTab('Root.Groupons', array(
-				Grid::make('Groupons', '团购', $this->Groupons(), false)
+				Grid::make('Groupons', '特价', $this->Groupons(), false)
 			));
 			$fields->addFieldsToTab('Root.Variants', array(
 				Grid::make('Variants', '品种', $this->Variants(), false)
@@ -140,7 +146,7 @@ class ProductPage extends Page {
 				Grid::make('Watches', '吃瓜群众', $this->Watches()->sort('ID', 'DESC'),false)
 			);
 
-			$fields->fieldByName('Root.Groupons')->setTitle('团购');
+			$fields->fieldByName('Root.Groupons')->setTitle('特价');
 			$fields->fieldByName('Root.Variants')->setTitle('品种');
 			$fields->fieldByName('Root.Pricing')->setTitle('价格');
 			$fields->fieldByName('Root.Watchers')->setTitle('吃瓜群众');

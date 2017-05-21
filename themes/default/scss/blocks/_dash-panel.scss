@@ -1,6 +1,6 @@
 .member-area {
 	@include display-flex;
-	@include flex-wrap;
+    @include flex-wrap(wrap);
 	@include justify-content(center);
 
 	&__sidebar,
@@ -61,7 +61,7 @@
 				max-width: none;
 				.fields {
 					@include display-flex;
-					@include flex-wrap;
+                    @include flex-wrap(wrap);
 					@include justify-content(space-between);
 					@include align-items(center);
 					.field.checkbox {

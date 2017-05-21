@@ -90,6 +90,9 @@ a {
 
 body {
 	padding-top: $header_height;
+    @include breakpoint($iphone) {
+        padding-top: rem(50);
+    }
 }
 
 body.page-homepage {
@@ -130,13 +133,36 @@ body.page-storistproductcontroller {
     &.form-mode {
         #header {
             @include breakpoint($phone) {
-                height: 0;
-                overflow: hidden;
-                border: none;
+                display: none;
+            }
+        }
+
+        #main {
+            @include breakpoint($phone) {
+                display: block;
             }
         }
     }
 	@import 'pages/storist';
+}
+
+body.page-storiststorecontroller {
+    padding-top: 0;
+    @include transition(all ease-in-out 0.25s);
+    #main {
+        @include transition(all ease-in-out 0.25s);
+        opacity: 0;
+        visibility: hidden;
+    }
+    &.has-queue {
+        padding-top: rem(80);
+        #main {
+            @include transition-delay(0.125s);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    @import 'pages/storist-store';
 }
 
 body.page-security.page-type-page {

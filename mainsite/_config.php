@@ -22,9 +22,11 @@ if (Director::isLive()) {
 
 i18n::set_locale('zh_CN');
 Translatable::set_default_locale('zh_CN');
-Translatable::set_allowed_locales(array(
-	'zh_CN',
-	'en_NZ' //NZ English
+Translatable::set_allowed_locales(
+	array(
+        'zh_CN',
+		'zh_Hans',
+		'en_NZ'
 	)
 );
 Object::add_extension('SiteTree', 'Translatable');

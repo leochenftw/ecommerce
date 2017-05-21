@@ -6,7 +6,7 @@
 			font-size: rem(24);
 		}
 	}
-	
+
 	.cart-table {
 		th {
 			font-size: rem(16);
@@ -14,34 +14,34 @@
 			padding: 0.75em 1em;
 			font-weight: normal;
 		}
-				
+
 		tbody {
 			tr {
 				border-bottom: 1px solid $light-grey;
-				
+
 				&:last-child {
 					border: none;
 				}
 			}
 		}
-		
+
 		td {
 			padding: 1.5em 1em;
 			vertical-align: top;
 			font-size: rem(14);
 		}
-		
+
 		.heading {
 			background-color: $light-grey;
 			border: none;
 		}
-		
+
 		.prod-photo {
 			width: rem(160);
 			padding-left: 0;
 			padding-right: 0;
 		}
-		
+
 		.prod-info {
 			a {
 				@include transition(all ease-in-out 0.25s);
@@ -53,26 +53,28 @@
 				}
 			}
 		}
-		
+
 		.prod-price {
-			width: rem(100);
+			width: rem(120);
 		}
-		
+
 		.prod-quantity {
-			
+
 			input {
 				display: block;
 				width: 100%;
 				border: 1px solid $grey;
 				padding: 0.25em 0.5em;
+                text-align: center;
 			}
 		}
-		
+
 		.prod-quantity,
 		.prod-subtotal {
 			width: rem(120);
+            text-align: center;
 		}
-		
+
 		.prod-action {
 			width: rem(80);
 			padding-left: 0;
