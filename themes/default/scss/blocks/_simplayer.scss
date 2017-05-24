@@ -5,9 +5,15 @@
 	background-color: rgba(255,255,255,0.8);
 	top: 0;
 	left: 0;
+    @media print {
+        display: none !important;
+    }
 }
 
 #simplayer-wrapper {
+    @media print {
+        display: none !important;
+    }
 	@include center-align(fixed);
 	width: 90%;
 	max-width: 540px;
@@ -15,20 +21,20 @@
 	padding: 0 0 2em;
 	background-color: #fff;
 	box-shadow: 0 0 20px 5px rgba(0,0,0,0.4);
-	
+
 	.simplayer-title,
 	.simplayer-content,
 	.simplayer-buttons {
 		padding-left: rem(20);
 		padding-right: rem(20);
 	}
-	
+
 	.simplayer-title,
 	.simplayer-content {
 		padding-top: rem(10);
 		padding-bottom: rem(10);
 	}
-	
+
 	.simplayer-title {
 		background-color: #DF5433;
 		margin: 0 0 rem(10);
@@ -37,13 +43,13 @@
 		color: #fff;
 		font-weight: bold;
 	}
-	
+
 	.simplayer-content {
 		p,ul,ol,table,h2,h3,h4,h5,h6 {
 			margin-top: 0;
 		}
 	}
-	
+
 	.simplayer-buttons {
 		margin-top: 1.5em;
 		text-align: center;
@@ -57,7 +63,7 @@
 			&:hover {
 				background-color: #DF5433;
 			}
-			
+
 			&:first-child {
 				background-color: #DF5433;
 				&:hover {
@@ -72,12 +78,12 @@
     #simplayer-wrapper {
         width: 100%;
         max-width: 100%;
-        
+
         .simplayer-title {
             font-size: rem(18);
             padding: rem(20);
         }
-        
+
         .simplayer-content {
             padding: rem(20);
         }

@@ -156,6 +156,9 @@ body.page-storiststorecontroller {
     }
     &.has-queue {
         padding-top: rem(80);
+        @media print {
+            padding-top: 0;
+        }
         #main {
             @include transition-delay(0.125s);
             opacity: 1;

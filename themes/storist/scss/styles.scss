@@ -1,0 +1,32 @@
+// /**
+//  * @file styles.scss
+//  *
+//  * Main stylesheet.
+//  * */
+@import 'compass';
+
+@import "font-awesome-compass";
+@import "font-awesome";
+
+@import 'config/colours';
+
+@import "bulma/bulma";
+
+@import 'config/colour-implementations',
+        'config/ss-shim',
+        'config/variables',
+        'config/sprite';
+
+// @include retina-sprite-add(spritesheet, 'sprites/*.png', 'retina_sprites/*.png');
+
+@import 'blocks/header',
+        'blocks/main',
+        'blocks/section-sales';
+
+
+html {
+    font-size: 16px;
+    body {
+        font-size: 16px;
+    }
+}

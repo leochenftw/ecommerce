@@ -1,0 +1,32 @@
+#header {
+    position: fixed;
+    z-index: 2;
+    width: $side-width;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    h1.title {
+        padding: 12px;
+    }
+
+    .current-member {
+        padding: 2rem 0 3rem;
+        .subtitle {
+            margin-top: -0.75rem;
+        }
+    }
+
+    .contact-button-wrapper {
+        position: absolute;
+        width: 100%;
+        bottom: 2rem;
+        left: 0;
+        .button {
+            border-radius: 25px;
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+    }
+}
+
+@import 'elements/navigation';

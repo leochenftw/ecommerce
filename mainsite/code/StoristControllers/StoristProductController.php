@@ -24,7 +24,7 @@ class StoristProductController extends Page_Controller
 
 	public function index($request) {
         if ($member = Member::currentUser()) {
-            if ($member->inGroup('administrators') || $member->inGroup('managers')) {
+            if ($member->inGroup('administrators') || $member->ClassName == 'Operator') {
                 return $this->renderWith('Reactful');
             }
         }

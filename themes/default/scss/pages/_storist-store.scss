@@ -204,7 +204,7 @@
         }
 
         &__price {
-            width: 15%;
+            width: 20%;
             text-align: right;
         }
     }
@@ -249,7 +249,7 @@
         &#payment-methods,
         &#txt-sum {
             @media print and (max-width: 360px) {
-                width: 50%;
+                width: 100%;
             }
         }
 
@@ -261,11 +261,22 @@
             }
         }
 
+        &#payment-methods {
+            @media print and (max-width: 360px) {
+                margin-bottom: 1em;
+                text-align: right;
+                .payment-trigger {
+                    font-size: 16px;
+                }
+            }
+        }
+
         &#txt-sum {
             width: auto;
             @media print and (max-width: 360px) {
                 font-size: 36px;
                 order: 1;
+                width: 100%;
             }
             #txt-gst {
                 margin-top: 10px;

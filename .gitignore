@@ -76,3 +76,6 @@ translatable/
 themes/default/build/
 themes/default/js/components/
 salted-payment/
+themes/storist/node_modules/
+themes/storist/build/
+themes/storist/js/components/

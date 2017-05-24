@@ -1,0 +1,28 @@
+#main_nav {
+    ul {
+        li {
+            a {
+                display: block;
+                color: white;
+                padding: 18px 12px 18px 38px;
+                border-left: 2px solid rgba($blue, 0);
+                @include transition(all 0.3s);
+                &:hover,
+                &:active,
+                &:focus,
+                &.is-active {
+                    color: $blue;
+                }
+
+                &.is-active {
+                    border-left: 2px solid rgba($blue, 1);
+                }
+
+                .icon {
+                    width: 21px;
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+}

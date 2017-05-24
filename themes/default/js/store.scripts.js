@@ -3,7 +3,8 @@ const _MANUAL_WITHIN    =   2000;
 
 var _cumulatived    =   0,
     _timer          =   null,
-    _isManualMode   =   false;
+    _isManualMode   =   false,
+    creating_order  =   false;
 $(window).click(function(e)
 {
     if (!_isManualMode) {
@@ -80,11 +81,8 @@ var Notification    =   function(title, message)
     return this.html;
 };
 
-
 $(document).ready(function(e)
 {
-    var creating_order = false;
-
     $('#StoreLookupForm_StoreLookupForm_Lookup').blur(function(e)
     {
         if (!_suspendfocus) {
@@ -171,6 +169,7 @@ $(document).ready(function(e)
                         }
                     );
                     window.print();
+                    EndofTrade();
                 } else {
                     alert('ERROR');
                 }
@@ -353,4 +352,31 @@ function addItem(data)
     item.find('.to-buy__price').data('price', sum);
 
     updateSum();
+}
+
+function EndofTrade()
+{
+    var buttons     =   [
+        {
+            Label: 'Print receipt'
+        },
+        {
+            Label: 'Done'
+        }
+    ];
+
+    var splayer = new simplayer('Thanks!', null, buttons, null, null, false);
+    splayer.show();
+    splayer.btnEvent(0, function() {
+        window.print();
+    })
+    splayer.btnEvent(1, function() {
+        $('#to-buy tbody tr').remove();
+        $('.payment-trigger').addClass('not-on-print');
+        $('#receipt-barcode').html('');
+        updateSum();
+        resetScreen();
+        creating_order = false;
+        splayer.close();
+    });
 }

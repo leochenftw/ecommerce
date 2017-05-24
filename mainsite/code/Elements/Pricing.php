@@ -16,7 +16,8 @@ class Pricing extends DataObject {
 
 	protected static $has_one = array(
 		'ProductPricing'	=>	'ProductPage',
-		'VariantPricing'	=>	'Variant'
+		'VariantPricing'	=>	'Variant',
+		'Exchange'			=>	'SiteConfig'
 	);
 
 	protected static $extensions = array(

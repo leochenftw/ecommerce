@@ -4,7 +4,8 @@ class StoreOrder extends DataObject
 {
     protected static $db = array(
         'Title'         =>  'Varchar(16)',
-        'PaymentMethod' =>  'Varchar(16)'
+        'PaymentMethod' =>  'Varchar(16)',
+        'Refunded'      =>  'Boolean'
     );
 
     protected static $default_sort = array('ID' => 'DESC');
@@ -18,7 +19,8 @@ class StoreOrder extends DataObject
     );
 
     protected static $has_one = array(
-        'Member'        =>  'Member'
+        'Member'        =>  'Member',
+        'Supplier'      =>  'Member'
     );
 
     protected static $has_many = array(
@@ -27,7 +29,7 @@ class StoreOrder extends DataObject
 
     public function populateDefaults()
     {
-        $this->Title    =   substr(sha1(mt_rand() . mt_rand()), 0, 16);
+        $this->Title    =   substr(sha1(mt_rand() . mt_rand() . time() . Member::currentUserID()), 0, 16);
     }
 
     /**
@@ -36,7 +38,22 @@ class StoreOrder extends DataObject
     public function onBeforeWrite()
     {
         parent::onBeforeWrite();
-        $this->MemberID = Member::currentUserID();
+
+        if (!$this->exists()) {
+            $this->MemberID = Member::currentUserID();
+            $member = Member::currentUser();
+        } else {
+            $member = $this->Member();
+        }
+
+        if ($member->ClassName == 'Operator') {
+            $supplier = $member->WorksFor()->first();
+            $this->SupplierID = !empty($supplier) ? $supplier->ID : null;
+        } elseif ($member->ClassName == 'Supplier') {
+            $this->SupplierID = $this->MemberID;
+        } else {
+            $this->SupplierID = null;
+        }
     }
 
     public function Operator()
@@ -48,7 +65,7 @@ class StoreOrder extends DataObject
         return '- unknown operator -';
     }
 
-    public function Amount()
+    public function Amount($returnFloat = false)
     {
         if ($this->OrderItems()->exists()) {
             $orders = $this->OrderItems();
@@ -58,10 +75,10 @@ class StoreOrder extends DataObject
                 $n += $order->AltAmount->Amount;
             }
 
-            return '$' . number_format($n, 2, '.', ',');
+            return $returnFloat ? $n : '$' . number_format($n, 2, '.', ',');
         }
 
-        return '$0.00';
+        return $returnFloat ? 0 : '$0.00';
     }
 
 }

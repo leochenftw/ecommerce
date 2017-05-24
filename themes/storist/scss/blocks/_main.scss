@@ -1,0 +1,27 @@
+#main {
+    z-index: 1;
+    padding-top: 60px;
+    padding-left: $side-width;
+    min-height: 100vh;
+
+    .top-stripe {
+        position: fixed;
+        width: 100%;
+        padding-left: $side-width;
+        top: 0;
+        left: 0;
+        height: 60px;
+        line-height: 36px;
+        box-shadow: 0 0 2px rgba(black, 0.2);
+
+        .links {
+            a {
+                margin-left: 1em;
+                .icon {
+                    line-height: 36px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

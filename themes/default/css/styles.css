@@ -2449,6 +2449,14 @@ textarea {
   line-height: 40px;
 }
 @media print {
+  .page-storiststorecontroller #header {
+    position: static !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    height: auto !important;
+  }
   .page-storiststorecontroller #header .container {
     display: -webkit-flex;
     display: flex;
@@ -2595,6 +2603,11 @@ textarea {
   top: 0;
   left: 0;
 }
+@media print {
+  #simplayer-tray {
+    display: none !important;
+  }
+}
 
 #simplayer-wrapper {
   -moz-transform: translate(-50%, -50%);
@@ -2610,6 +2623,11 @@ textarea {
   padding: 0 0 2em;
   background-color: #fff;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.4);
+}
+@media print {
+  #simplayer-wrapper {
+    display: none !important;
+  }
 }
 #simplayer-wrapper .simplayer-title,
 #simplayer-wrapper .simplayer-content,
@@ -6883,6 +6901,11 @@ body.page-storiststorecontroller #main {
 body.page-storiststorecontroller.has-queue {
   padding-top: 5rem;
 }
+@media print {
+  body.page-storiststorecontroller.has-queue {
+    padding-top: 0;
+  }
+}
 body.page-storiststorecontroller.has-queue #main {
   -moz-transition-delay: 0.125s;
   -o-transition-delay: 0.125s;
@@ -7083,7 +7106,7 @@ body.page-storiststorecontroller #StoreOrderForm_StoreOrderForm .to-buy__unit-pr
   text-align: center;
 }
 body.page-storiststorecontroller #StoreOrderForm_StoreOrderForm .to-buy__price {
-  width: 15%;
+  width: 20%;
   text-align: right;
 }
 body.page-storiststorecontroller #footer {
@@ -7131,7 +7154,7 @@ body.page-storiststorecontroller #footer .col #txt-sum {
 }
 @media print and (max-width: 360px) {
   body.page-storiststorecontroller #footer .col#payment-methods, body.page-storiststorecontroller #footer .col#txt-sum {
-    width: 50%;
+    width: 100%;
   }
 }
 @media print and (max-width: 360px) {
@@ -7141,6 +7164,15 @@ body.page-storiststorecontroller #footer .col #txt-sum {
     margin-top: 1em;
   }
 }
+@media print and (max-width: 360px) {
+  body.page-storiststorecontroller #footer .col#payment-methods {
+    margin-bottom: 1em;
+    text-align: right;
+  }
+  body.page-storiststorecontroller #footer .col#payment-methods .payment-trigger {
+    font-size: 16px;
+  }
+}
 body.page-storiststorecontroller #footer .col#txt-sum {
   width: auto;
 }
@@ -7148,6 +7180,7 @@ body.page-storiststorecontroller #footer .col#txt-sum {
   body.page-storiststorecontroller #footer .col#txt-sum {
     font-size: 36px;
     order: 1;
+    width: 100%;
   }
 }
 body.page-storiststorecontroller #footer .col#txt-sum #txt-gst {

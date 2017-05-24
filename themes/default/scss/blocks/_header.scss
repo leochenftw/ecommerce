@@ -81,6 +81,9 @@
         top: 50%;
         left: 50%;
         @media print {
+            position: static !important;
+            @include transform(none !important);
+            height: auto !important;
             .container {
                 .loading-indicator,
                 &:after {
