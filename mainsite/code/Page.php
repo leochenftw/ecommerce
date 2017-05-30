@@ -60,6 +60,7 @@ class Page_Controller extends ContentController {
             Session::clear('page_refreshable');
         }
         Session::save();
+        // SaltedHerring\Debugger::inspect(Session::get_all());
         $this->initJS();
         // Note: you should use SS template require tags inside your templates
         // instead of putting Requirements calls here.  However these are

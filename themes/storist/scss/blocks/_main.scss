@@ -6,6 +6,7 @@
 
     .top-stripe {
         position: fixed;
+        z-index: 2;
         width: 100%;
         padding-left: $side-width;
         top: 0;

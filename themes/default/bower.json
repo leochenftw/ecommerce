@@ -36,6 +36,7 @@
     "react": "^15.4.0",
     "classnames": "^2.2.5",
     "jquery.scrollTo": "^2.1.2",
+    "datetimepicker": "^2.5.4",
     "JsBarcode": "jsbarcode#^3.6.0"
   }
 }

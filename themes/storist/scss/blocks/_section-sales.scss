@@ -5,12 +5,54 @@
         .column {
             padding-top: 0;
             padding-bottom: 0;
-        }
-    }
 
-    &-tools {
-        .is-absolute {
-            left: 0;
+            input.text {
+                padding-left: 28px;
+                color: $grey-light;
+                &:focus {
+                    border-color: $blue;
+                    color: $blue;
+                    + span.icon {
+                        color: $blue;
+                    }
+                }
+
+                @include placeholder {
+                    color: $grey-lighter;
+                }
+            }
+
+            label {
+                font-size: 14px;
+                font-weight: normal;
+                cursor: pointer;
+                input[type="checkbox"] {
+                    display: none;
+                    &:not(:checked) + span {
+                        color: $grey-light !important;
+                    }
+                }
+            }
+
+            &.date-picker-holder {
+                input.text {
+                    width: 130px;
+                    display: block;
+                }
+            }
+
+            &.is-relative {
+                .icon {
+                    left: 12px;
+                    top: 50%;
+                    font-size: 12px;
+                    color: $grey-light;
+                    &.left-more {
+                        left: 24px;
+                    }
+                    @include transform(translateY(-50%));
+                }
+            }
         }
     }
 
@@ -19,6 +61,11 @@
             height: 76vh;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            &.filtering {
+                .sales-record:not(.is-target) {
+                    display: none;
+                }
+            }
         }
 
         &:not(:last-child) {

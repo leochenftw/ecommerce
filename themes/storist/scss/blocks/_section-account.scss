@@ -1,0 +1,95 @@
+.operators,
+.account {
+    .account-tools {
+        font-size: 14px;
+        a {
+            margin-left: 1em;
+        }
+
+        .icon {
+            font-size: 14px;
+            margin-right: 0.5em;
+        }
+    }
+}
+
+.form-operator,
+#SupplierEditForm_SupplierEditForm {
+    .peronsal-info,
+    .business-info {
+        margin: 3rem 0;
+        label {
+            font-weight: lighter;
+            &.ss-uploadfield-fromcomputer {
+                display: none;
+            }
+        }
+    }
+
+    .ss-uploadfield-item-preview {
+        margin-bottom: 1rem;
+        img {
+            max-height: 40px;
+            width: auto;
+        }
+    }
+
+    .password-field {
+        margin-bottom: 24px;
+    }
+
+    #Password_Password_Holder,
+    #Password_ConfirmPassword_Holder {
+        margin-bottom: 12px;
+    }
+
+    p.subtitle {
+        padding: 0 1em;
+    }
+
+    .actions {
+        input.action {
+            border-radius: 25px;
+            padding-left: 4em;
+            padding-right: 4em;
+        }
+    }
+
+    .create.action {
+        margin-right: 0.25em;
+    }
+
+    .simple-previewable-holder {
+        img {
+            display: block;
+        }
+    }
+
+    input.holder-is-danger {
+        @extend .is-danger;
+        margin-bottom: 6px;
+    }
+
+    div.is-danger {
+        input.text {
+            @extend .is-danger;
+        }
+    }
+
+}
+
+.form-operator {
+    margin: 1rem 0;
+}
+
+.operators {
+    .operator {
+        cursor: pointer;
+        @include user-select(none);
+        @include transition(all 0.3s);
+        background-color: rgba($grey-dark, 0);
+        &:hover {
+            background-color: rgba($grey-dark, 0.1);
+        }
+    }
+}
