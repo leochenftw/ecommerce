@@ -58,7 +58,7 @@
 
     .sales-record {
         &s {
-            height: 76vh;
+            height: 68vh;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             &.filtering {
@@ -71,6 +71,7 @@
         &:not(:last-child) {
             border-bottom: 1px solid $grey-lighter;
         }
+        
         padding-bottom: 0.5rem;
         padding-top: 0.5rem;
 

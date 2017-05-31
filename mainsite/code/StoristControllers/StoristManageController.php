@@ -170,7 +170,23 @@ class StoristManageController extends Page_Controller
                 )
             );
              $products = json_decode($response->getBody());
-             Debugger::inspect($products);
+             $list = array();
+             foreach ($products as $product)
+             {
+                 $item = array(
+                     'ID'           =>  $product->id,
+                     'Title'        =>  $product->title,
+                     'Cost'         =>  empty($product->cost) ? '$0.00' : money_format("$%i", $product->cost),
+                     'Price'        =>  money_format("$%i", $product->price),
+                     'StockCount'   =>  empty($product->stock_count) ? '-' : $product->stock_count,
+                     'Barcode'      =>  empty($product->barcode) ? '' : $product->barcode,
+                     'LastUpdate'   =>  empty($product->last_update) ? '' : $product->last_update,
+                     'Thumbnail'    =>  empty($product->thumbnail) ? null : $product->thumbnail
+                 );
+                 $list[] = $item;
+             }
+            //  Debugger::inspect($products);
+             return new ArrayList($list);
         }
     }
 
