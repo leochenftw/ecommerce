@@ -11,6 +11,7 @@
             </a>
         </div>
     </header>
+
     <div class="product-rows is-relative">
         <div class="columns product-row is-marginless headers white-ter">
             <div class="column is-1"></div>
@@ -20,11 +21,12 @@
             <div class="column has-text-centered is-2">Price</div>
             <div class="column is-2">Updated</div>
         </div>
+        <% with $Products %>
         <div class="product-list">
-        <% loop $Products %>
-            <div class="columns product-row is-marginless" data-id="$ID" data-title="$Title" data-barcode="$Barcode" data-cost="$Cost" data-price="$Price" data-thumbnail="$Thumbnail">
+        <% loop $List %>
+            <div class="columns product-row is-marginless" data-id="$ID" data-title="$Title" data-chinese="$Chinese" data-cost="$Cost" data-price="$Price" data-stock-count="$StockCount" data-barcode="$Barcode" data-width="$Width" data-height="$Height" data-depth="$Depth" data-measurement="$Measurement" data-weight="$Weight" data-manufacturer="$Manufacturer" data-thumbnail="$Thumbnail">
                 <div class="column product-row__thumbnail is-1"></div>
-                <div class="column product-row__title">$Title</div>
+                <div class="column product-row__title"><span class="english">$Title</span><br /><span class="chinese subtitle is-6">$Chinese</span></div>
                 <div class="column product-row__stock-count is-1 has-text-centered">$StockCount</div>
                 <div class="column product-row__cost has-text-centered is-2">$Cost</div>
                 <div class="column product-row__price has-text-centered is-2">$Price</div>
@@ -32,5 +34,13 @@
             </div>
         <% end_loop %>
         </div>
+        <div class="product-pagination">
+        <% if $Pagination %>
+            $Pagination
+        <% else %>
+            <p>That's all</p>
+        <% end_if %>
+        </div>
+        <% end_with %>
     </div>
 </section>

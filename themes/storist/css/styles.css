@@ -9021,6 +9021,9 @@ div.field.textarea {
   background-color: rgba(49, 56, 62, 0.1);
 }
 
+.products {
+  padding-bottom: 0;
+}
 .products header {
   padding-bottom: 2rem;
   border-bottom: 1px solid #dbdbdb;
@@ -9068,27 +9071,82 @@ div.field.textarea {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.products .product-rows {
-  height: 68vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+.products .product-row {
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-size: 14px;
+}
+.products .product-rows.editing .product-row {
+  display: none;
+}
+.products .product-rows.editing .product-list {
+  height: calc(100vh - 250px);
 }
 .products .product-rows.filtering .product-row:not(.is-target) {
   display: none;
 }
+.products .product-row__last-update {
+  color: #b5b5b5;
+}
 .products .product-row:not(:last-child) {
   border-bottom: 1px solid #dbdbdb;
 }
-.products .product-row.headers {
-  position: fixed;
-  width: calc(100% - 288px);
-}
 .products .product-list {
-  padding-top: 48px;
+  height: calc(100vh - 295px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .products .product-list .product-row {
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
+.products .product-list .product-row .column {
+  -moz-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+  opacity: 1;
+}
+.products .product-list .product-row.updated {
+  background-color: white;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.products .product-list .product-row.updated .column {
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+  opacity: 0;
+}
+.products .product-list.filtering .product-row:not(.is-target) {
+  display: none;
+}
+.products .product-pagination {
+  padding: 12px 0;
+}
+.products .product-pagination p {
+  height: 35px;
+  line-height: 35px;
+}
+.products .product-pagination.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.products .form-product {
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 24px 12px;
 }
 
 .xdsoft_datetimepicker {

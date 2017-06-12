@@ -14,6 +14,7 @@ Director:
     'storist/v1/photos': 'StoristPhotoController'
     'storist/v1/manage/$feature': 'StoristManageController'
     'api/v/1/products/$ID': 'ProdctAPI'
+    'api/v/1/cloud-products/$ID': 'CloudProductAPI'
     'api/v/1/payment-methods': 'PaymentMethodController'
     'api/v/1/subscribe/$ID': 'SubscribeAPI'
     'api/v/1/freights/$ID': 'FreightAPI'

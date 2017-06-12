@@ -28,6 +28,7 @@ class StoristManageController extends Page_Controller
                 'themes/storist/js/modules/previewable.js',
                 'themes/storist/js/modules/operator_work.js',
                 'themes/storist/js/modules/form_operator.js',
+                'themes/storist/js/modules/form_product.js',
                 'themes/storist/js/modules/msg_box.js',
                 'themes/storist/js/custom.scripts.js'
 	        )
@@ -169,25 +170,90 @@ class StoristManageController extends Page_Controller
                                 ]
                 )
             );
-             $products = json_decode($response->getBody());
-             $list = array();
-             foreach ($products as $product)
-             {
-                 $item = array(
-                     'ID'           =>  $product->id,
-                     'Title'        =>  $product->title,
-                     'Cost'         =>  empty($product->cost) ? '$0.00' : money_format("$%i", $product->cost),
-                     'Price'        =>  money_format("$%i", $product->price),
-                     'StockCount'   =>  empty($product->stock_count) ? '-' : $product->stock_count,
-                     'Barcode'      =>  empty($product->barcode) ? '' : $product->barcode,
-                     'LastUpdate'   =>  empty($product->last_update) ? '' : $product->last_update,
-                     'Thumbnail'    =>  empty($product->thumbnail) ? null : $product->thumbnail
-                 );
-                 $list[] = $item;
-             }
-            //  Debugger::inspect($products);
-             return new ArrayList($list);
+
+            $raw = json_decode($response->getBody());
+            $page_count = $raw->page_count;
+            $products = $raw->data;
+            $list = array();
+            foreach ($products as $product)
+            {
+                $update_at         =   new Datetime($product->last_update->date, new DateTimeZone($product->last_update->timezone));
+                // Debugger::inspect($update_at);
+                $update_at         =   $update_at->setTimezone(new DateTimeZone('Pacific/Auckland'));
+
+                $item = array(
+                    'ID'           =>  $product->id,
+                    'Title'        =>  $product->title,
+                    'Chinese'      =>  empty($product->chinese_title) ? '' : $product->chinese_title,
+                    'Cost'         =>  empty($product->cost) ? '$0.00' : money_format("$%i", $product->cost),
+                    'Price'        =>  money_format("$%i", $product->price),
+                    'StockCount'   =>  empty($product->stock_count) ? '-' : $product->stock_count,
+                    'Barcode'      =>  empty($product->barcode) ? '' : $product->barcode,
+                    'LastUpdate'   =>  $update_at->format('Y-m-d H:i:s'),
+                    'Width'        =>  $product->width,
+                    'Height'       =>  $product->height,
+                    'Depth'        =>  $product->depth,
+                    'Measurement'  =>  $product->measurement,
+                    'Weight'       =>  $product->weight,
+                    'Manufacturer' =>  $product->manufacturer,
+                    'Thumbnail'    =>  empty($product->thumbnail) ? null : $product->thumbnail
+                );
+                $list[] = $item;
+            }
+
+            $list = new ArrayList($list);
+            $pagination = null;
+
+            if ($page_count > 0) {
+                $this->MakePagination($pagination, $page_count);
+            }
+
+
+            return new ArrayData(array('Pagination' => $pagination, 'List' => $list));
         }
+    }
+
+    private function MakePagination(&$pagination, $page_count)
+    {
+        $current_page = !empty($this->request->getVar('page')) ? $this->request->getVar('page') : 1;
+        $prev = $current_page - 1;
+        $next = $current_page + 1;
+
+        $pagination = '<nav class="pagination">' . "\n";
+
+        if ($prev < 1) {
+            $pagination .= "\t" . '<a class="pagination-previous" title="This is the first page" disabled>Prev</a>' . "\n";
+        } else {
+            $pagination .= "\t" . '<a class="pagination-previous" href="' . $this->Link('products') . '?page=' . $prev . '">Prev</a>' . "\n";
+        }
+
+        if ($next > $page_count) {
+            $pagination .= "\t" . '<a class="pagination-next" title="This is the last page" disabled>Next</a>' . "\n";
+        } else {
+            $pagination .= "\t" . '<a class="pagination-next" href="' . $this->Link('products') . '?page=' . $next . '">Next</a>' . "\n";
+        }
+
+        $pagination .= "\t" . '<ul class="pagination-list">' . "\n";
+        $pagination .= "\t\t" . '<li><a class="pagination-link' . ($current_page == 1 ? ' is-current' : '') . '" href="' . $this->Link('products') . '?page=1">1</a></li>' . "\n";
+
+        if ($current_page - 3 > 1) {
+            $pagination .= "\t\t" . '<li><span class="pagination-ellipsis">&hellip;</span></li>' . "\n";
+        }
+
+        for ($i = $current_page - 3 ; $i < $current_page + 2; $i++)
+        {
+            if ($i >= 1 && $i < $page_count - 1 ) {
+                $pagination .= "\t\t" . '<li><a class="pagination-link' . ($current_page == $i + 1 ? ' is-current' : '') . '" href="' . $this->Link('products') . '?page=' . ($i + 1) . '">' . ($i + 1) . '</a></li>' . "\n";
+            }
+        }
+
+        if ($current_page + 3 < $page_count) {
+            $pagination .= "\t\t" . '<li><span class="pagination-ellipsis">&hellip;</span></li>' . "\n";
+        }
+
+        $pagination .= "\t\t" . '<li><a class="pagination-link' . ($current_page == $page_count ? ' is-current' : '') . '" href="' . $this->Link('products') . '?page=' . $page_count . '">' . $page_count . '</a></li>' . "\n";
+
+        $pagination .= "\t</ul>\n</nav>";
     }
 
     public function Link($action = null)
