@@ -4,6 +4,7 @@ var google_api	=	'AIzaSyCd77ZeqfPhsCOV2aXj81lgSgp5ajw1LWU',
 HijackAlert();
 jQuery(document).ready(function($) {
     // undefined.x();
+
     if ($('.parallax-window').length > 0) {
         $('.parallax-window').parallax();
     }
@@ -17,6 +18,7 @@ jQuery(document).ready(function($) {
     owlOpt.autoplay = true;
     owlOpt.loop = true;
     owlOpt.autoPlay = true;
+    owlOpt.navText = ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"];
     owlOpt.autoplayTimeout = 5000;
     owlOpt.autoplayHoverPause = true;
     if ($('#promotional-wrapper').length == 1) {
@@ -31,7 +33,8 @@ jQuery(document).ready(function($) {
             items: 3,
             loop: true,
             autoWidth: true,
-            margin: 10
+            margin: 10,
+            navText: ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"]
         };
 
         var prodOwl = $('.product-images__pool').owlCarousel(noramOpt);
@@ -529,3 +532,11 @@ function msToTime(duration, as_data) {
 
     return hours + ":" + minutes + ":" + seconds;
 }
+
+$(window).load(function(e)
+{
+    if ($('.blog-misc').length > 0) {
+        $('.blog-misc').fixy($('#header').outerHeight() + 24);
+    }
+    $(window).scroll();
+});

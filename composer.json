@@ -21,7 +21,7 @@
         "normann/gridfieldpaginatorwithshowall": "dev-master",
         "undefinedoffset/sortablegridfield": "^0.6.1",
         "salted-herring/image-orientation-fixer": "^1.0",
-        "salted-herring/salted-library": "~0.0.12",
+        "salted-herring/salted-library": "~0.0.24",
         "silverstripe/translatable": "^2.2",
         "sheadawson/silverstripe-linkable": "~1.3",
         "colymba/gridfield-gallery-theme": "~1.0",

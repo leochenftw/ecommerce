@@ -1,0 +1,70 @@
+.grey-darker {
+    background-color: $grey-darker;
+    color: white;
+    .subtitle,
+    .title {
+        color: white;
+    }
+}
+
+.grey-dark {
+    background-color: $grey-dark;
+    color: white;
+    .subtitle,
+    .title {
+        color: white;
+    }
+}
+
+.white-ter {
+    background-color: $white-ter;
+    color: $grey-darker;
+    .subtitle,
+    .title {
+        color: $grey-darker;
+    }
+}
+
+.white {
+    background-color: white;
+}
+
+.transparent {
+    background-color: transparent;
+    color: $grey-darker;
+    .subtitle,
+    .title {
+        color: $grey-darker;
+    }
+}
+
+a.font,
+.font {
+    &-blue {
+        color: $blue !important;
+    }
+
+    &-white-ter {
+        color: $white-ter !important;
+    }
+
+    &-green {
+        color: $green !important;
+    }
+
+    &-red {
+        color: $red !important;
+    }
+
+    &-orange {
+        color: $orange !important;
+    }
+
+    &-grey-light {
+        color: $grey-light !important;
+    }
+
+    &-grey-lighter {
+        color: $grey-lighter !important;
+    }
+}

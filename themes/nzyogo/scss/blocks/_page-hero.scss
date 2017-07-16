@@ -1,0 +1,21 @@
+.hero {
+    background: url(../images/bg-title-shop.jpg) no-repeat center center;
+    background-size: cover;
+    .hero-body {
+        padding-top: 42px;
+        padding-bottom: 42px;
+        .title {
+            margin-bottom: 16px;
+        }
+        .breadcrumb {
+            ul {
+                li {
+                    a {
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

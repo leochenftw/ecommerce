@@ -1,0 +1,118 @@
+#header {
+    background-color: $white;
+	height: 80px;
+	border-bottom: 1px solid #e1e1e1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+
+	.container {
+		height: 100%;
+		position: relative;
+        #logo {
+        	color: $black;
+        	display: block;
+        	text-indent: -9999px;
+        	overflow: hidden;
+        	@include retina-sprite(nz-yogo-logo, spritesheet, $dimensions: true, $nonRetina: true);
+        }
+
+        
+	}
+
+    .page-storiststorecontroller & {
+        border: none;
+        @include transition(all ease-in-out 0.25s);
+        @include transition-delay(0.35s);
+        .as-inline-block {
+            vertical-align: middle;
+        }
+
+        .merchant-info {
+            margin-right: 14px;
+            @media print and (max-width: 360px) {
+                font-size: 10px !important;
+                text-align: right;
+            }
+        }
+
+        &.padding-top-bottom {
+            padding: 20px 0;
+        }
+
+        #supplier-logo {
+            margin: 0 0.5em 0 0.25em;
+        }
+
+        #logo {
+            @include transform(translate(-50%, -50%));
+            top: 50%;
+            left: 50%;
+            pointer-events: none;
+        }
+
+        .loading-indicator {
+            width: 40px;
+            height: 40px;
+            &:not(.as-inline-block) {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include transform(translate(-122px, -50%));
+            }
+            @include transition(all 0.2s);
+            visibility: hidden;
+            opacity: 0;
+            .icon-loading {
+                width: 100%;
+                height: 100%;
+                text-indent: 0;
+                text-align: center;
+                &:before {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    text-indent: 0;
+                    font-size: rem(36);
+                    line-height: 40px;
+                }
+            }
+        }
+
+        @include transform(translate(-50%, -50%));
+        top: 50%;
+        left: 50%;
+        @media print {
+            position: static !important;
+            @include transform(none !important);
+            height: auto !important;
+            .container {
+                .loading-indicator,
+                &:after {
+                    content: none;
+                    display: none;
+                }
+                @include display-flex;
+                @include justify-content(space-between);
+            }
+        }
+    }
+
+    .page-storiststorecontroller.has-queue & {
+        @include transition-delay(0s);
+        @include transform(translate(-50%, 0%));
+        top: 0;
+        left: 50%;
+    }
+
+    .page-storiststorecontroller.pulling-product & {
+        .loading-indicator {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+@import 'elements/navigation';

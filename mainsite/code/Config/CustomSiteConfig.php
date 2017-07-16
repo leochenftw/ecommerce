@@ -1,7 +1,7 @@
 <?php
 use SaltedHerring\Grid;
-class CustomSiteConfig extends DataExtension {
-
+class CustomSiteConfig extends DataExtension
+{
 	public static $db = array(
         'GoogleSiteVerificationCode'    =>  'Varchar(128)',
         'GoogleAnalyticsCode'           =>  'Varchar(20)',
@@ -13,7 +13,8 @@ class CustomSiteConfig extends DataExtension {
         'ExchangeRates'                 =>   'Pricing'
 	);
 
-	public function updateCMSFields(FieldList $fields) {
+	public function updateCMSFields(FieldList $fields)
+    {
 		$fields->addFieldToTab("Root.Google", new TextField('GoogleSiteVerificationCode', 'Google Site Verification Code'));
 		$fields->addFieldToTab("Root.Google", new TextField('GoogleAnalyticsCode', 'Google Analytics Code'));
 		$fields->addFieldToTab("Root.Google", new TextareaField('GoogleCustomCode', 'Custom Google Code'));
@@ -23,12 +24,18 @@ class CustomSiteConfig extends DataExtension {
 		$fields->addFieldToTab('Root.Main', new TextField('SiteVersion', 'Site Version'));
 	}
 
-    public function getRate() {
+    public function getRate()
+    {
 		$rates = $this->owner->ExchangeRates()->sort(array('ID' => 'DESC'));
 		if ($rates->count() > 0) {
 			return $rates->first();
 		}
 		return 1;
 	}
+
+    public function getRates()
+    {
+        return $this->owner->ExchangeRates()->sort(array('ID' => 'DESC'));
+    }
 
 }

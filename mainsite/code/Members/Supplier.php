@@ -18,6 +18,11 @@ class Supplier extends Member
         'Operators'     =>  'Operator'
     );
 
+    private static $belongs_many_many = array(
+        'Products'      =>  'ProductPage',
+        'Variants'      =>  'Variant'
+    );
+
     private static $has_many = array(
         'StoreOrders'   =>  'StoreOrder.Supplier'
     );

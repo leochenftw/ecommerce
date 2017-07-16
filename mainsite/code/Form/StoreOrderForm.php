@@ -45,6 +45,9 @@ class StoreOrderForm extends Form
                 $orderItem->write();
             }
 
+            $order->Sold = true;
+            $order->write();
+
             return json_encode(
                         array(
                             'result'    =>  true,

@@ -1,0 +1,75 @@
+.blog-content {
+    .cover {
+        margin-bottom: 30px;
+        time {
+            padding: 0.625rem 1.25rem;
+            text-align: center;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: bold;
+            display: block;
+            background-color: #ed1c24;
+            line-height: 1.1;
+            text-transform: uppercase;
+            position: absolute;
+            z-index: 1;
+            top: -1.25rem;
+            left: 1.25rem;
+            span {
+                font-size: 0.75rem;
+                display: block;
+                font-weight: normal;
+            }
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .content {
+        line-height: 1.6;
+        font-size: 1rem;
+        color: #545454;
+        border-bottom: 1px solid #e6e6e6;
+        padding-bottom: 1.875rem;
+        margin-bottom: 2.375rem;
+        
+        .chinese & {
+            line-height: 1.8;
+        }
+
+        .addthis_inline_share_toolbox_k6r6 {
+            margin-top: 60px;
+        }
+    }
+}
+
+.blog-misc {
+    img {
+        display: block;
+    }
+
+    .filter {
+        h2.title {
+            padding-bottom: 1rem;
+            margin: 0 0 0.9375rem;
+            position: relative;
+            &:after {
+                content: '';
+                height: 1px;
+                width: 1.875rem;
+                background: #ccc;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+
+    .category-filter {
+        margin-bottom: 2em;
+    }
+}

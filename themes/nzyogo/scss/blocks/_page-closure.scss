@@ -1,0 +1,65 @@
+#page-closure {
+    .title {
+        margin-bottom: 14px;
+    }
+
+    .column {
+        button,
+        a {
+            @include transition(all 0.3s);
+        }
+
+        p, li {
+            font-size: 12px;
+            line-height: 1.6;
+            margin-bottom: 1em;
+        }
+
+        ul {
+            li {
+                padding-left: 2em;
+                line-height: 1.6;
+                .icon {
+                    position: absolute;
+                    top: 0.3em;
+                    left: 0;
+                    .fa {
+                        font-size: 14px;
+                    }
+                }
+
+                h4 {
+                    text-transform: uppercase;
+                }
+
+                a {
+                    color: $dark-grey;
+                    &:hover {
+                        color: $red;
+                    }
+                }
+            }
+        }
+    }
+
+    .social-icons {
+        @import 'elements/social-icons';
+    }
+
+    .contact-details {
+        @import 'elements/contact-details';
+    }
+
+    .business-hours {
+        @import 'elements/business-hours';
+    }
+
+    .pickup-location {
+        @import 'elements/pickup-locations';
+    }
+
+    .subscription {
+        @import 'elements/subscription';
+    }
+
+}

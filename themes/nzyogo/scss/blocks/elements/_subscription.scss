@@ -1,0 +1,35 @@
+form {
+    .text,
+    .button {
+        border: none;
+        border-radius: 0;
+        height: 40px;
+    }
+
+    .text {
+        background-color: $light-grey;
+        box-shadow: none;
+        padding-left: 20px;
+        padding-right: 60px;
+        font-size: 14px;
+
+        @include placeholder {
+            color: $grey;
+            font-size: 12px;
+        }
+    }
+
+    button.button {
+        top: 0;
+        right: 0;
+        background-color: $dark-grey;
+        color: $grey;
+        width: 40px;
+
+        &:hover,
+        &:focus {
+            background-color: $red;
+            color: white;
+        }
+    }
+}

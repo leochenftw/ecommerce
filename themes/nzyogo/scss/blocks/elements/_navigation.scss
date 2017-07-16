@@ -1,0 +1,40 @@
+.nav,
+.navbar {
+    .nav-item {
+        color: $dark-grey;
+        @include transition(all 0.25s);
+
+        &.is-active,
+        &:focus,
+        &:hover {
+            color: $red;
+        }
+
+        &.icon {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            background-color: white;
+            border-left: 1px solid #e1e1e1;
+            .fa {
+                font-size: 16px;
+            }
+            &:last-child {
+                border-right: 1px solid #e1e1e1;
+            }
+
+            &.is-active,
+            &:focus,
+            &:hover {
+                background-color: rgba($red, 1);
+                color: white;
+            }
+        }
+    }
+}
+
+#header {
+    .nav,
+    .navbar {
+        height: 100%;
+    }
+}

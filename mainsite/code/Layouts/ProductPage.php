@@ -3,39 +3,32 @@ use SaltedHerring\Debugger as Debugger;
 use SaltedHerring\Grid as Grid;
 
 class ProductPage extends Page {
-	protected static $db = array(
+	private static $db = array(
 		'Title'			=>	'Varchar(128)',
-		'Alias'			=>	'Varchar(128)',
-        'Barcode'       =>  'Varchar(128)',
-		'Measurement'	=>	'Varchar(16)',
-		'Weight'		=>	'Decimal',
 		'isHotSale'		=>	'Boolean',
-		'StockCount'    =>	'Int',
-		'AcceptOrder'	=>	'Boolean',
-        'Supplier'      =>  'Varchar(128)'
+		'AcceptOrder'	=>	'Boolean'
 	);
 
-	protected static $has_one = array(
+	private static $has_one = array(
 		'Poster'		=>	'Image',
 		'VPoster'		=>	'Image',
 		'Square'		=>	'Image',
 		'Category'		=>	'Category'
 	);
 
-	protected static $has_many = array(
+	private static $has_many = array(
 		'Groupons'		=>	'Groupon',
 		'ProductPhotos'	=>	'Image.ProductPhoto',
 		'ProductDescs'	=>	'Image.ProductDesc',
 		'Variants'		=>	'Variant',
-		'Pricings'		=>	'Pricing',
 		'Watches'		=>	'Watch.Watching'
 	);
 
-	protected static $many_many = array(
+	private static $many_many = array(
 		'Tags'			=>	'Tag'
 	);
 
-	protected static $summary_fields = array(
+	private static $summary_fields = array(
 		'inCategory',
 		'thePoster',
 		'Title',
@@ -44,25 +37,22 @@ class ProductPage extends Page {
 		'Published'
 	);
 
-	protected static $defaults = array(
+	private static $defaults = array(
 		'AcceptOrder'	=>	true
 	);
 
-	protected static $extensions = array(
-		'ApisedExt'
+	private static $extensions = array(
+		'ApisedExt',
+        'ProductAspectExtension'
 	);
 
     public function inStock()
     {
-        return $this->StockCount > 0;
+        return true; // need to query Merchant cloud
     }
 
 	public function thePoster() {
 		return $this->Poster()->FillMax(30,30);
-	}
-
-	public function Price() {
-		return '$' . ($this->Pricings()->first() ? $this->Pricings()->first()->Price : '0.00');
 	}
 
 	public function inCategory() {
@@ -89,15 +79,9 @@ class ProductPage extends Page {
 			$this->Tags()
 		)->setShouldLazyLoad(true)->setCanCreate(true);
 		$fields->addFieldsToTab('Root.Main', array(
-			TextField::create('Alias', '英文名称'),
-            TextField::create('Supplier', '供货方'),
-            TextField::create('Barcode', '条形码'),
-			TextField::create('StockCount', '存货'),
 			CheckboxField::create('AcceptOrder', '接受订购')->setDescription('关闭以后只能在抢购期间接受订单'),
 			CheckboxField::create('isHotSale', '设为热卖商品'),
-			DropdownField::create('CategoryID', '分类', Category::get()->map('ID', 'Title'))->setEmptyString('- 选一个 -'),
-			DropdownField::create('Measurement', '单位', Config::inst()->get('ProductPage', 'Measurements'))->setEmptyString('- 选一个 -'),
-			NumericField::create('Weight', '单位重量')->setDescription('Kg')
+			DropdownField::create('CategoryID', '分类', Category::get()->map('ID', 'Title'))->setEmptyString('- 选一个 -')
 		), 'URLSegment');
 
 
@@ -121,25 +105,7 @@ class ProductPage extends Page {
 			));
 		}
 
-		//pricing
-		$onflyfield = array(
-			'Cost'  => array(
-				'title' => 'Cost',
-				'field' => 'TextField'
-			),
-			'Price'  => array(
-				'title' => 'Price',
-				'field' => 'TextField'
-			)
-		);
-
 		if (!empty($this->ID)) {
-			$fields->addFieldsToTab(
-				'Root.Pricing',
-				array(
-					Grid::makeEditable('Pricings', 'Pricings', $this->Pricings()->sort('ID', 'DESC'),false, $onflyfield)
-				)
-			);
 
 			$fields->addFieldToTab(
 				'Root.Watchers',
@@ -148,7 +114,6 @@ class ProductPage extends Page {
 
 			$fields->fieldByName('Root.Groupons')->setTitle('特价');
 			$fields->fieldByName('Root.Variants')->setTitle('品种');
-			$fields->fieldByName('Root.Pricing')->setTitle('价格');
 			$fields->fieldByName('Root.Watchers')->setTitle('吃瓜群众');
 			$fields->addFieldToTab('Root.Main', $tags);
 
@@ -162,28 +127,19 @@ class ProductPage extends Page {
 	public function onBeforeWrite() {
 		parent::onBeforeWrite();
 
-		$parent = ProductLandingPage::get();
-		if ($parent->count() > 0) {
-			$this->ParentID = $parent->first()->ID;
+		$parent = ProductLandingPage::get()->first();
+		if (!empty($parent)) {
+			$this->ParentID = $parent->ID;
 		}
 
 		$this->ShowInMenus = false;
 	}
 
-	public function PricingData() {
-		return $this->Pricings()->format(array(
-			'pricing_id'	=>	'ID',
-			'cost'			=>	'Cost',
-			'price'			=>	'Price',
-			'created'		=>	'Created'
-		));
-	}
-
 	public function VariantData() {
 		return $this->Variants()->format(array(
-			'variant_id'	=>	'ID',
-			'title'			=>	'Title',
-			'pricings'		=>	'PricingData'
+            'variant_id'    =>	'ID',
+            'title'         =>	'Title',
+            'price'         =>  'Price'
 		));
 	}
 
@@ -240,20 +196,12 @@ class ProductPage extends Page {
 
 class ProductPage_Controller extends Page_Controller {
 
-	protected static $allowed_actions = array(
+	private static $allowed_actions = array(
 		'ProductOrderForm'
 	);
 
 	public function ProductOrderForm() {
 		return new ProductOrderForm($this);
-	}
-
-	public function getPrice() {
-		if ($this->Pricings()->count() > 0) {
-			return $this->Pricings()->first()->Price;
-		}
-
-		return '$0.00';
 	}
 
 	public function getNumPaid() {

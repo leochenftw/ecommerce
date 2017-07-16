@@ -17,7 +17,7 @@ class ProductOrderForm extends Form {
 
         $actions = new FieldList(
             $btnSubmit = FormAction::create('addToCart','买买买'),
-            $btnShortlist = FormAction::create('addToFavourite', '收藏')->addExtraClass('icon-fav')->setUseButtonTag(true)
+            $btnShortlist = FormAction::create('addToFavourite', '')->addExtraClass('icon fav icon-fav')->setUseButtonTag(true)
         );
 
         if ($product->isFav()) {
@@ -51,10 +51,14 @@ class ProductOrderForm extends Form {
                 $filter['Session'] = session_id();
             }
 
-            if (Favourite::get()->filter($filter)->count() == 0) {
+            $favourite = Favourite::get()->filter($filter)->first();
+
+            if (empty($favourite)) {
                 $favourite = new Favourite();
                 $favourite->ProductID = $id;
                 $favourite->write();
+            } else {
+                $favourite->delete();
             }
 
             return Controller::curr()->redirectBack();

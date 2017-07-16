@@ -10,9 +10,9 @@ class ProductAdmin extends ModelAdmin {
 	private static $url_segment = 'products';
 	private static $menu_title = 'Products';
 	private static $menu_icon = 'mainsite/images/shopping-cart.png';
-	
+
 	public function getEditForm($id = null, $fields = null) {
-		
+
 		$form = parent::getEditForm($id, $fields);
 		$grid = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
 		$grid->getConfig()
@@ -26,10 +26,10 @@ class ProductAdmin extends ModelAdmin {
 			);
 		return $form;
 	}
-	
+
 	public function getList() {
 		$list = Versioned::get_by_stage('ProductPage', 'Stage');
-		
+
 		return $list;
     }
 }

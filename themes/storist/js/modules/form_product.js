@@ -94,6 +94,7 @@ var FormProduct             =   function(target)
         me.remove();
     });
 
+
     this.html.ajaxSubmit(
     {
         onstart: function()

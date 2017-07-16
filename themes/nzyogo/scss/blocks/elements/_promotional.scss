@@ -1,0 +1,171 @@
+#promotional-wrapper {
+	overflow: hidden;
+	.owl-nav {
+		// @include breakpoint($container) {
+		// 	display: none;
+		// }
+	}
+	.owl-prev,
+	.owl-next {
+		height: 60px;
+		width: 60px;
+		background-color: $grey;
+        @extend .icon;
+		@include transition(all ease-in-out 0.25s);
+        @include transform(translateY(-50%));
+		position: absolute;
+		&:hover {
+			background-color: $red;
+		}
+
+        .fa {
+            color: white;
+        }
+	}
+
+	.owl-prev {
+		// @extend .icon-left;
+		left: -60px;
+
+	}
+
+	.owl-next {
+		// @extend .icon-right;
+		right: -60px;
+
+	}
+
+	&:hover {
+		.owl-prev {
+			left: 0;
+		}
+
+		.owl-next {
+			right: 0;
+		}
+	}
+}
+
+.promotional-item {
+	width: 100%;
+	height: 80vh;
+    min-height: 0;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+
+	&:before {
+		content: ' ';
+		top: 0;
+		left: 0;
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.5);
+		background: -moz-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.5)), color-stop(100%, rgba(0,0,0,0)));
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: -o-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: -ms-linear-gradient(left, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+	}
+
+	.promotional-bg {
+		z-index: -1;
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.container {
+		height: 100%;
+		position: relative;
+		z-index: 1;
+
+		.promotional-lines {
+			padding: 30px 40% 30px 65px;
+			// @include breakpoint($container) {
+			// 	padding: 30px rem(65);
+			// 	.promo-content {
+			// 		padding-right: 40%;
+			// 	}
+			// }
+            //
+			// @include breakpoint($fifth-break) {
+			// 	padding: rem(10) 30px;
+			// 	.promo-content {
+			// 		padding-right: 0;
+			// 	}
+			// }
+
+			.promo-content,
+			.promo-title {
+				font-weight: lighter;
+				color: $white;
+				text-shadow: 0 0 5px $black;
+			}
+
+			.promo-title {
+				font-size: 72px;
+				line-height: 1.4;
+				margin: 0;
+			}
+			.promo-content {
+				font-weight: lighter;
+				font-size: 32px;
+				color: rgba(255,255,255,0.8);
+				// @include breakpoint($fifth-break) {
+				// 	font-size: rem(24);
+				// }
+			}
+
+
+		}
+
+		.call-to-action {
+			margin-top: 55px;
+			a {
+                display: inline-block;
+				font-size: 20px;
+				font-weight: lighter;
+				border-radius: 5px;
+				text-decoration: none;
+				padding: 0.5em 3em 0.75em;
+				border: 1px solid $white;
+				color: $white;
+				text-shadow: 0 0 5px $black;
+				background-color: rgba(255,255,255,0);
+				@include transition(all ease-in-out 0.25s);
+				&:hover {
+					background-color: rgba(255,255,255,0.2);
+				}
+			}
+
+		}
+	}
+
+    // @include breakpoint($iphone) {
+    //     .container {
+    //         .promotional-lines {
+    //             .promo-title {
+    //                 padding-left: 0;
+    //                 padding-right: 0;
+    //                 font-size: rem(36);
+    //             }
+    //
+    //             .promo-content {
+    //                 font-size: rem(20);
+    //             }
+    //
+    //             .call-to-action {
+    //                 a {
+    //                     font-size: rem(18);
+    //                     padding: 0.25em 1em 0.45em;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //
+    // }
+}

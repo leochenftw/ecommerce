@@ -1,0 +1,69 @@
+.blog-tile {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 3em;
+    text-align: left;
+    position: relative;
+    @include transition(all 0.3s);
+
+    img {
+       display: block;
+    }
+
+    h3 {
+    //    font-size: 20px;
+       margin: 20px 0 10px;
+       color: #000;
+       @include mobile {
+           margin-top: 10px;
+       }
+    }
+
+    p {
+       margin: 0;
+       color: $grey;
+       font-size: 14px;
+    }
+
+    time {
+       padding: 10px 15px;
+       text-align: center;
+       color: #fff;
+       font-size: 1.25rem;
+       font-weight: bold;
+       display: block;
+       background-color: #ed1c24;
+       line-height: 1.1;
+       text-transform: uppercase;
+       position: absolute;
+       z-index: 1;
+       top: -10px;
+       left: 30px;
+       span {
+           font-size: 12px;
+           display: block;
+           font-weight: normal;
+       }
+    }
+
+    .link {
+		margin-top: 20px;
+		line-height: 22px;
+		font-size: 14px;
+		color: $red;
+        .icon {
+            @include transition(all 0.3s);
+            margin-left: 10px;
+            .fa {
+                font-size: 14px;
+            }
+        }
+	}
+
+	&:hover {
+		text-decoration: none;
+		.link .icon {
+			@include transform(translateX(5px));
+		}
+	}
+}

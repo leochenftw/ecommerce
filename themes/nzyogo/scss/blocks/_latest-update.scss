@@ -1,0 +1,42 @@
+#latest-update {
+	.latest-updates {
+        padding: 3em 0 1em;
+        .page-type-soft-ads-page & {
+            padding-top: 1.5em;
+            .blog-tile {
+                .title {
+                    margin: 0.9375rem 0;
+                    font-size: 0.875rem;
+                }
+            }
+        }
+
+        .blog-tile {
+            .image-holder {
+                overflow: hidden;
+            }
+
+            .title {
+                color: #545454;
+            }
+
+            .title,
+            img {
+                @include transition(all 0.3s);
+            }
+
+            &:hover {
+                .title {
+                    color: $red;
+                }
+
+                img {
+                    @include transform(scale(1.1));
+                }
+            }
+        }
+
+        margin-bottom: 0;
+        @import 'elements/blog-tile';
+	}
+}

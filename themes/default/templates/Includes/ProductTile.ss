@@ -9,6 +9,6 @@
 	<% if not $inList %>
 	<div class="product-tile__brand">$Category.Title</div>
 	<% end_if %>
-	<div class="product-tile__title">$Title</div>
+	<div class="product-tile__title">$Chinese</div>
 	<div class="product-tile__price">${$Pricings.First.Price}</div>
 </a>

@@ -71,6 +71,12 @@ class Page_Controller extends ContentController {
         Requirements::themedCSS('typography');
         Requirements::themedCSS('form');
         */
+
+        if ($member = Member::currentUser()) {
+            if ($member->inGroup('administrators')) {
+                SSViewer::set_theme('nzyogo');
+            }
+        }
     }
 
     public function setMessage($type, $message)
@@ -157,5 +163,16 @@ if($includeTitle === true || $includeTitle == 'true') {
 
     public function getLatestUpdates() {
         return Versioned::get_by_stage('SoftAdsPage', 'Live')->limit(3);
+    }
+
+    public function getCrumbs() {
+        $crumbs = array();
+        $crumbs[] = array('Link' => '/', 'Title' => '首页');
+        $ancestors = array_reverse($this->getAncestors()->toArray());
+        foreach($ancestors as $ancestor) $crumbs[] = array('Link' => $ancestor->Link(), 'Title' => $ancestor->Title);
+
+        $crumbs[] = array('Title' => $this->Title);
+
+        return new ArrayList($crumbs);
     }
 }

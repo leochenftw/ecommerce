@@ -6,6 +6,8 @@ $project = 'mainsite';
 global $database;
 $database = SS_DATABASE_NAME;
 
+Email::mailer()->setMessageEncoding('base64');
+
 // Use _ss_environment.php file for configuration
 require_once("conf/ConfigureFromEnv.php");
 
@@ -20,15 +22,15 @@ if (Director::isLive()) {
 	SS_Log::add_writer(new SS_LogEmailWriter('leochenftw@gmail.com'), SS_Log::ERR);
 }
 
-i18n::set_locale('zh_CN');
-Translatable::set_default_locale('zh_CN');
+i18n::set_locale('en_NZ');
+Translatable::set_default_locale('zh_Hans');
 Translatable::set_allowed_locales(
 	array(
-        'zh_CN',
 		'zh_Hans',
 		'en_NZ'
 	)
 );
+
 Object::add_extension('SiteTree', 'Translatable');
 Object::add_extension('SiteConfig', 'Translatable');
 

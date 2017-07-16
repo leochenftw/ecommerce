@@ -1,5 +1,6 @@
 <?php
 use SaltedHerring\Debugger;
+use SaltedHerring\Utilities;
 use SaltedHerring\Currency;
 use GuzzleHttp\Client;
 
@@ -25,6 +26,7 @@ class StoristManageController extends Page_Controller
 	        array(
                 'themes/default/js/components/datetimepicker/build/jquery.datetimepicker.full.min.js',
                 'themes/default/js/components/JsBarcode/dist/JsBarcode.all.min.js',
+                'themes/storist/js/components/d3/d3.min.js',
                 'themes/storist/js/modules/previewable.js',
                 'themes/storist/js/modules/operator_work.js',
                 'themes/storist/js/modules/form_operator.js',
@@ -41,6 +43,11 @@ class StoristManageController extends Page_Controller
         if ($member = Member::currentUser()) {
             if ($member->inGroup('administrators') || $member->ClassName == 'Supplier') {
                 $this->MCSupplierID =   $member->MCSupplierID;
+
+                if (empty($this->MCSupplierID)) {
+                    return $this->httpError(403, 'so long');
+                }
+
                 $this->pageNum      =   !empty($request->getVar('page')) ? $request->getVar('page') : 1;
 
                 switch ($request->param('feature'))
@@ -172,7 +179,9 @@ class StoristManageController extends Page_Controller
             );
 
             $raw = json_decode($response->getBody());
+            // Debugger::inspect($raw);
             $page_count = $raw->page_count;
+            $item_count = $raw->item_count;
             $products = $raw->data;
             $list = array();
             foreach ($products as $product)
@@ -209,7 +218,7 @@ class StoristManageController extends Page_Controller
             }
 
 
-            return new ArrayData(array('Pagination' => $pagination, 'List' => $list));
+            return new ArrayData(array('Pagination' => $pagination, 'List' => $list, 'Count' => Utilities::shorten_number($item_count)));
         }
     }
 

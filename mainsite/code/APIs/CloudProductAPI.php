@@ -84,7 +84,6 @@ class CloudProductAPI extends BaseRestController
             $manufacturer   =   $request->postVar('manufacturer');
             $supplier_id    =   Member::currentUser()->MCSupplierID;
 
-
             $client = new Client([
                 'base_uri' => 'https://merchantcloud.leochen.co.nz/'
             ]);

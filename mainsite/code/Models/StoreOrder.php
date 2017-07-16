@@ -1,11 +1,15 @@
 <?php
 
+use SaltedHerring\Debugger;
+use GuzzleHttp\Client;
+
 class StoreOrder extends DataObject
 {
     protected static $db = array(
         'Title'         =>  'Varchar(16)',
         'PaymentMethod' =>  'Varchar(16)',
-        'Refunded'      =>  'Boolean'
+        'Refunded'      =>  'Boolean',
+        'Sold'          =>  'Boolean'
     );
 
     protected static $default_sort = array('ID' => 'DESC');
@@ -53,6 +57,50 @@ class StoreOrder extends DataObject
             $this->SupplierID = $this->MemberID;
         } else {
             $this->SupplierID = null;
+        }
+
+    }
+
+    /**
+     * Event handler called after writing to the database.
+     */
+    public function onAfterWrite()
+    {
+        parent::onAfterWrite();
+
+        if ($this->Supplier()->exists()) {
+            if ($supplier_id = $this->Supplier()->MCSupplierID) {
+                if ($this->Sold) {
+                    $items = $this->OrderItems()->map('MCProdID', 'Quantity')->toArray();
+
+                    $client = new Client([
+                        'base_uri' => 'https://merchantcloud.leochen.co.nz/'
+                    ]);
+
+                    $data = [
+                        'multipart' =>  [
+                            [
+                                'name'      =>  'products',
+                                'contents'  =>  json_encode($items)
+                            ],
+                            [
+                                'name'      =>  'supplier_id',
+                                'contents'  =>  $supplier_id
+                            ]
+                        ]
+                    ];
+
+                    $response = $client->request(
+                        'POST',
+                        'stocks/minus',
+                        $data
+                    );
+                    //
+                    // Debugger::inspect(json_decode($response->getBody()));
+                    //
+                    // return json_decode($response->getBody());
+                }
+            }
         }
     }
 

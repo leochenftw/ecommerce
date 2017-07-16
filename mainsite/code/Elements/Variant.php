@@ -5,9 +5,7 @@ class Variant extends DataObject {
 
 	protected static $db = array(
 		'SortOrder'			=>	'Int',
-		'Measurement'		=>	'Varchar(16)',
-		'Title'				=>	'Varchar(254)',
-		'Weight'			=>	'Decimal'
+		'Title'				=>	'Varchar(254)'
 	);
 
 	protected static $has_one = array(
@@ -15,63 +13,45 @@ class Variant extends DataObject {
 	);
 
 	protected static $has_many = array(
-		'Pricings'			=>	'Pricing.VariantPricing',
 		'Photos'			=>	'Image'
 	);
 
 	protected static $extensions = array(
-		'ApisedExt'
+		'ApisedExt',
+        'ProductAspectExtension'
 	);
 
 	protected static $summary_fields = array(
 		'Title',
-		'Pricings.First.Price'
+		'Price'
 	);
-
-	public function PricingData() {
-		return $this->Pricings()->format(array(
-			'pricing_id'	=>	'ID',
-			'cost'			=>	'Cost',
-			'price'			=>	'Price',
-			'created'		=>	'Created'
-		));
-	}
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->removeByName('SortOrder');
-		$fields->removeByName('ProductID');
-		$fields->removeByName('Pricings');
+		// $fields->removeByName('ProductID');
 		$fields->removeByName('Photos');
-		$onflyfield = array(
-			'Cost'  => array(
-				'title' => 'Cost',
-				'field' => 'TextField'
-			),
-			'Price'  => array(
-				'title' => 'Price',
-				'field' => 'TextField'
-			)
-		);
+
+        if (!$this->exists()) {
+            if (!empty($this->ProductID)) {
+                $measurement_field = $fields->fieldByName('Root.Measurements.Measurement');
+                $measurement_field->setValue($this->Product()->Measurement);
+            }
+        }
 
 		$fields->addFieldsToTab(
 			'Root.Main',
 			array(
 				TextField::create('Title', '品种名称'),
-				TextField::create('Weight', '重量')->setDescription('KG'),
-				DropdownField::create('Measurement', '单位', Config::inst()->get('ProductPage', 'Measurements'))->setEmptyString('- select one -')
 			)
 		);
 
 		if (!empty($this->ID)) {
-			$fields->addFieldsToTab(
+			$fields->addFieldToTab(
 				'Root.Main',
-				array(
-					Grid::makeEditable('Pricings', 'Pricings', $this->Pricings()->sort('ID', 'DESC'),false, $onflyfield),
-					$grid = UploadField::create(
-					    'Photos',
-					    'Photos'
-					)
+				$grid = UploadField::create(
+				    'Photos',
+				    'Photos'
 				)
 			);
 
@@ -84,42 +64,14 @@ class Variant extends DataObject {
 		return $fields;
 	}
 
-	public function getCost() {
-		$costs = $this->Pricings()->sort('ID', 'DESC');
-		if ($costs->count() > 0) {
-			return $costs->first()->Cost;
-		}
-		return 0;
-	}
-
-	public function getPrice() {
-		$prices = $this->Pricings()->sort('ID', 'DESC');
-		if ($prices->count() > 0) {
-			return $prices->first()->Price;
-		}
-		return 0;
-	}
-
-	public function onBeforeDelete() {
-
-		$pricings = $this->Pricings()->sort('ID', 'DESC');
-		foreach ($pricings as $pricing) {
-			$pricing->delete();
-		}
-		parent::onBeforeDelete();
-	}
-
 	public function format($map = null) {
 		if (!empty($map)) {
 			$data = array();
 			foreach ($map as $key => $value) {
-				// Debugger::inspect($this->owner->ClassName, false);
-				// Debugger::inspect($value, false);
-				// Debugger::inspect(method_exists($this->owner, $value) ? 'yes' : 'no', false);
-				if ($this->owner->hasField($value)) {
-					$data[$key] = $this->owner->$value;
-				} else if (method_exists($this->owner, $value)) {
-					$data[$key] = $this->owner->$value();
+				if ($this->hasField($value)) {
+					$data[$key] = $this->$value;
+				} else if (method_exists($this, $value)) {
+					$data[$key] = $this->$value();
 				}
 			}
 
@@ -128,9 +80,9 @@ class Variant extends DataObject {
 		return array(
 					'id' => $this->ID,
 					'title' => $this->Title,
+                    'chinese' => $this->Chinese,
 					'metrics' => $this->Type,
-					'cost' => $this->Pricings()->first()->Cost,
-					'price' => $this->Pricings()->first()->Price
+					'price' => $this->Price
 				);
 	}
 }
