@@ -7,7 +7,7 @@
 	</tr>
 <% loop $Addresses %>
 	<tr>
-		<td class="addresses__is-default"><input data-addr-id="$ID" name="isDefault" id="is-default-{$ID}" type="checkbox" <% if $isDefault %>checked<% end_if %> /><label for="is-default-{$ID}"><% if $isDefault %>Y<% else %>N<% end_if %></label></td>
+		<td class="addresses__is-default"><input data-addr-id="$ID" name="isDefault" id="is-default-{$ID}" type="checkbox" <% if $isDefault %>checked<% end_if %> /><label for="is-default-{$ID}" class="icon"><% if $isDefault %><i class="fa fa-check-square-o"></i><% else %><i class="fa fa-square-o"></i><% end_if %></label></td>
 		<td class="addresses__details">
 			<strong>收件人</strong>: $FirstName $Surname<br />
 			<strong>地址</strong>: $Title<br />

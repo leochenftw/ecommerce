@@ -1,10 +1,16 @@
 const _MANUAL_TRIGGER   =   10;
 const _MANUAL_WITHIN    =   2000;
 
-var _cumulatived    =   0,
-    _timer          =   null,
-    _isManualMode   =   false,
-    creating_order  =   false;
+var _cumulatived        =   0,
+    _timer              =   null,
+    _isManualMode       =   false,
+    creating_order      =   false,
+    btnStashTemplate    =   $('<button class="button icon-basket">\
+                                <span>\
+                                    <time class="as-inline-block"></time>\
+                                    <i>ON HOLD</i>\
+                                </span>\
+                            </button>');
 $(window).click(function(e)
 {
     if (!_isManualMode) {
@@ -83,6 +89,8 @@ var Notification    =   function(title, message)
 
 $(document).ready(function(e)
 {
+    readStashes();
+
     $('#StoreLookupForm_StoreLookupForm_Lookup').blur(function(e)
     {
         if (!_suspendfocus) {
@@ -183,10 +191,121 @@ $(document).ready(function(e)
     {
         e.preventDefault();
         if (creating_order) return;
-        $(this).removeClass('not-on-print');
-        $('input[name="' + $(this).data('target') + '"]').click();
+        var me = $(this);
+        if ($(this).data('target') == 'action_byCash') {
+            CalculateChanges(function()
+            {
+                me.removeClass('not-on-print');
+                $('input[name="' + me.data('target') + '"]').click();
+            });
+        } else {
+            me.removeClass('not-on-print');
+            $('input[name="' + me.data('target') + '"]').click();
+        }
+    });
+
+    $('#btn-stash').click(function(e)
+    {
+        e.preventDefault();
+        var timestamp   =   'stash-' + Date.now(),
+            stash       =   [];
+        $('#to-buy tbody tr').each(function(i, el)
+        {
+            var me      =   $(this),
+                data    =   {
+                                id      :   me.find('input[name="OrderID[]"]').val(),
+                                price   :   me.find('input[name="UnitPrice[]"]').val().toFloat(),
+                                qty     :   me.find('input[name="Quantity[]"]').val(),
+                                title   :   me.find('.to-buy__title').html()
+                            };
+
+            stash.push(data);
+        });
+
+        createStashButton(timestamp);
+
+        window.StashList[timestamp]   =   stash;
+        SaveStashes();
+        flushQueue();
     });
 });
+
+$(window).load(function(e)
+{
+    var w = $('#supplier-logo').outerWidth();
+    $('#stashes .stashes__stash').css('padding-right', w * 0.75);
+});
+
+function readStashes()
+{
+    if (typeof(Storage) !== "undefined") {
+        window.StashList        =   [];
+        if (window.localStorage.stashes) {
+            var lst             =   JSON.parse(window.localStorage.stashes);
+            lst.forEach(function(o)
+            {
+                window.StashList[o.timestamp]   =   o.stash;
+                createStashButton(o.timestamp);
+            });
+        }
+    }
+}
+
+function createStashButton(timestamp)
+{
+    var btnStash    =   btnStashTemplate.clone(),
+        time        =   new Date(timestamp.replace(/stash-/gi, '').toFloat());
+
+    btnStash.data('timestamp', timestamp);
+    btnStash.find('time').html(time.getHours().DoubleDigit() + ':' + time.getMinutes().DoubleDigit());
+
+    btnStash.click(function(e)
+    {
+        e.preventDefault();
+        var timestampe      =   $(this).data('timestamp'),
+            confirmation    =   true;
+
+        if ($('#to-buy tbody tr').length > 0) {
+            confirmation = confirm('Pop the stash will flush the current queue. Do you wish to continue?');
+        }
+
+        if (confirmation) {
+            flushQueue();
+
+            var lst = window.StashList[timestampe];
+            lst.forEach(function(item)
+            {
+                addItem(item);
+            });
+
+            btnStash.remove();
+
+            delete window.StashList[timestampe];
+            SaveStashes();
+        }
+    });
+
+    $('#stashes .stashes__stash').append(btnStash);
+    $('body').addClass('has-stash');
+}
+
+function SaveStashes()
+{
+    var arr = [];
+    for (var key in window.StashList)
+    {
+        var stash   =   window.StashList[key];
+        if (typeof(stash) != 'function') {
+            var data    =   {
+                                timestamp: key,
+                                stash: stash
+                            }
+            arr.push(data);
+        }
+    }
+
+    window.localStorage.stashes =   JSON.stringify(arr);
+}
 
 function updateSum()
 {
@@ -204,6 +323,8 @@ function updateSum()
 function resetScreen()
 {
     $('body').removeClass('has-queue');
+    _suspendfocus = false;
+    $('#StoreLookupForm_StoreLookupForm_Lookup').focus();
 }
 
 function addItem(data)
@@ -231,7 +352,7 @@ function addItem(data)
         prodid.val(data.id);
         unitprice.val(data.price.toDollar());
         unitprice.data('origin-price', data.price);
-        qty.val(1);
+        qty.val(data.qty != undefined ? data.qty : 1);
         btn.html('remove');
         btn.click(function(e)
         {
@@ -354,6 +475,90 @@ function addItem(data)
     updateSum();
 }
 
+function CalculateChanges(callback)
+{
+    _suspendfocus   =   true;
+    var buttons     =   [
+        {
+            Label: 'Calculate'
+        }
+    ];
+
+    var input       =   $('<input id="cash-received" placeholder="Amount received" type="number" class="text" style="margin-top: 20px; outline: none; font-size: 32px; display: block; width: 100%; text-align: center; border-radius: 10px; border: 1px solid #999; padding: 0.25em 1em;" />'),
+        result      =   $('<p />'),
+        proceed     =   false,
+        clsHanlder  =   function()
+                        {
+                            if (ticker) {
+                                clearInterval(ticker);
+                                ticker = null;
+                            }
+                            $(window).unbind('keydown', kdHandler);
+                            _suspendfocus   =   false;
+                            splayer.close();
+                            $('#StoreLookupForm_StoreLookupForm_Lookup').focus();
+                        },
+        kdHandler   =   function(e)
+                        {
+                            if (e.keyCode == 27) {
+                                if (input.val().length > 0) {
+                                    input.val('');
+                                    result.html('Change: <strong style="color: #4CAF50;">$0.00</strong>');
+                                } else {
+                                    clsHanlder();
+                                }
+                            } else if (e.keyCode == 13) {
+                                if (!proceed) {
+                                    proceed = calc();
+                                    if (proceed) {
+                                        $('#simplayer-wrapper .simplayer-button').html('Complete');
+                                    }
+                                } else {
+                                    if (callback) {
+                                        callback();
+                                    }
+                                    clsHanlder();
+                                }
+
+                                return false;
+                            }
+
+                            $('#simplayer-wrapper .simplayer-button').html('Calculate');
+
+                            proceed = false;
+                        },
+        calc        =   function()
+                        {
+                            var total   =   $('#txt-sum-val').html().toFloat(),
+                                change  =   input.val().toFloat() - total;
+
+                            if (change < 0) {
+                                result.html('<strong style="color: #ed1c24;">' + Math.abs(change).toDollar() + '</strong> more please!');
+                                return false;
+                            } else {
+                                result.html('Change: <strong style="color: #4CAF50;">' + change.toDollar() + '</strong>');
+                            }
+
+                            return true;
+                        };
+
+    result.css({'font-weight': 'lighter', 'text-align': 'center', 'margin': '14px 0 0', 'font-size': '24px'}).html('Change: <strong style="color: #4CAF50;">$0.00</strong>');
+
+    var splayer = new simplayer('Cash payment', [input, result], buttons, null, null, false);
+    splayer.show();
+
+    var ticker = setInterval(function()
+    {
+        input.focus();
+    }, 100);
+
+    splayer.btnEvent(0, function() {
+        calc();
+    });
+
+    $(window).keydown(kdHandler);
+}
+
 function EndofTrade()
 {
     var buttons     =   [
@@ -371,12 +576,17 @@ function EndofTrade()
         window.print();
     })
     splayer.btnEvent(1, function() {
-        $('#to-buy tbody tr').remove();
-        $('.payment-trigger').addClass('not-on-print');
-        $('#receipt-barcode').html('');
-        updateSum();
-        resetScreen();
-        creating_order = false;
+        flushQueue();
         splayer.close();
     });
+}
+
+function flushQueue()
+{
+    $('#to-buy tbody tr').remove();
+    $('.payment-trigger').addClass('not-on-print');
+    $('#receipt-barcode').html('');
+    updateSum();
+    resetScreen();
+    creating_order = false;
 }

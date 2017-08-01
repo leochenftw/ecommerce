@@ -55,11 +55,15 @@ class Page_Controller extends ContentController {
         parent::init();
         // Poli::initiate(12);
         Requirements::block(THIRDPARTY_DIR . '/jquery/jquery.js');
-        Session::start();
+
+        // Session::start();
+
         if ($this->request->getVar('url') != '/cart/payment' && !$this->request->isAjax() && $this->request->getVar('url') != '/cart/PaymentHandler') {
             Session::clear('page_refreshable');
         }
-        Session::save();
+
+        // Session::save();
+
         // SaltedHerring\Debugger::inspect(Session::get_all());
         $this->initJS();
         // Note: you should use SS template require tags inside your templates
@@ -167,12 +171,28 @@ if($includeTitle === true || $includeTitle == 'true') {
 
     public function getCrumbs() {
         $crumbs = array();
-        $crumbs[] = array('Link' => '/', 'Title' => '首页');
+        $language = $this->getLanguage();
+        $crumbs[] = array('Link' => '/', 'Title' => ($language == 'Chinese' ? '首页' : 'Home'));
         $ancestors = array_reverse($this->getAncestors()->toArray());
-        foreach($ancestors as $ancestor) $crumbs[] = array('Link' => $ancestor->Link(), 'Title' => $ancestor->Title);
+        foreach($ancestors as $ancestor) {
+            $crumbs[] = array('Link' => $ancestor->Link(), 'Title' => $ancestor->Title);
+        }
 
         $crumbs[] = array('Title' => $this->Title);
 
         return new ArrayList($crumbs);
+    }
+
+    public function getLanguage()
+    {
+        if ($member = Member::currentUser()) {
+            $language = Member::currentUser()->Language;
+            $language = !empty($language) ? $language : Translatable::get_current_locale();
+        } else {
+            $language = Translatable::get_current_locale();
+        }
+
+        return $language == 'zh_Hans' ? 'Chinese' : 'English';
+
     }
 }

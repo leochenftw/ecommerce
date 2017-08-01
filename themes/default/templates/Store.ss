@@ -29,6 +29,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 		$getCSS
 		<script src="$ThemeDir/js/lib/modernizr.min.js"></script>
+        <script src="/themes/storist/js/components/handlebars/handlebars.min.js"></script>
 
 	</head>
 	<body class="page-$URLSegment.LowerCase<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase">
@@ -84,6 +85,12 @@
                 <p><strong>Paid at: </strong><span id="paid-at"></span></p>
             </div>
         </main>
+        <div id="stashes">
+            <div class="container as-flex space-between stashes">
+                <div class="column stashes__stash"></div>
+                <div class="column stashes__action"><button id="btn-stash" class="button icon-hangon"></button></div>
+            </div>
+        </div>
 		<footer id="footer">
             <div class="container">
                 $StoreLookupForm

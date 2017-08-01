@@ -52,6 +52,7 @@
         .loading-indicator {
             width: 40px;
             height: 40px;
+            margin-left: -40px;
             &:not(.as-inline-block) {
                 position: absolute;
                 top: 50%;

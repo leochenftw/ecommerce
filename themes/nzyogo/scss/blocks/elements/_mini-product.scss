@@ -1,0 +1,95 @@
+.favourited-item {
+    margin-bottom: 50px;
+
+    .product-image {
+        a {
+            display: block;
+            border: 1px solid #e5e5e5;
+        }
+    }
+
+    .product-form-wrapper {
+        .miscs {
+            margin-top: 30px;
+            span {
+                margin-right: 1em;
+                &.font-inline {
+                    font-size: 14px;
+                    line-height: 1.2;
+                    .fa {
+                        font-size: 14px;
+                        margin-top: 2px;
+                        margin-right: .25em;
+                    }
+                }
+            }
+        }
+
+        .title {
+            margin: 14px 0 24px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1.25rem;
+        }
+
+        #MiniOrderForm_MiniOrderForm {
+            label {
+                margin-bottom: 0;
+            }
+            .field-quantity {
+                .text {
+                    width: 100%;
+                    max-width: 80px;
+                    height: 50px;
+                    outline: none;
+                    text-align: center;
+                    border-radius: 0;
+                    border: 1px solid #dadada;
+                    box-shadow: none;
+                }
+            }
+
+            .action {
+                height: 50px;
+                border-radius: 0;
+                @include transition(all 0.25s);
+                &.button {
+                    border: none;
+                    background-color: $red;
+                    color: white;
+                    font-size: 21px;
+                    padding-left: 48px;
+                    padding-right: 48px;
+                    &:focus,
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                    margin-right: 10px;
+                }
+
+                &.fav {
+                    @extend .fa;
+                    @extend .fa-heart;
+                    overflow: hidden;
+                    &:before {
+                        display: block;
+                    }
+                    cursor: pointer;
+                    border: 1px solid #dadada;
+                    width: 50px;
+                    background-color: rgba($red, 0);
+                    &.is-fav,
+                    &:hover {
+                        border-color: $red;
+                        background-color: rgba($red, 1);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

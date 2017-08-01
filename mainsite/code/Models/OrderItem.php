@@ -3,6 +3,7 @@
 class OrderItem extends DataObject {
 
 	protected static $db = array(
+        'UnitPrice'         =>  'Decimal',
 		'Quantity'			=>	'Int'
 	);
 
@@ -22,8 +23,7 @@ class OrderItem extends DataObject {
 	protected static $has_one = array(
 		'Groupon'			=>	'Groupon',
         'Product'           =>  'ProductPage',
-		'Order'				=>	'Order',
-		'UsingPricing'		=>	'Pricing'
+		'Order'				=>	'Order'
 	);
 
     /**
@@ -33,9 +33,7 @@ class OrderItem extends DataObject {
     {
         parent::onBeforeWrite();
         if (!empty($this->ProductID)) {
-            if ($pricing = $this->Product()->Pricings()->first()) {
-                $this->UsingPricingID = $pricing->ID;
-            }
+            $this->UnitPrice    =   $this->Product()->Price;
         }
     }
 
@@ -55,7 +53,7 @@ class OrderItem extends DataObject {
 	}
 
 	public function getSubtotal($format_output = false) {
-		$sum = $this->UsingPricing()->Price * $this->Quantity;
+		$sum = $this->UnitPrice * $this->Quantity;
 		if (!$format_output) {
 			return $sum;
 		}
@@ -69,7 +67,7 @@ class OrderItem extends DataObject {
     public function getProductTitle()
     {
         $prod = !empty($this->GrouponID) ? $this->Groupon() : $this->Product();
-        return $prod->Title;
+        return Controller::curr()->getLanguage() == 'Chinese' ? $prod->Chinese : $prod->Title;
     }
 
     public function getPoster()

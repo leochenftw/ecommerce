@@ -1,5 +1,5 @@
 <?php
-use SaltedHerring\Debugger as Debugger;
+use SaltedHerring\Debugger;
 use SaltedHerring\Grid;
 
 class Order extends SaltedOrder {
@@ -97,7 +97,13 @@ class Order extends SaltedOrder {
             $items = $this->OrderItems();
             $weight = 0;
             foreach ($items as $item) {
-                $weight += $item->Groupon()->Product()->Weight * $item->Quantity;
+                if (!empty($item->GrouponID)) {
+                    $weight += $item->Groupon()->Product()->Weight * $item->Quantity;
+                }
+
+                if (!empty($item->ProductID)) {
+                    $weight += $item->Product()->Weight * $item->Quantity;
+                }
             }
 
             return $weight;

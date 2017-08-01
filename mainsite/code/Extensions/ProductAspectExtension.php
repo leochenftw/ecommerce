@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 class ProductAspectExtension extends DataExtension
 {
     private static $db = array(
+        'Barcode'       =>  'Varchar(32)',
 		'Chinese'		=>	'Varchar(128)',
         'Measurement'   =>	'Varchar(16)',
         'Weight'		=>	'Decimal',
@@ -27,25 +28,23 @@ class ProductAspectExtension extends DataExtension
     {
         parent::onBeforeWrite();
 
-        $request = Controller::curr()->request;
-        if ($barcode = $request->postVar('Barcode')) {
-            if (!empty(trim($barcode))) {
-                $data = $this->getMCData($barcode);
-                // Debugger::inspect($data);
-                if (!empty($data)) {
-                    $this->owner->Title         =   $data->Title;
-                    $this->owner->Chinese       =   $data->Chinese;
-                    $this->owner->Measurement   =   $data->Measurement;
-                    $this->owner->Weight        =   $data->Weight;
-                    $this->owner->Width         =   $data->Width;
-                    $this->owner->Height        =   $data->Height;
-                    $this->owner->Depth         =   $data->Depth;
-                    $this->owner->MCProductID   =   $data->MCProductID;
-                    $this->owner->Price         =   $data->Price;
-                    if (!empty($data->SupplierID)) {
-                        if ($supplier = Supplier::get()->filter(array('MCSupplierID' => $data->SupplierID))->first()) {
-                            $this->SupplierID = $supplier->ID;
-                        }
+        if (!empty(trim($this->owner->Barcode))) {
+            $barcode                        =   trim($this->owner->Barcode);
+            $data = $this->getMCData($barcode);
+            
+            if (!empty($data)) {
+                $this->owner->Title         =   $data->Title;
+                $this->owner->Chinese       =   $data->Chinese;
+                $this->owner->Measurement   =   $data->Measurement;
+                $this->owner->Weight        =   $data->Weight;
+                $this->owner->Width         =   $data->Width;
+                $this->owner->Height        =   $data->Height;
+                $this->owner->Depth         =   $data->Depth;
+                $this->owner->MCProductID   =   $data->MCProductID;
+                $this->owner->Price         =   $data->Price;
+                if (!empty($data->SupplierID)) {
+                    if ($supplier = Supplier::get()->filter(array('MCSupplierID' => $data->SupplierID))->first()) {
+                        $this->SupplierID = $supplier->ID;
                     }
                 }
             }

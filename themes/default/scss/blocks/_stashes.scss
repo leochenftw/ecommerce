@@ -1,0 +1,101 @@
+#stashes {
+    position: fixed;
+    width: 100%;
+    top: -80px;
+    z-index: 10;
+    height: 80px;
+    padding: 20px 0;
+    @include transition(all 0.25s);
+    visibility: hidden;
+    opacity: 0;
+
+    @media print {
+        display: none;
+    }
+
+    .has-queue &,
+    .has-stash & {
+        top: 0;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .stashes {
+
+        button.button {
+            border: 1px solid $red;
+            padding: 7px;
+            text-indent: 0;
+            margin-bottom: 6px;
+
+            @include transition(all 0.25s);
+            &:before {
+                font-size: 24px;
+                display: block;
+            }
+
+            &.icon-basket {
+                margin-right: 0.25em;
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &:before,
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                span {
+                    text-align: left;
+                    margin-left: 0.25em;
+
+                    i, time {
+                        display: block;
+                        line-height: 1.2;
+                    }
+
+                    i {
+                        font-style: normal;
+                        font-size: 8px;
+                    }
+
+                    time {
+                        font-size: 12px;
+                        margin-bottom: 1px;
+                    }
+                }
+
+                &:hover {
+                    background-color: white;
+                    color: $red;
+                }
+            }
+
+            &.icon-hangon {
+                visibility: hidden;
+                opacity: 0;
+
+                .has-queue & {
+                    visibility: visible;
+                    opacity: 1;
+                }
+
+                background-color: transparent;
+                color: $red;
+                &:hover {
+                    background-color: $red;
+                    color: white;
+                }
+            }
+        }
+
+        .column {
+            width: 50%;
+        }
+
+        &__action {
+            text-align: right;
+        }
+    }
+}

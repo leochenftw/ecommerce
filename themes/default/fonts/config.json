@@ -155,6 +155,18 @@
       "css": "spin5",
       "code": 59448,
       "src": "fontelico"
+    },
+    {
+      "uid": "abf08be829659c02d1f9a711daefa8ce",
+      "css": "hangon",
+      "code": 62038,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "90e0aff5c929e444038355746a952aaf",
+      "css": "basket",
+      "code": 62097,
+      "src": "fontawesome"
     }
   ]
 }

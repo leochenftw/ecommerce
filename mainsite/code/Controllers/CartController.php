@@ -33,6 +33,7 @@ class CartController extends Page_Controller {
 
     public function checkout() {
         $request = $this->request;
+        $this->BodyClass = 'checkout';
         if (empty($request->param('ID'))) {
             $may_render = false;
             if ($token = Session::get('payment_token')) {
@@ -83,7 +84,7 @@ class CartController extends Page_Controller {
         if ($_GET['url'] == '/cart/payment') {
             $title = '收银台';
         } else {
-            $title = Translatable::get_current_locale() == 'zh_CN' ? '购物车' : 'Cart';
+            $title = Translatable::get_current_locale() == 'zh_Hans' ? '购物车' : 'Cart';
         }
 
         return $title;

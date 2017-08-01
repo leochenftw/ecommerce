@@ -538,5 +538,10 @@ $(window).load(function(e)
     if ($('.blog-misc').length > 0) {
         $('.blog-misc').fixy($('#header').outerHeight() + 24);
     }
+
+    // if ($('.member-area__sidebar .fixy').length > 0) {
+    //     $('.member-area__sidebar .fixy').fixy($('#header').outerHeight() + 24);
+    // }
+
     $(window).scroll();
 });

@@ -1,39 +1,29 @@
-<div class="container">
-    <div class="title clearfix">
-        <h1 class="float-left">$Title</h1>
-        <div class="float-right"></div>
-    </div>
+<% include PageHero %>
+<div class="section cart">
+    <div class="container">
     <% if $Cart %>
-        <table class="cart-table full-width">
-            <thead>
-                <tr class="heading">
-                    <th class="prod-photo"></th>
-                    <th class="prod-info">商品名称</th>
-                    <th class="prod-price">单价</th>
-                    <th class="prod-quantity">数量</th>
-                    <th class="prod-subtotal">小计</th>
-                    <th class="prod-action"></th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="columns cart-heading">
+            <div class="column prod-photo is-1"></div>
+            <div class="column prod-info">商品名称</div>
+            <div class="column prod-price is-2">单价</div>
+            <div class="column prod-quantity is-1">数量</div>
+            <div class="column prod-subtotal is-2">小计</div>
+            <div class="column prod-action is-1"></div>
+        </div>
+        <div class="cart-body">
             <% loop $Cart.OrderItems %>
-                <tr>
-                    <td class="prod-photo">
-                        <a href="$ItemLink">$Poster.FillMax(160, 80)</a>
-                    </td>
-                    <td class="prod-info">
-                        <a href="$ItemLink">$ProductTitle</a>
-                    </td>
-                    <td class="prod-price">${$UsingPricing.Price}</td>
-                    <td class="prod-quantity"><input class="txt-quantity" data-item-id="$ID" type="number" value="$Quantity" /></td>
-                    <td class="prod-subtotal">${$FormattedSubtotal}</td>
-                    <td class="prod-action"><button class="btn-remove-order-item" data-item-id="$ID">不要了</button></td>
-                </tr>
+            <div class="columns cart-body-row align-vertical-center">
+                <div class="column prod-photo is-1"><a href="$ItemLink">$Poster.SetHeight(80)</a></div>
+                <div class="column prod-info"><a href="$ItemLink">$ProductTitle</a></div>
+                <div class="column prod-price is-2">${$UnitPrice}</div>
+                <div class="column prod-quantity is-1"><input class="txt-quantity text" data-item-id="$ID" type="number" value="$Quantity" /></div>
+                <div class="column prod-subtotal is-2">${$FormattedSubtotal}</div>
+                <div class="column prod-action is-1"><button class="btn-remove-order-item button" data-item-id="$ID">不要了</button></div>
+            </div>
             <% end_loop %>
-            </tbody>
-        </table>
-        <form $CartForm.FormAttributes class="as-table">
-            <div class="td-left as-cell">
+        </div>
+        <form $CartForm.FormAttributes class="columns details">
+            <div class="column is-7 details-customer">
                 $CartForm.Fields.fieldByName('DeliveryAddress').FieldHolder
                 <div id="CartForm_CartForm_NewDeliveryAddress_Holder" class="field text<% if $CurrentUser %> hide<% end_if %>">
                     <% if not $CurrentUser %>
@@ -43,15 +33,15 @@
                         $CartForm.Fields.fieldByName('NewDeliveryAddress')
                     </div>
                 </div>
-                <div class="clearfix">
-                    $CartForm.Fields.fieldByName('Surname').FieldHolder
-                    $CartForm.Fields.fieldByName('FirstName').FieldHolder
+                <div class="columns">
+                    <div class="column">$CartForm.Fields.fieldByName('Surname').FieldHolder</div>
+                    <div class="column">$CartForm.Fields.fieldByName('FirstName').FieldHolder</div>
                 </div>
                 $CartForm.Fields.fieldByName('Email').FieldHolder
                 $CartForm.Fields.fieldByName('Phone').FieldHolder
                 $CartForm.Fields.fieldByName('AlsoSignup').FieldHolder
             </div>
-            <div class="td-right as-cell">
+            <div class="column details-freight">
                 $CartForm.Fields.fieldByName('Weight').FieldHolder
                 $CartForm.Fields.fieldByName('Freight').FieldHolder
                 $CartForm.Fields.fieldByName('FreightCost').FieldHolder
@@ -62,7 +52,7 @@
                 $CartForm.Fields.fieldByName('Total').FieldHolder
                 <div class="actions">
                     $CartForm.Fields.fieldByName('SecurityID')
-                    $CartForm.Actions
+                    $CartForm.Actions.First.addExtraClass('is-danger')
                     <% if $CartForm.Message && $CartForm.MessageType = 'bad' %>
                         <p>$CartForm.Message</p>
                     <% end_if %>
@@ -71,6 +61,7 @@
         </form>
         $resetForm
     <% else %>
-        Buy something first!
+        <p class="title is-1">老板要不您先逛逛?</p>
     <% end_if %>
+    </div>
 </div>

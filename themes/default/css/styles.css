@@ -869,8 +869,8 @@
 */
 @font-face {
   font-family: "fontello";
-  src: url('../fonts/fontello.eot?1478334587');
-  src: url('../fonts/fontello.eot?&1478334587#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?1478334587') format('woff'), url('../fonts/fontello.woff2?1478334587') format('woff2'), url('../fonts/fontello.ttf?1478334587') format('truetype'), url('../fonts/fontello.svg?1478334588') format('svg');
+  src: url('../fonts/fontello.eot?1500789407');
+  src: url('../fonts/fontello.eot?&1500789407#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?1500789411') format('woff'), url('../fonts/fontello.woff2?1500789412') format('woff2'), url('../fonts/fontello.ttf?1500789410') format('truetype'), url('../fonts/fontello.svg?1500789408') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1741,6 +1741,68 @@
   margin-right: 0.25em;
 }
 
+.icon-hangon {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-hangon:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+.icon-hangon.font-inline {
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-indent: 0;
+}
+.icon-hangon.font-inline:before {
+  margin-right: 0.25em;
+}
+
+.icon-basket {
+  font-size: 0;
+  line-height: 0;
+  text-indent: -1000000px;
+}
+.icon-basket:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  text-indent: 0;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "";
+}
+.icon-basket.font-inline {
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-indent: 0;
+}
+.icon-basket.font-inline:before {
+  margin-right: 0.25em;
+}
+
 /**
  * @file _sprites.scss
  *
@@ -2418,6 +2480,7 @@ textarea {
 .page-storiststorecontroller #header .loading-indicator {
   width: 40px;
   height: 40px;
+  margin-left: -40px;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
@@ -4577,6 +4640,104 @@ textarea {
 }
 #favourite-list .favourited-item .product-form-wrapper .Actions .action.icon-fav.is-fav:before, #favourite-list .favourited-item .product-form-wrapper .Actions .action.icon-fav:hover:before {
   color: #fff;
+}
+
+#stashes {
+  position: fixed;
+  width: 100%;
+  top: -80px;
+  z-index: 10;
+  height: 80px;
+  padding: 20px 0;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  visibility: hidden;
+  opacity: 0;
+}
+@media print {
+  #stashes {
+    display: none;
+  }
+}
+.has-queue #stashes, .has-stash #stashes {
+  top: 0;
+  visibility: visible;
+  opacity: 1;
+}
+#stashes .stashes button.button, #stashes .stashes #CartForm_CartForm .td-right button#CartForm_CartForm_action_doCheckout, #CartForm_CartForm .td-right #stashes .stashes button#CartForm_CartForm_action_doCheckout, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.action, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.action, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.btn-remove-order-item, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.btn-remove-order-item, #stashes .stashes body.page-type-contact-page .content-area .contact .form button#ContactForm_ContactForm_action_SendEmail, body.page-type-contact-page .content-area .contact .form #stashes .stashes button#ContactForm_ContactForm_action_SendEmail {
+  border: 1px solid #ed1c24;
+  padding: 7px;
+  text-indent: 0;
+  margin-bottom: 6px;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+#stashes .stashes button.button:before, #stashes .stashes #CartForm_CartForm .td-right button#CartForm_CartForm_action_doCheckout:before, #CartForm_CartForm .td-right #stashes .stashes button#CartForm_CartForm_action_doCheckout:before, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.action:before, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.action:before, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.btn-remove-order-item:before, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.btn-remove-order-item:before, #stashes .stashes body.page-type-contact-page .content-area .contact .form button#ContactForm_ContactForm_action_SendEmail:before, body.page-type-contact-page .content-area .contact .form #stashes .stashes button#ContactForm_ContactForm_action_SendEmail:before {
+  font-size: 24px;
+  display: block;
+}
+#stashes .stashes button.button.icon-basket, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail {
+  margin-right: 0.25em;
+}
+#stashes .stashes button.button.icon-basket:last-child, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout:last-child, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout:last-child, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action:last-child, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action:last-child, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item:last-child, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item:last-child, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail:last-child, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail:last-child {
+  margin-right: 0;
+}
+#stashes .stashes button.button.icon-basket:before, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout:before, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout:before, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action:before, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action:before, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item:before, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item:before, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail:before, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail:before,
+#stashes .stashes button.button.icon-basket span,
+#stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout span,
+#CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout span,
+#stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action span,
+#payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action span,
+#stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item span,
+body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item span,
+#stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail span,
+body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail span {
+  display: inline-block;
+  vertical-align: middle;
+}
+#stashes .stashes button.button.icon-basket span, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout span, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout span, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action span, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action span, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item span, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item span, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail span, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail span {
+  text-align: left;
+  margin-left: 0.25em;
+}
+#stashes .stashes button.button.icon-basket span i, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout span i, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout span i, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action span i, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action span i, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item span i, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item span i, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail span i, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail span i, #stashes .stashes button.button.icon-basket span time, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout span time, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout span time, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action span time, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action span time, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item span time, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item span time, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail span time, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail span time {
+  display: block;
+  line-height: 1.2;
+}
+#stashes .stashes button.button.icon-basket span i, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout span i, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout span i, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action span i, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action span i, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item span i, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item span i, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail span i, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail span i {
+  font-style: normal;
+  font-size: 8px;
+}
+#stashes .stashes button.button.icon-basket span time, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout span time, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout span time, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action span time, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action span time, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item span time, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item span time, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail span time, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail span time {
+  font-size: 12px;
+  margin-bottom: 1px;
+}
+#stashes .stashes button.button.icon-basket:hover, #stashes .stashes #CartForm_CartForm .td-right button.icon-basket#CartForm_CartForm_action_doCheckout:hover, #CartForm_CartForm .td-right #stashes .stashes button.icon-basket#CartForm_CartForm_action_doCheckout:hover, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-basket.action:hover, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-basket.action:hover, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-basket.btn-remove-order-item:hover, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-basket.btn-remove-order-item:hover, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-basket#ContactForm_ContactForm_action_SendEmail:hover, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-basket#ContactForm_ContactForm_action_SendEmail:hover {
+  background-color: white;
+  color: #ed1c24;
+}
+#stashes .stashes button.button.icon-hangon, #stashes .stashes #CartForm_CartForm .td-right button.icon-hangon#CartForm_CartForm_action_doCheckout, #CartForm_CartForm .td-right #stashes .stashes button.icon-hangon#CartForm_CartForm_action_doCheckout, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-hangon.action, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-hangon.action, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-hangon.btn-remove-order-item, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-hangon.btn-remove-order-item, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-hangon#ContactForm_ContactForm_action_SendEmail, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-hangon#ContactForm_ContactForm_action_SendEmail {
+  visibility: hidden;
+  opacity: 0;
+  background-color: transparent;
+  color: #ed1c24;
+}
+.has-queue #stashes .stashes button.button.icon-hangon, .has-queue #stashes .stashes #CartForm_CartForm .td-right button.icon-hangon#CartForm_CartForm_action_doCheckout, #CartForm_CartForm .td-right .has-queue #stashes .stashes button.icon-hangon#CartForm_CartForm_action_doCheckout, .has-queue #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-hangon.action, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions .has-queue #stashes .stashes button.icon-hangon.action, .has-queue #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-hangon.btn-remove-order-item, body.page-cartcontroller #main .cart-table .prod-action .has-queue #stashes .stashes button.icon-hangon.btn-remove-order-item, .has-queue #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-hangon#ContactForm_ContactForm_action_SendEmail, body.page-type-contact-page .content-area .contact .form .has-queue #stashes .stashes button.icon-hangon#ContactForm_ContactForm_action_SendEmail {
+  visibility: visible;
+  opacity: 1;
+}
+#stashes .stashes button.button.icon-hangon:hover, #stashes .stashes #CartForm_CartForm .td-right button.icon-hangon#CartForm_CartForm_action_doCheckout:hover, #CartForm_CartForm .td-right #stashes .stashes button.icon-hangon#CartForm_CartForm_action_doCheckout:hover, #stashes .stashes #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions button.icon-hangon.action:hover, #payment-handler-wrapper .as-cell.payment-detail-col #PaymentForm_PaymentForm .actions #stashes .stashes button.icon-hangon.action:hover, #stashes .stashes body.page-cartcontroller #main .cart-table .prod-action button.icon-hangon.btn-remove-order-item:hover, body.page-cartcontroller #main .cart-table .prod-action #stashes .stashes button.icon-hangon.btn-remove-order-item:hover, #stashes .stashes body.page-type-contact-page .content-area .contact .form button.icon-hangon#ContactForm_ContactForm_action_SendEmail:hover, body.page-type-contact-page .content-area .contact .form #stashes .stashes button.icon-hangon#ContactForm_ContactForm_action_SendEmail:hover {
+  background-color: #ed1c24;
+  color: white;
+}
+#stashes .stashes .column {
+  width: 50%;
+}
+#stashes .stashes__action {
+  text-align: right;
 }
 
 #footer {

@@ -13,7 +13,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.fa, .product-form form .action.fav {
+.fa, .product-form form .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -84,10 +84,10 @@
   float: right;
 }
 
-.fa.fa-pull-left, .product-form form .fa-pull-left.action.fav {
+.fa.fa-pull-left, .product-form form .fa-pull-left.action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .fa-pull-left.action.fav {
   margin-right: .3em;
 }
-.fa.fa-pull-right, .product-form form .fa-pull-right.action.fav {
+.fa.fa-pull-right, .product-form form .fa-pull-right.action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .fa-pull-right.action.fav {
   margin-left: .3em;
 }
 
@@ -100,10 +100,10 @@
   float: left;
 }
 
-.fa.pull-left, .product-form form .pull-left.action.fav {
+.fa.pull-left, .product-form form .pull-left.action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .pull-left.action.fav {
   margin-right: .3em;
 }
-.fa.pull-right, .product-form form .pull-right.action.fav {
+.fa.pull-right, .product-form form .pull-right.action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .pull-right.action.fav {
   margin-left: .3em;
 }
 
@@ -226,7 +226,7 @@
   content: "";
 }
 
-.fa-heart:before, .product-form form .action.fav:before {
+.fa-heart:before, .product-form form .action.fav:before, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav:before {
   content: "";
 }
 
@@ -3178,7 +3178,7 @@ body {
 }
 
 a {
-  color: #00d1b2;
+  color: #ed1c24;
   cursor: pointer;
   text-decoration: none;
   transition: none 86ms ease-out;
@@ -3557,11 +3557,11 @@ a.has-text-dark:hover, a.has-text-dark:focus {
 }
 
 .has-text-primary {
-  color: #00d1b2;
+  color: #ed1c24;
 }
 
 a.has-text-primary:hover, a.has-text-primary:focus {
-  color: #009e86;
+  color: #c61017;
 }
 
 .has-text-info {
@@ -3670,10 +3670,10 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 }
 
 a.box:hover, a.box:focus {
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 0 0 1px #00d1b2;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 0 0 1px #ed1c24;
 }
 a.box:active {
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px #00d1b2;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px #ed1c24;
 }
 
 .button, input.action {
@@ -3795,8 +3795,8 @@ input.action .product-carousel-section .owl-carousel .owl-nav .owl-next:first-ch
   color: #22272A;
 }
 .button:focus, input.action:focus, .button.is-focused, input.is-focused.action {
-  border-color: #00d1b2;
-  box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.25);
+  border-color: #ed1c24;
+  box-shadow: 0 0 0.5em rgba(237, 28, 36, 0.25);
   color: #22272A;
 }
 .button:active, input.action:active, .button.is-active, input.is-active.action {
@@ -4124,34 +4124,34 @@ input.action .product-carousel-section .owl-carousel .owl-nav .owl-next:first-ch
   color: #F0F0F2;
 }
 .button.is-primary, input.is-primary.action {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   border-color: transparent;
   color: #fff;
 }
 .button.is-primary:hover, input.is-primary.action:hover, .button.is-primary.is-hovered, input.is-primary.is-hovered.action {
-  background-color: #00c4a7;
+  background-color: #ea131b;
   border-color: transparent;
   color: #fff;
 }
 .button.is-primary:focus, input.is-primary.action:focus, .button.is-primary.is-focused, input.is-primary.is-focused.action {
   border-color: transparent;
-  box-shadow: 0 0 0.5em rgba(0, 209, 178, 0.25);
+  box-shadow: 0 0 0.5em rgba(237, 28, 36, 0.25);
   color: #fff;
 }
 .button.is-primary:active, input.is-primary.action:active, .button.is-primary.is-active, input.is-primary.is-active.action {
-  background-color: #00b89c;
+  background-color: #de1219;
   border-color: transparent;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
   color: #fff;
 }
 .button.is-primary[disabled], input.is-primary[disabled].action {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   border-color: transparent;
   box-shadow: none;
 }
 .button.is-primary.is-inverted, input.is-primary.is-inverted.action {
   background-color: #fff;
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .button.is-primary.is-inverted:hover, input.is-primary.is-inverted.action:hover {
   background-color: #f2f2f2;
@@ -4160,29 +4160,29 @@ input.action .product-carousel-section .owl-carousel .owl-nav .owl-next:first-ch
   background-color: #fff;
   border-color: transparent;
   box-shadow: none;
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .button.is-primary.is-loading:after, input.is-primary.is-loading.action:after {
   border-color: transparent transparent #fff #fff !important;
 }
 .button.is-primary.is-outlined, input.is-primary.is-outlined.action {
   background-color: transparent;
-  border-color: #00d1b2;
-  color: #00d1b2;
+  border-color: #ed1c24;
+  color: #ed1c24;
 }
 .button.is-primary.is-outlined:hover, input.is-primary.is-outlined.action:hover, .button.is-primary.is-outlined:focus, input.is-primary.is-outlined.action:focus {
-  background-color: #00d1b2;
-  border-color: #00d1b2;
+  background-color: #ed1c24;
+  border-color: #ed1c24;
   color: #fff;
 }
 .button.is-primary.is-outlined.is-loading:after, input.is-primary.is-outlined.is-loading.action:after {
-  border-color: transparent transparent #00d1b2 #00d1b2 !important;
+  border-color: transparent transparent #ed1c24 #ed1c24 !important;
 }
 .button.is-primary.is-outlined[disabled], input.is-primary.is-outlined[disabled].action {
   background-color: transparent;
-  border-color: #00d1b2;
+  border-color: #ed1c24;
   box-shadow: none;
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .button.is-primary.is-inverted.is-outlined, input.is-primary.is-inverted.is-outlined.action {
   background-color: transparent;
@@ -4191,7 +4191,7 @@ input.action .product-carousel-section .owl-carousel .owl-nav .owl-next:first-ch
 }
 .button.is-primary.is-inverted.is-outlined:hover, input.is-primary.is-inverted.is-outlined.action:hover, .button.is-primary.is-inverted.is-outlined:focus, input.is-primary.is-inverted.is-outlined.action:focus {
   background-color: #fff;
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .button.is-primary.is-inverted.is-outlined[disabled], input.is-primary.is-inverted.is-outlined[disabled].action {
   background-color: transparent;
@@ -4753,7 +4753,7 @@ input[type="submit"].action {
 .textarea.is-focused,
 .textarea:active,
 .textarea.is-active {
-  border-color: #00d1b2;
+  border-color: #ed1c24;
 }
 .input[disabled], input[disabled].text,
 .textarea[disabled] {
@@ -4800,7 +4800,7 @@ input[type="submit"].action {
 }
 .input.is-primary, input.is-primary.text,
 .textarea.is-primary {
-  border-color: #00d1b2;
+  border-color: #ed1c24;
 }
 .input.is-info, input.is-info.text,
 .textarea.is-info {
@@ -4885,7 +4885,7 @@ input[type="submit"].action {
   vertical-align: top;
 }
 .select:after {
-  border: 1px solid #00d1b2;
+  border: 1px solid #ed1c24;
   border-right: 0;
   border-top: 0;
   content: " ";
@@ -4938,7 +4938,7 @@ input[type="submit"].action {
   border-color: #b5b5b5;
 }
 .select select:focus, .select select.is-focused, .select select:active, .select select.is-active {
-  border-color: #00d1b2;
+  border-color: #ed1c24;
 }
 .select select[disabled] {
   background-color: #F0F0F2;
@@ -4983,7 +4983,7 @@ input[type="submit"].action {
   border-color: #22272A;
 }
 .select.is-primary select {
-  border-color: #00d1b2;
+  border-color: #ed1c24;
 }
 .select.is-info select {
   border-color: #0093E1;
@@ -5080,7 +5080,7 @@ input[type="submit"].action {
   color: #22272A;
 }
 .help.is-primary {
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .help.is-info {
   color: #0093E1;
@@ -5565,7 +5565,11 @@ input[type="submit"].action {
 #main #promotional-wrapper .owl-next .product-form form .action.fav,
 .product-form form #main #promotional-wrapper .owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .owl-prev .product-form form .action.fav, .product-form form .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav, .icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .icon .action.fav, #main #promotional-wrapper .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .owl-prev .action.fav,
+#main #promotional-wrapper .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav {
   font-size: 21px;
 }
 .icon.is-small, #main #promotional-wrapper .is-small.owl-prev,
@@ -5580,7 +5584,11 @@ input[type="submit"].action {
 #main #promotional-wrapper .is-small.owl-next .product-form form .action.fav,
 .product-form form #main #promotional-wrapper .is-small.owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .is-small.owl-prev .product-form form .action.fav, .product-form form .product-carousel-section .owl-carousel .owl-nav .is-small.owl-prev .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .is-small.owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .is-small.owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .is-small.owl-next .action.fav, .icon.is-small .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .icon.is-small .action.fav, #main #promotional-wrapper .is-small.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .is-small.owl-prev .action.fav,
+#main #promotional-wrapper .is-small.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .is-small.owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .is-small.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .is-small.owl-prev .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .is-small.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .is-small.owl-next .action.fav {
   font-size: 14px;
 }
 .icon.is-medium, #main #promotional-wrapper .is-medium.owl-prev,
@@ -5595,7 +5603,11 @@ input[type="submit"].action {
 #main #promotional-wrapper .is-medium.owl-next .product-form form .action.fav,
 .product-form form #main #promotional-wrapper .is-medium.owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-prev .product-form form .action.fav, .product-form form .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-prev .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-next .action.fav, .icon.is-medium .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .icon.is-medium .action.fav, #main #promotional-wrapper .is-medium.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .is-medium.owl-prev .action.fav,
+#main #promotional-wrapper .is-medium.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .is-medium.owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-prev .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .is-medium.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .is-medium.owl-next .action.fav {
   font-size: 28px;
 }
 .icon.is-large, #main #promotional-wrapper .is-large.owl-prev,
@@ -5610,7 +5622,11 @@ input[type="submit"].action {
 #main #promotional-wrapper .is-large.owl-next .product-form form .action.fav,
 .product-form form #main #promotional-wrapper .is-large.owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .is-large.owl-prev .product-form form .action.fav, .product-form form .product-carousel-section .owl-carousel .owl-nav .is-large.owl-prev .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .is-large.owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .is-large.owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .is-large.owl-next .action.fav, .icon.is-large .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .icon.is-large .action.fav, #main #promotional-wrapper .is-large.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .is-large.owl-prev .action.fav,
+#main #promotional-wrapper .is-large.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .is-large.owl-next .action.fav, .product-carousel-section .owl-carousel .owl-nav .is-large.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .is-large.owl-prev .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .is-large.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .is-large.owl-next .action.fav {
   font-size: 42px;
 }
 
@@ -5723,7 +5739,7 @@ input[type="submit"].action {
   color: #F0F0F2;
 }
 .notification.is-primary {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   color: #fff;
 }
 .notification.is-info {
@@ -5791,10 +5807,10 @@ input[type="submit"].action {
   background-color: #22272A;
 }
 .progress.is-primary::-webkit-progress-value {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
 }
 .progress.is-primary::-moz-progress-bar {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
 }
 .progress.is-info::-webkit-progress-value {
   background-color: #0093E1;
@@ -5856,7 +5872,7 @@ input[type="submit"].action {
   background-color: #fafafa;
 }
 .table tr.is-selected {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   color: #fff;
 }
 .table tr.is-selected a,
@@ -5936,7 +5952,7 @@ input[type="submit"].action {
   color: #F0F0F2;
 }
 .tag.is-primary {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   color: #fff;
 }
 .tag.is-info {
@@ -6157,7 +6173,7 @@ input[type="submit"].action {
   width: 32px;
 }
 
-.fa, .product-form form .action.fav {
+.fa, .product-form form .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav {
   font-size: 21px;
   text-align: center;
   vertical-align: top;
@@ -6530,10 +6546,10 @@ input[type="submit"].action {
 }
 .menu-list a:hover {
   background-color: #F0F0F2;
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .menu-list a.is-active {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   color: #fff;
 }
 .menu-list li ul {
@@ -6608,15 +6624,15 @@ input[type="submit"].action {
   color: #1c2022;
 }
 .message.is-primary {
-  background-color: #f5fffd;
+  background-color: #fef6f6;
 }
 .message.is-primary .message-header {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   color: #fff;
 }
 .message.is-primary .message-body {
-  border-color: #00d1b2;
-  color: #021310;
+  border-color: #ed1c24;
+  color: #ac141a;
 }
 .message.is-info {
   background-color: #f5fbff;
@@ -6919,7 +6935,7 @@ input[type="submit"].action {
   background-color: #F0F0F2;
 }
 .nav-toggle.is-active span {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
 }
 .nav-toggle.is-active span:nth-child(1) {
   margin-left: -5px;
@@ -6992,13 +7008,13 @@ a.nav-item:not(.button):not(input.action).is-tab {
 }
 .nav-item a:not(.button):not(input.action).is-tab:hover,
 a.nav-item:not(.button):not(input.action).is-tab:hover {
-  border-bottom-color: #00d1b2;
+  border-bottom-color: #ed1c24;
   border-top-color: transparent;
 }
 .nav-item a:not(.button):not(input.action).is-tab.is-active,
 a.nav-item:not(.button):not(input.action).is-tab.is-active {
-  border-bottom: 3px solid #00d1b2;
-  color: #00d1b2;
+  border-bottom: 3px solid #ed1c24;
+  color: #ed1c24;
   padding-bottom: calc(0.75rem - 3px);
 }
 @media screen and (min-width: 1000px) {
@@ -7127,7 +7143,7 @@ a.nav-item:not(.button):not(input.action).is-tab.is-active {
   background-color: #F0F0F2;
 }
 .navbar-burger.is-active span {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
 }
 .navbar-burger.is-active span:nth-child(1) {
   margin-left: -5px;
@@ -7241,7 +7257,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   }
   .navbar.is-transparent .navbar-dropdown a.navbar-item.is-active {
     background-color: #F0F0F2;
-    color: #00d1b2;
+    color: #ed1c24;
   }
 
   .navbar-burger {
@@ -7267,7 +7283,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   }
 
   .navbar-link::after {
-    border: 1px solid #00d1b2;
+    border: 1px solid #ed1c24;
     border-right: 0;
     border-top: 0;
     content: " ";
@@ -7324,7 +7340,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   }
   .navbar-dropdown a.navbar-item.is-active {
     background-color: #F0F0F2;
-    color: #00d1b2;
+    color: #ed1c24;
   }
   .navbar-dropdown.is-boxed {
     border-radius: 5px;
@@ -7453,7 +7469,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
 .pagination-previous:focus,
 .pagination-next:focus,
 .pagination-link:focus {
-  border-color: #00d1b2;
+  border-color: #ed1c24;
 }
 .pagination-previous:active,
 .pagination-next:active,
@@ -7478,8 +7494,8 @@ a.navbar-item:hover, a.navbar-item.is-active,
 }
 
 .pagination-link.is-current {
-  background-color: #00d1b2;
-  border-color: #00d1b2;
+  background-color: #ed1c24;
+  border-color: #ed1c24;
   color: #fff;
 }
 
@@ -7598,7 +7614,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   color: #31383E;
 }
 .panel-list a:hover {
-  color: #00d1b2;
+  color: #ed1c24;
 }
 
 .panel-block {
@@ -7620,11 +7636,11 @@ a.navbar-item:hover, a.navbar-item.is-active,
   flex-wrap: wrap;
 }
 .panel-block.is-active {
-  border-left-color: #00d1b2;
+  border-left-color: #ed1c24;
   color: #22272A;
 }
 .panel-block.is-active .panel-icon {
-  color: #00d1b2;
+  color: #ed1c24;
 }
 
 a.panel-block,
@@ -7647,7 +7663,7 @@ label.panel-block:hover {
   color: #9B9D9C;
   margin-right: 0.75em;
 }
-.panel-icon .fa, .panel-icon .product-form form .action.fav, .product-form form .panel-icon .action.fav {
+.panel-icon .fa, .panel-icon .product-form form .action.fav, .product-form form .panel-icon .action.fav, .panel-icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .panel-icon .action.fav {
   font-size: inherit;
   line-height: inherit;
 }
@@ -7688,8 +7704,8 @@ label.panel-block:hover {
   display: block;
 }
 .tabs li.is-active a {
-  border-bottom-color: #00d1b2;
-  color: #00d1b2;
+  border-bottom-color: #ed1c24;
+  color: #ed1c24;
 }
 .tabs ul {
   align-items: center;
@@ -7769,8 +7785,8 @@ label.panel-block:hover {
   border-radius: 0 3px 3px 0;
 }
 .tabs.is-toggle li.is-active a {
-  background-color: #00d1b2;
-  border-color: #00d1b2;
+  background-color: #ed1c24;
+  border-color: #ed1c24;
   color: #fff;
   z-index: 1;
 }
@@ -9221,7 +9237,7 @@ label.panel-block:hover {
   }
 }
 .hero.is-primary {
-  background-color: #00d1b2;
+  background-color: #ed1c24;
   color: #fff;
 }
 .hero.is-primary a:not(.button):not(input.action),
@@ -9243,7 +9259,7 @@ label.panel-block:hover {
 }
 @media screen and (max-width: 768px) {
   .hero.is-primary .nav-menu {
-    background-color: #00d1b2;
+    background-color: #ed1c24;
   }
 }
 .hero.is-primary a.nav-item,
@@ -9274,14 +9290,14 @@ label.panel-block:hover {
 .hero.is-primary .tabs.is-boxed li.is-active a, .hero.is-primary .tabs.is-boxed li.is-active a:hover, .hero.is-primary .tabs.is-toggle li.is-active a, .hero.is-primary .tabs.is-toggle li.is-active a:hover {
   background-color: #fff;
   border-color: #fff;
-  color: #00d1b2;
+  color: #ed1c24;
 }
 .hero.is-primary.is-bold {
-  background-image: linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+  background-image: linear-gradient(141deg, #d1052f 0%, #ed1c24 71%, #f4482e 100%);
 }
 @media screen and (max-width: 768px) {
   .hero.is-primary.is-bold .nav-menu {
-    background-image: linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+    background-image: linear-gradient(141deg, #d1052f 0%, #ed1c24 71%, #f4482e 100%);
   }
 }
 @media screen and (max-width: 768px) {
@@ -10234,7 +10250,15 @@ div.field.textarea {
 .nav .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .product-form form .action.fav,
 .product-form form .nav .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-next .action.fav,
+.product-form form .product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-next .action.fav, .nav .nav-item.icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .nav .nav-item.icon .action.fav, .nav #main #promotional-wrapper .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .nav #main #promotional-wrapper .nav-item.owl-prev .action.fav, #main #promotional-wrapper .nav .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .nav .nav-item.owl-prev .action.fav,
+.nav #main #promotional-wrapper .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .nav #main #promotional-wrapper .nav-item.owl-next .action.fav,
+#main #promotional-wrapper .nav .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .nav .nav-item.owl-next .action.fav, .nav .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .nav .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-prev .action.fav, .product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-prev .action.fav,
+.nav .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .nav .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .nav .nav-item.owl-next .action.fav,
 .navbar .nav-item.icon .fa,
 .navbar #main #promotional-wrapper .nav-item.owl-prev .fa,
 #main #promotional-wrapper .navbar .nav-item.owl-prev .fa,
@@ -10261,7 +10285,25 @@ div.field.textarea {
 .navbar .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .product-form form .action.fav,
 .product-form form .navbar .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-next .action.fav,
+.navbar .nav-item.icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .navbar .nav-item.icon .action.fav,
+.navbar #main #promotional-wrapper .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .navbar #main #promotional-wrapper .nav-item.owl-prev .action.fav,
+#main #promotional-wrapper .navbar .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .navbar .nav-item.owl-prev .action.fav,
+.navbar #main #promotional-wrapper .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .navbar #main #promotional-wrapper .nav-item.owl-next .action.fav,
+#main #promotional-wrapper .navbar .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .navbar .nav-item.owl-next .action.fav,
+.navbar .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .navbar .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-prev .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-prev .action.fav,
+.navbar .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .navbar .product-carousel-section .owl-carousel .owl-nav .nav-item.owl-next .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .navbar .nav-item.owl-next .action.fav {
   font-size: 16px;
 }
 .nav .nav-item.icon:last-child, .nav #main #promotional-wrapper .nav-item.owl-prev:last-child, #main #promotional-wrapper .nav .nav-item.owl-prev:last-child,
@@ -10351,10 +10393,12 @@ div.field.textarea {
 #main #promotional-wrapper .owl-next:hover {
   background-color: #ed1c24;
 }
-#main #promotional-wrapper .owl-prev .fa, #main #promotional-wrapper .owl-prev .product-form form .action.fav, .product-form form #main #promotional-wrapper .owl-prev .action.fav,
+#main #promotional-wrapper .owl-prev .fa, #main #promotional-wrapper .owl-prev .product-form form .action.fav, .product-form form #main #promotional-wrapper .owl-prev .action.fav, #main #promotional-wrapper .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .owl-prev .action.fav,
 #main #promotional-wrapper .owl-next .fa,
 #main #promotional-wrapper .owl-next .product-form form .action.fav,
-.product-form form #main #promotional-wrapper .owl-next .action.fav {
+.product-form form #main #promotional-wrapper .owl-next .action.fav,
+#main #promotional-wrapper .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper .owl-next .action.fav {
   color: white;
 }
 #main #promotional-wrapper .owl-prev {
@@ -10568,7 +10612,15 @@ div.field.textarea {
 .page-type-contact-page #main .contact .info ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .product-form form .action.fav,
 .product-form form .page-type-contact-page #main .contact .info ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-next .action.fav, .page-type-contact-page #main .contact .info ul li .icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main .contact .info ul li .icon .action.fav, .page-type-contact-page #main .contact .info ul li #promotional-wrapper .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main .contact .info ul li #promotional-wrapper .owl-prev .action.fav, .page-type-contact-page #main #promotional-wrapper .contact .info ul li .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main #promotional-wrapper .contact .info ul li .owl-prev .action.fav,
+.page-type-contact-page #main .contact .info ul li #promotional-wrapper .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main .contact .info ul li #promotional-wrapper .owl-next .action.fav,
+.page-type-contact-page #main #promotional-wrapper .contact .info ul li .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main #promotional-wrapper .contact .info ul li .owl-next .action.fav, .page-type-contact-page #main .contact .info ul li .product-carousel-section .owl-carousel .owl-nav .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main .contact .info ul li .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav, .product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-prev .action.fav,
+.page-type-contact-page #main .contact .info ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main .contact .info ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .page-type-contact-page #main .contact .info ul li .owl-next .action.fav {
   font-size: 16px;
 }
 .page-type-contact-page #main .contact .info ul li h4 {
@@ -10613,7 +10665,7 @@ div.field.textarea {
   background-color: #ed1c24;
   border-color: #ed1c24;
 }
-.page-type-contact-page #main .contact .info .social-icons .column a .fa, .page-type-contact-page #main .contact .info .social-icons .column a .product-form form .action.fav, .product-form form .page-type-contact-page #main .contact .info .social-icons .column a .action.fav {
+.page-type-contact-page #main .contact .info .social-icons .column a .fa, .page-type-contact-page #main .contact .info .social-icons .column a .product-form form .action.fav, .product-form form .page-type-contact-page #main .contact .info .social-icons .column a .action.fav, .page-type-contact-page #main .contact .info .social-icons .column a .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .page-type-contact-page #main .contact .info .social-icons .column a .action.fav {
   font-size: 14px;
 }
 .page-type-contact-page #main .contact .form div.field {
@@ -10959,7 +11011,15 @@ div.field.textarea {
 #latest-update .latest-updates .blog-tile .link .product-carousel-section .owl-carousel .owl-nav .owl-next .product-form form .action.fav,
 .product-form form #latest-update .latest-updates .blog-tile .link .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
 .product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-next .action.fav, #latest-update .latest-updates .blog-tile .link .icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #latest-update .latest-updates .blog-tile .link .icon .action.fav, #latest-update .latest-updates .blog-tile .link #main #promotional-wrapper .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #latest-update .latest-updates .blog-tile .link #main #promotional-wrapper .owl-prev .action.fav, #main #promotional-wrapper #latest-update .latest-updates .blog-tile .link .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper #latest-update .latest-updates .blog-tile .link .owl-prev .action.fav,
+#latest-update .latest-updates .blog-tile .link #main #promotional-wrapper .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #latest-update .latest-updates .blog-tile .link #main #promotional-wrapper .owl-next .action.fav,
+#main #promotional-wrapper #latest-update .latest-updates .blog-tile .link .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper #latest-update .latest-updates .blog-tile .link .owl-next .action.fav, #latest-update .latest-updates .blog-tile .link .product-carousel-section .owl-carousel .owl-nav .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #latest-update .latest-updates .blog-tile .link .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav, .product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-prev .action.fav,
+#latest-update .latest-updates .blog-tile .link .product-carousel-section .owl-carousel .owl-nav .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #latest-update .latest-updates .blog-tile .link .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
+.product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav #latest-update .latest-updates .blog-tile .link .owl-next .action.fav {
   font-size: 14px;
 }
 #latest-update .latest-updates .blog-tile:hover {
@@ -11223,6 +11283,121 @@ body.lb-disable-scrolling {
   cursor: pointer;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
+}
+
+.cart-heading {
+  background-color: #efefef;
+}
+.cart-body {
+  margin-bottom: 48px;
+}
+.cart-body-row {
+  border-bottom: 1px solid #efefef;
+}
+.cart-body-row:last-child {
+  border-bottom: none;
+}
+.cart .prod-price, .cart .prod-quantity, .cart .prod-subtotal {
+  text-align: center;
+}
+.cart .prod-quantity .txt-quantity {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.cart .details {
+  background-color: #efefef;
+  border: 4px solid #efefef;
+  max-width: 1024px;
+  width: 100%;
+}
+.cart .details .select {
+  display: block;
+  height: auto;
+}
+.cart .details .select .dropdown {
+  height: 55px;
+  width: 100%;
+}
+.cart .details-customer label {
+  padding-left: 10px;
+}
+.cart .details-customer input.text {
+  height: 55px;
+}
+.cart .details-freight {
+  background-color: white;
+  padding: 21px 28px;
+}
+.cart .details-freight label {
+  font-weight: normal;
+}
+.cart .details-freight #CartForm_CartForm_Total_Holder,
+.cart .details-freight #CartForm_CartForm_FreightCost_Holder,
+.cart .details-freight #subtotal-wrapper,
+.cart .details-freight #CartForm_CartForm_Weight_Holder {
+  display: -webkit-flex;
+  display: flex;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+.cart .details-freight #CartForm_CartForm_Total_Holder label,
+.cart .details-freight #CartForm_CartForm_Total_Holder .middleColumn,
+.cart .details-freight #CartForm_CartForm_FreightCost_Holder label,
+.cart .details-freight #CartForm_CartForm_FreightCost_Holder .middleColumn,
+.cart .details-freight #subtotal-wrapper label,
+.cart .details-freight #subtotal-wrapper .middleColumn,
+.cart .details-freight #CartForm_CartForm_Weight_Holder label,
+.cart .details-freight #CartForm_CartForm_Weight_Holder .middleColumn {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 0.75rem;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.cart .details-freight #CartForm_CartForm_Total_Holder .middleColumn,
+.cart .details-freight #CartForm_CartForm_FreightCost_Holder .middleColumn,
+.cart .details-freight #subtotal-wrapper .middleColumn,
+.cart .details-freight #CartForm_CartForm_Weight_Holder .middleColumn {
+  text-align: right;
+}
+.cart .details-freight #CartForm_CartForm_FreightCost_Holder,
+.cart .details-freight #subtotal-wrapper {
+  margin-bottom: 0;
+}
+.cart .details-freight #CartForm_CartForm_Total_Holder {
+  border-top: 2px solid #efefef;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding-top: 2em;
+}
+.cart .details-freight #CartForm_CartForm_Total_Holder label,
+.cart .details-freight #CartForm_CartForm_Total_Holder .middleColumn {
+  color: #ed1c24;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.cart .details-freight #Freight {
+  background-color: #efefef;
+  padding: 10px 20px;
+  margin: 28px 0;
+}
+.cart .details-freight #Freight ul li {
+  margin-bottom: 0.5em;
+}
+.cart .details-freight #Freight ul li input {
+  margin-right: 0.5em;
+}
+.cart .details-freight .actions .action {
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.25em 2em;
+  outline: none;
+  width: 100%;
+  font-weight: 100;
 }
 
 .xdsoft_datetimepicker {
@@ -12007,10 +12182,12 @@ body.lb-disable-scrolling {
 .product-carousel-section .owl-carousel .owl-nav .owl-next:hover {
   background-color: #ed1c24;
 }
-.product-carousel-section .owl-carousel .owl-nav .owl-prev .fa, .product-carousel-section .owl-carousel .owl-nav .owl-prev .product-form form .action.fav, .product-form form .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .owl-prev .fa, .product-carousel-section .owl-carousel .owl-nav .owl-prev .product-form form .action.fav, .product-form form .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav, .product-carousel-section .owl-carousel .owl-nav .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav,
 .product-carousel-section .owl-carousel .owl-nav .owl-next .fa,
 .product-carousel-section .owl-carousel .owl-nav .owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
+.product-carousel-section .owl-carousel .owl-nav .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav {
   color: white;
 }
 .product-carousel-section .owl-carousel .owl-nav .owl-prev {
@@ -12066,7 +12243,15 @@ body.lb-disable-scrolling {
 #page-closure .column ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .product-form form .action.fav,
 .product-form form #page-closure .column ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
 .product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-next .product-form form .action.fav,
-.product-form form .product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-next .action.fav {
+.product-form form .product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-next .action.fav, #page-closure .column ul li .icon .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #page-closure .column ul li .icon .action.fav, #page-closure .column ul li #main #promotional-wrapper .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #page-closure .column ul li #main #promotional-wrapper .owl-prev .action.fav, #main #promotional-wrapper #page-closure .column ul li .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper #page-closure .column ul li .owl-prev .action.fav,
+#page-closure .column ul li #main #promotional-wrapper .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #page-closure .column ul li #main #promotional-wrapper .owl-next .action.fav,
+#main #promotional-wrapper #page-closure .column ul li .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #main #promotional-wrapper #page-closure .column ul li .owl-next .action.fav, #page-closure .column ul li .product-carousel-section .owl-carousel .owl-nav .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #page-closure .column ul li .product-carousel-section .owl-carousel .owl-nav .owl-prev .action.fav, .product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-prev .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-prev .action.fav,
+#page-closure .column ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #page-closure .column ul li .product-carousel-section .owl-carousel .owl-nav .owl-next .action.fav,
+.product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-next .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav,
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .product-carousel-section .owl-carousel .owl-nav #page-closure .column ul li .owl-next .action.fav {
   font-size: 14px;
 }
 #page-closure .column ul li h4 {
@@ -12101,7 +12286,7 @@ body.lb-disable-scrolling {
   background-color: #323433;
   color: #9B9D9C;
 }
-#page-closure .social-icons .columns .column a .fa, #page-closure .social-icons .columns .column a .product-form form .action.fav, .product-form form #page-closure .social-icons .columns .column a .action.fav {
+#page-closure .social-icons .columns .column a .fa, #page-closure .social-icons .columns .column a .product-form form .action.fav, .product-form form #page-closure .social-icons .columns .column a .action.fav, #page-closure .social-icons .columns .column a .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm #page-closure .social-icons .columns .column a .action.fav {
   font-size: 16px;
 }
 #page-closure .social-icons .columns .column a:hover {
@@ -12146,6 +12331,556 @@ body.lb-disable-scrolling {
   width: 40px;
 }
 #page-closure .subscription form button.button:hover, #page-closure .subscription form button.button:focus {
+  background-color: #ed1c24;
+  color: white;
+}
+
+.container.checkout {
+  padding: 36px 0 48px;
+}
+
+#payment-handler-wrapper {
+  min-height: 560px;
+  border: 1px solid #9B9D9C;
+}
+#payment-handler-wrapper .column {
+  position: relative;
+}
+#payment-handler-wrapper .column.amount-col {
+  text-align: center;
+  overflow: hidden;
+}
+#payment-handler-wrapper .column.amount-col:before, #payment-handler-wrapper .column.amount-col:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#payment-handler-wrapper .column.amount-col:before {
+  background-image: url(../images/bg-gold.jpg);
+  background-size: cover;
+  background-position: bottom center;
+  z-index: 0;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}
+#payment-handler-wrapper .column.amount-col:after {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+#payment-handler-wrapper .column.amount-col .amount {
+  color: #fff;
+  z-index: 2;
+  font-size: 48px;
+  font-weight: lighter;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-top: -42px;
+}
+#payment-handler-wrapper .column.amount-col .amount span {
+  margin-bottom: 16px;
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+#payment-handler-wrapper .column.payment-detail-col {
+  padding: 60px 2em 2em;
+  background-color: white;
+}
+#payment-handler-wrapper .column.payment-detail-col h2 {
+  font-size: 32px;
+  left: 0;
+  line-height: 60px;
+  margin: 0;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm_PaymentMethod {
+  padding: 0;
+  margin: 0;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm {
+  width: 100%;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #PaymentMethod label.left {
+  display: none;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details {
+  padding-top: 2em;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details h3 {
+  margin-top: 0;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details p {
+  font-size: 14px;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .payment-method__item {
+  position: relative;
+  margin-bottom: 1.5em;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .payment-method__item input[type="text"] {
+  display: block;
+  width: 100%;
+  height: 55px;
+  padding: 0.25em 0.5em;
+  padding-right: 72px;
+  font-size: 32px;
+  border-radius: 0;
+  border: 1px solid #999;
+  font-weight: normal;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .payment-method__item .btn-copy {
+  height: 55px;
+  border: none;
+  border-radius: 0;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 20px;
+  line-height: 54px;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .payment-method__item .btn-copy:active, #payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .payment-method__item .btn-copy.copied, #payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .payment-method__item .btn-copy:hover {
+  background-color: #ed1c24;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .yo-gold {
+  text-align: center;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .yo-gold .yo-gold__balance {
+  color: #9B9D9C;
+  font-size: 14px;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .yo-gold .yo-gold__balance span {
+  color: #000;
+  margin-right: 0.5rem;
+  font-weight: lighter;
+  font-size: 80px;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm #payment-details .yo-gold .yo-gold__message {
+  font-size: 14px;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm .actions {
+  margin-top: 2em;
+  padding-top: 2em;
+  border-top: 1px solid #efefef;
+  text-align: center;
+}
+#payment-handler-wrapper .column.payment-detail-col #PaymentForm_PaymentForm .actions .action {
+  -moz-transition: background-color 0.25s ease-in-out;
+  -o-transition: background-color 0.25s ease-in-out;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+  font-weight: lighter;
+  color: #fff !important;
+  min-width: 300px;
+  background-color: #ed1c24 !important;
+  font-size: 1.5rem;
+  padding: 0.25em 2em;
+}
+#payment-handler-wrapper .column .stay-bottom {
+  z-index: 3;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+#payment-handler-wrapper .column .stay-bottom a {
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 16px;
+  padding: 0.7em 2em;
+  height: 57px;
+  font-weight: lighter;
+  line-height: 32px;
+  color: rgba(255, 255, 255, 0.6);
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#payment-handler-wrapper .column .stay-bottom a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.member-area__sidebar ul {
+  margin: 0;
+  padding: 0;
+}
+.member-area__sidebar ul li {
+  border-bottom: 1px solid #dedede;
+  padding: 6px 0 5px;
+}
+.member-area__sidebar ul li:last-child {
+  border-bottom: none;
+}
+.member-area__sidebar ul li a {
+  display: block;
+  text-decoration: none;
+  color: #545454;
+  line-height: 30px;
+  text-decoration: none;
+  -moz-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+.member-area__sidebar ul li a.active, .member-area__sidebar ul li a:hover {
+  color: #ed1c24;
+}
+.member-area__content .title {
+  font-size: 24px;
+}
+.member-area__content__subscription-subtitle label * {
+  vertical-align: bottom;
+}
+.member-area__content__subscription-subtitle label .fa, .member-area__content__subscription-subtitle label .product-form form .action.fav, .product-form form .member-area__content__subscription-subtitle label .action.fav, .member-area__content__subscription-subtitle label .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .member-area__content__subscription-subtitle label .action.fav {
+  margin-right: .25em;
+}
+.member-area__content__subscription-subtitle label a {
+  line-height: 2;
+}
+.member-area__content__group {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 30px;
+}
+.member-area__content__group:last-child {
+  border: none;
+}
+.member-area__content__group form.mini-watch-form {
+  -moz-transition: background-color 0.25s ease-in-out;
+  -o-transition: background-color 0.25s ease-in-out;
+  -webkit-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+  padding: 10px 10px 9px;
+  border-bottom: 1px solid #dedede;
+  max-width: none;
+}
+.member-area__content__group form.mini-watch-form:hover {
+  background-color: #dedede;
+}
+.member-area__content__group form.mini-watch-form .fields {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.member-area__content__group form.mini-watch-form .fields .field.checkbox {
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 0;
+}
+.member-area__content__group form.mini-watch-form .fields .field.checkbox input, .member-area__content__group form.mini-watch-form .fields .field.checkbox label {
+  margin-bottom: 0;
+  display: inline-block;
+}
+.member-area__content__group form.mini-watch-form .fields .product-thumbnail {
+  width: 50px;
+  margin-right: 20px;
+}
+.member-area__content__group form.mini-watch-form .fields .product-title {
+  width: 100%;
+  max-width: 500px;
+}
+.member-area__content__group form.mini-watch-form .fields .product-title a {
+  -moz-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  text-decoration: none;
+  color: #545454;
+}
+.member-area__content__group form.mini-watch-form .fields .product-title a:hover {
+  color: #ed1c24;
+}
+.member-area__content__group form.mini-watch-form .Actions {
+  display: none;
+}
+.member-area__content #cb-subscrib-site + span {
+  font-size: 16px;
+  text-indent: 0;
+  line-height: 1;
+}
+.member-area__content #cb-subscrib-site + span:before {
+  font-size: 18px;
+  color: #222;
+  margin-right: 0.5em;
+}
+.member-area__content #cb-subscrib-site:checked + span {
+  font-size: 16px;
+  text-indent: 0;
+  line-height: 1;
+}
+.member-area__content #cb-subscrib-site:checked + span:before {
+  font-size: 19px;
+  color: #222;
+  margin-right: 0.5em;
+}
+.member-area__content .sub-link {
+  font-size: 12px;
+  color: #ed1c24;
+  text-decoration: none;
+  margin-left: 0.25em;
+  -moz-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+.member-area__content .sub-link:hover {
+  color: #545454;
+}
+.member-area__content table {
+  margin: 30px 0;
+}
+.member-area__content table th {
+  text-align: left;
+  padding: 0 1em 0.5em;
+}
+.member-area__content table td {
+  padding: 0.5em 1em;
+  font-size: 14px;
+}
+.member-area__content table tr th, .member-area__content table tr td {
+  border-bottom: 1px solid #dedede;
+}
+.member-area__content table tr th:first-child, .member-area__content table tr td:first-child {
+  padding-left: 0;
+}
+.member-area__content table tr td {
+  vertical-align: top;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.member-area__content table.addresses tr th, .member-area__content table.addresses tr td {
+  vertical-align: middle;
+}
+.member-area__content table.addresses .addresses__is-default {
+  width: 80px;
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+}
+.member-area__content table.addresses .addresses__is-default input {
+  display: none;
+}
+.member-area__content table.addresses .addresses__is-default label {
+  color: #dedede;
+  -moz-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+}
+.member-area__content table.addresses .addresses__is-default label:before {
+  font-size: 24px;
+}
+.member-area__content table.addresses .addresses__is-default input:checked + label {
+  color: #ed1c24;
+}
+.member-area__content table.addresses td.addresses__details {
+  color: #545454;
+  line-height: 1.6;
+}
+.member-area__content table.addresses td.addresses__details strong {
+  color: #222;
+}
+.member-area__content table.addresses .addresses__actions {
+  width: 100px;
+  color: #545454;
+}
+.member-area__content table.addresses .addresses__actions a {
+  text-decoration: none;
+  color: #545454;
+  -moz-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+.member-area__content table.addresses .addresses__actions a:hover {
+  color: #ed1c24;
+}
+.member-area__content form {
+  max-width: 460px;
+}
+.member-area__content form .current-balance {
+  margin: 15px 0 30px;
+  font-size: 14px;
+  color: #333;
+}
+.member-area__content form .current-balance span {
+  margin-left: 15px;
+  font-size: 64px;
+  font-weight: lighter;
+  color: #000;
+}
+.member-area__content form .current-email {
+  color: #333;
+  margin: 15px 0 30px;
+}
+.member-area__content form .current-email span {
+  color: #ed1c24;
+  font-size: 24px;
+}
+.member-area__content form .field {
+  margin-bottom: 15px;
+}
+.member-area__content form .field label {
+  font-size: 18px;
+  color: #333;
+  display: block;
+  margin-bottom: 0.625rem;
+  font-weight: lighter;
+}
+.member-area__content form .field input.text {
+  background-color: #f1f1f1;
+  border: none;
+  outline: none;
+  width: 100%;
+  display: block;
+  padding: 0.625rem;
+  font-size: 1.25rem;
+}
+.member-area__content form .field#MemberProfileForm_MemberProfileForm_Email_Holder {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 30px;
+}
+.member-area__content form .field#MemberProfileForm_MemberProfileForm_Email_Holder .middleColumn,
+.member-area__content form .field#MemberProfileForm_MemberProfileForm_Email_Holder .description {
+  display: inline-block;
+  vertical-align: sub;
+}
+.member-area__content form .field#MemberProfileForm_MemberProfileForm_Email_Holder .description {
+  margin-left: 0.25em;
+  font-size: 12px;
+}
+.member-area__content form .field#MemberProfileForm_MemberProfileForm_Email_Holder #MemberProfileForm_MemberProfileForm_Email {
+  display: block;
+  font-size: 20px;
+}
+.member-area__content form .field .description {
+  display: block;
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+.member-area__content form .field .description a {
+  color: #ed1c24;
+  text-decoration: none;
+  -moz-transition: color 0.25s ease-in-out;
+  -o-transition: color 0.25s ease-in-out;
+  -webkit-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}
+.member-area__content form .field .description a.active, .member-area__content form .field .description a:hover {
+  color: #545454;
+}
+.member-area__content form .Actions {
+  padding-top: 15px;
+}
+.member-area__content form .Actions input[type="submit"] {
+  border-radius: 0 !important;
+  font-size: 20px !important;
+}
+.member-area__content .favourited-item {
+  margin-bottom: 50px;
+}
+.member-area__content .favourited-item .product-image a {
+  display: block;
+  border: 1px solid #e5e5e5;
+}
+.member-area__content .favourited-item .product-form-wrapper .miscs {
+  margin-top: 30px;
+}
+.member-area__content .favourited-item .product-form-wrapper .miscs span {
+  margin-right: 1em;
+}
+.member-area__content .favourited-item .product-form-wrapper .miscs span.font-inline {
+  font-size: 14px;
+  line-height: 1.2;
+}
+.member-area__content .favourited-item .product-form-wrapper .miscs span.font-inline .fa, .member-area__content .favourited-item .product-form-wrapper .miscs span.font-inline .product-form form .action.fav, .product-form form .member-area__content .favourited-item .product-form-wrapper .miscs span.font-inline .action.fav, .member-area__content .favourited-item .product-form-wrapper .miscs span.font-inline #MiniOrderForm_MiniOrderForm .action.fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .miscs span.font-inline .action.fav {
+  font-size: 14px;
+  margin-top: 2px;
+  margin-right: .25em;
+}
+.member-area__content .favourited-item .product-form-wrapper .title {
+  margin: 14px 0 24px;
+}
+.member-area__content .favourited-item .product-form-wrapper .price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1.25rem;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm label {
+  margin-bottom: 0;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .field-quantity .text {
+  width: 100%;
+  max-width: 80px;
+  height: 50px;
+  outline: none;
+  text-align: center;
+  border-radius: 0;
+  border: 1px solid #dadada;
+  box-shadow: none;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action {
+  height: 50px;
+  border-radius: 0;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.button, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm input.action {
+  border: none;
+  background-color: #ed1c24;
+  color: white;
+  font-size: 21px;
+  padding-left: 48px;
+  padding-right: 48px;
+  margin-right: 10px;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.button:focus, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm input.action:focus, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.button:hover, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm input.action:hover {
+  opacity: 0.8;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav {
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #dadada;
+  width: 50px;
+  background-color: rgba(237, 28, 36, 0);
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav:before {
+  display: block;
+}
+.member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav.is-fav, .member-area__content .favourited-item .product-form-wrapper #MiniOrderForm_MiniOrderForm .action.fav:hover {
+  border-color: #ed1c24;
   background-color: #ed1c24;
   color: white;
 }

@@ -100,16 +100,39 @@ class StoristManageController extends Page_Controller
         return false;
     }
 
+    private function getSum(&$list)
+    {
+        $n              =   0;
+
+        if (!empty($list)) {
+            foreach ($list as $item)
+            {
+                $n += $item->Amount(true);
+            }
+        }
+
+        return $n;
+    }
+
     public function getSalesToday()
     {
-        $sales = $this->getSales();
-        $sales = $sales->filter(array('Refunded' => false));
-        $amount = 0;
-        foreach ($sales as $sale)
-        {
-            $amount += $sale->Amount(true);
-        }
-        return money_format("%i", $amount);
+        $sales          =   $this->getSales();
+        $sales          =   $sales->filter(array('Refunded' => false));
+        $group          =   GroupedList::create($sales->sort('PaymentMethod'));
+
+        $group          =   $group->groupBy('PaymentMethod');
+
+        $cash           =   $this->getSum($group['Cash']);
+        $eftpos         =   $this->getSum($group['EFTPOS']);
+
+        $amount         =   $cash + $eftpos;
+
+        return new ArrayData(array(
+                                'Cash'      =>  number_format($cash, 2, '.', ','),
+                                'EFTPOS'    =>  number_format($eftpos, 2, '.', ','),
+                                'TotalRaw'  =>  number_format($amount, 2, '.', ','),
+                                'Total'     =>  Utilities::shorten_number($amount, 999)
+                            ));
     }
 
     public function getSales()

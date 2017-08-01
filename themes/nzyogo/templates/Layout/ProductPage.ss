@@ -4,13 +4,18 @@
     <% include PageHero %>
 <% end_if %>
 <div class="section product-details">
+    
+    <script>console.log($ID);</script>
+
     <article class="container content">
     	<div class="columns">
     		<div class="column product-images is-half">
     			<% include ProductImageViewer %>
     		</div>
     		<div class="column product-form is-half">
-    			<<% if $CurrentGroupon %>h2<% else %>h1<% end_if %> class="title is-1 is-bold product-form__title">$Title</<% if $CurrentGroupon %>h2<% else %>h1<% end_if %>>
+    			<<% if $CurrentGroupon %>h2<% else %>h1<% end_if %> class="title is-1 is-bold product-form__title">
+                <% if $Language == 'Chinese' %>$Chinese<% else %>$Title<% end_if %>
+                </<% if $CurrentGroupon %>h2<% else %>h1<% end_if %>>
     			<div class="product-form__miscs">
                     <span class="icon"><i class="fa fa-<% if $inStock %>check<% else %>times<% end_if %>"></i><% if $inStock %>有<% else %>没<% end_if %>货</span>
                     <span class="icon"><i class="fa fa-<% if $AcceptOrder %>check<% else %>times<% end_if %>"></i><% if $AcceptOrder %>接受订单<% else %>仅在抢购活动时接受订单<% end_if %></span>

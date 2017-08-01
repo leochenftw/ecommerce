@@ -188,6 +188,13 @@ var FormProduct             =   function(target)
         form.find('#product-weight').val(weight);
         form.find('#product-manufacturer').val(manufacturer);
 
+        form.find('input[name="cost"], input[name="price"]').focus(function(e)
+        {
+            $(this).val($(this).val().toFloat());
+        }).blur(function(e)
+        {
+            $(this).val($(this).val().toDollar());
+        });
 
         $('.product-rows').addClass('editing');
         $('.product-list').prepend(form);

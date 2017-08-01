@@ -3,6 +3,13 @@ Date.prototype.format = function()
     return this.getFullYear() + '-' + (this.getMonth() + 1).DoubleDigit() + '-' + this.getDate().DoubleDigit();
 };
 
+Handlebars.registerHelper('ifEqual', function(a, b, options) {
+    if(a === b) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
+
 $(document).ready(function(e)
 {
     var from        =   null,
@@ -110,6 +117,7 @@ $(document).ready(function(e)
                     barcoding.abort();
                 }
 
+                $('.product-row.is-temp').remove();
                 barcoding = $.get(
                     '/api/v/1/cloud-products',
                     {
@@ -118,46 +126,69 @@ $(document).ready(function(e)
                     function(data)
                     {
                         barcoding = null;
-                        if (data.id) {
-                            var tmpRow  =   $('<div class="columns product-row is-marginless is-temp is-target">\
-                                                <div class="column product-row__thumbnail is-1"></div>\
-                                                <div class="column product-row__title"><span class="english"></span><br /><span class="chinese subtitle is-6"></span></div>\
-                                                <div class="column product-row__stock-count is-1 has-text-centered"></div>\
-                                                <div class="column product-row__cost has-text-centered is-2"></div>\
-                                                <div class="column product-row__price has-text-centered is-2"></div>\
-                                                <div class="column product-row__last-update is-2"></div>\
-                                            </div>');
-                            $('.product-list').prepend(tmpRow);
-                            tmpRow.data('id', data.id);
-                            tmpRow.data('title', data.title);
-                            tmpRow.data('chinese', data.chinese_title);
-                            tmpRow.data('cost', data.cost.toDollar());
-                            tmpRow.data('price', data.price.toDollar());
-                            tmpRow.data('stock-count', data.stock_count);
-                            tmpRow.data('barcode', data.barcode);
-                            tmpRow.data('width', data.width);
-                            tmpRow.data('height', data.height);
-                            tmpRow.data('depth', data.depth);
-                            tmpRow.data('measurement', data.measurement);
-                            tmpRow.data('weight', data.weight);
-                            tmpRow.data('manufacturer', data.manufacturer);
+                        if ($.isArray(data)) {
 
-                            tmpRow.find('.product-row__title .english').html(data.title);
-                            tmpRow.find('.product-row__title .chinese').html(data.chinese_title);
-                            tmpRow.find('.product-row__cost').html(data.cost.toDollar());
-                            tmpRow.find('.product-row__price').html(data.price.toDollar());
-                            tmpRow.find('.product-row__stock-count').html(data.stock_count);
-                            tmpRow.find('.product-row__last-update').html(data.last_update);
-                            tmpRow.dblclick(function(e)
+                            data.forEach(function(o)
+                            {
+                                o.cost          =   o.cost.toDollar();
+                                o.price         =   o.price.toDollar();
+                            });
+
+                            var template        =   Handlebars.compile(TemplateProductRows),
+                                tmpRows         =   template(data);
+
+                            tmpRows = $($.trim(tmpRows));
+
+                            tmpRows.filter('.product-row').dblclick(function(e)
                             {
                                 e.preventDefault();
                                 $(this).editProduct();
                             });
-                        }
+                            
+                            $('.product-list').prepend(tmpRows);
 
-                        // if (data.find('.sales-record').length > 0) {
-                        //     data.find('.sales-record').addClass('is-target is-temp').appendTo($('#main .sales-records'));
-                        // }
+                        } else {
+                            if (data.id) {
+                                var tmpRow  =   $('<div class="columns product-row is-marginless is-temp is-target">\
+                                                    <div class="column product-row__thumbnail is-1"></div>\
+                                                    <div class="column product-row__title"><span class="english"></span><br /><span class="chinese subtitle is-6"></span></div>\
+                                                    <div class="column product-row__stock-count is-1 has-text-centered"></div>\
+                                                    <div class="column product-row__cost has-text-centered is-2"></div>\
+                                                    <div class="column product-row__price has-text-centered is-2"></div>\
+                                                    <div class="column product-row__last-update is-2"></div>\
+                                                </div>');
+                                $('.product-list').prepend(tmpRow);
+                                tmpRow.data('id', data.id);
+                                tmpRow.data('title', data.title);
+                                tmpRow.data('chinese', data.chinese_title);
+                                tmpRow.data('cost', data.cost.toDollar());
+                                tmpRow.data('price', data.price.toDollar());
+                                tmpRow.data('stock-count', data.stock_count);
+                                tmpRow.data('barcode', data.barcode);
+                                tmpRow.data('width', data.width);
+                                tmpRow.data('height', data.height);
+                                tmpRow.data('depth', data.depth);
+                                tmpRow.data('measurement', data.measurement);
+                                tmpRow.data('weight', data.weight);
+                                tmpRow.data('manufacturer', data.manufacturer);
+
+                                tmpRow.find('.product-row__title .english').html(data.title);
+                                tmpRow.find('.product-row__title .chinese').html(data.chinese_title);
+                                tmpRow.find('.product-row__cost').html(data.cost.toDollar());
+                                tmpRow.find('.product-row__price').html(data.price.toDollar());
+                                tmpRow.find('.product-row__stock-count').html(data.stock_count);
+                                tmpRow.find('.product-row__last-update').html(data.last_update);
+                                tmpRow.dblclick(function(e)
+                                {
+                                    e.preventDefault();
+                                    $(this).editProduct();
+                                });
+                            }
+
+                            // if (data.find('.sales-record').length > 0) {
+                            //     data.find('.sales-record').addClass('is-target is-temp').appendTo($('#main .sales-records'));
+                            // }
+                        }
                     }
                 );
             }

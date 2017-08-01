@@ -14,7 +14,7 @@ window.exchange_rates = [
       <div class="tile is-parent">
         <article class="tile is-child box">
             <a class="columns vertical-center" href="/storist/v1/manage/account">
-                <div class="is-3 column has-text-centered">
+                <div class="is-2 column has-text-centered">
                     <span class="icon"><i class="fa fa-user"></i></span>
                 </div>
                 <div class="column">
@@ -27,7 +27,7 @@ window.exchange_rates = [
       <div class="tile is-parent">
         <article class="tile is-child box">
             <a class="columns vertical-center" href="/storist/v1/manage/products">
-                <div class="is-3 column has-text-centered">
+                <div class="is-2 column has-text-centered">
                     <span class="icon"><i class="fa fa-shopping-cart"></i></span>
                 </div>
                 <div class="column">
@@ -40,13 +40,18 @@ window.exchange_rates = [
       <div class="tile is-parent">
         <article class="tile is-child box">
             <a class="columns vertical-center" href="/storist/v1/manage/sales">
-                <div class="is-3 column has-text-centered">
+                <div class="is-2 column has-text-centered">
                     <span class="icon"><i class="fa fa-line-chart"></i></span>
                 </div>
+                <% with $SalesToday %>
                 <div class="column">
-                    <p class="title">Sales</p>
-                    <p class="subtitle">Today: <span class="font-blue is-bold">${$SalesToday}</span></p>
+                    <p class="title">Today's Sales</p>
+                    <p class="subtitle"><span class="icon font-blue is-bold" style="margin-right: 0.5em;"><i style="margin-top: 2px;" class="fa fa-money"></i> ${$Cash}</span> <span class="icon font-blue is-bold"><i style="margin-top: 2px;" class="fa fa-credit-card"></i> ${$EFTPOS}</span></p>
                 </div>
+                <div class="column is-narrow">
+                    <p class="title is-1"><span class="font-blue is-bold" title="${$TotalRaw}">${$Total}</span></p>
+                </div>
+                <% end_with %>
             </a>
         </article>
       </div>

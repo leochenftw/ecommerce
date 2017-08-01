@@ -1,0 +1,133 @@
+.cart {
+    &-heading {
+        background-color: $light-grey;
+    }
+
+    &-body {
+        margin-bottom: 48px;
+        &-row {
+            border-bottom: 1px solid $light-grey;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .prod {
+        &-price,
+        &-quantity,
+        &-subtotal {
+            text-align: center;
+        }
+
+        &-quantity {
+            .txt-quantity {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    .details {
+        background-color: $light-grey;
+        border: 4px solid $light-grey;
+        max-width: 1024px;
+        width: 100%;
+
+        .select {
+            display: block;
+            height: auto;
+            .dropdown {
+                height: 55px;
+                width: 100%;
+            }
+        }
+
+        &-customer {
+            label {
+                padding-left: 10px;
+            }
+
+            input.text {
+                height: 55px;
+            }
+        }
+
+        &-freight {
+            background-color: white;
+            padding: 21px 28px;
+            label {
+                font-weight: normal;
+            }
+
+            #CartForm_CartForm_Total_Holder,
+            #CartForm_CartForm_FreightCost_Holder,
+            #subtotal-wrapper,
+            #CartForm_CartForm_Weight_Holder {
+                @include display-flex;
+                margin-left: -0.75rem;
+                margin-right: -0.75rem;
+
+                label,
+                .middleColumn {
+                    display: block;
+                    flex-basis: 0;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                    padding: 0.75rem;
+                    margin-bottom: 0;
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+
+                .middleColumn {
+                    text-align: right;
+                }
+            }
+
+            #CartForm_CartForm_FreightCost_Holder,
+            #subtotal-wrapper {
+                margin-bottom: 0;
+            }
+
+            #CartForm_CartForm_Total_Holder {
+                border-top: 2px solid #efefef;
+                margin-top: 2em;
+                margin-bottom: 2em;
+                padding-top: 2em;
+                label,
+                .middleColumn {
+                    color: $red;
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                }
+            }
+
+            #Freight {
+                background-color: $light-grey;
+                padding: 10px 20px;
+                margin: 28px 0;
+                ul {
+                    li {
+                        margin-bottom: 0.5em;
+                        input {
+                            margin-right: 0.5em;
+                        }
+                    }
+                }
+            }
+
+            .actions {
+                .action {
+                    border: none;
+                    font-size: 1.5rem;
+                    padding: 0.25em 2em;
+                    outline: none;
+                    width: 100%;
+                    font-weight: 100;
+                }
+            }
+        }
+    }
+}

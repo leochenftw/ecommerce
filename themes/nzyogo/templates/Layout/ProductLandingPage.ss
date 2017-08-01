@@ -34,7 +34,7 @@
     			</div>
     			<div class="product-tiles columns wrap">
     			<% loop $Products %>
-    				<% include ProductTile inList=true %>
+    				<% include ProductTile inList=true,Language=$Top.Language %>
     			<% end_loop %>
     			</div>
                 <% if $Products.MoreThanOnePage %>
