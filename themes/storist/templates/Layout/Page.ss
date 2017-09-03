@@ -9,11 +9,11 @@ window.exchange_rates = [
 ];
 </script>
 
-<div class="section transparent">
+<div class="section transparent main-body">
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <article class="tile is-child box">
-            <a class="columns vertical-center" href="/storist/v1/manage/account">
+            <a class="columns align-vertical-center" href="/storist/v1/manage/account">
                 <div class="is-2 column has-text-centered">
                     <span class="icon"><i class="fa fa-user"></i></span>
                 </div>
@@ -26,7 +26,7 @@ window.exchange_rates = [
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-            <a class="columns vertical-center" href="/storist/v1/manage/products">
+            <a class="columns align-vertical-center" href="/storist/v1/manage/products">
                 <div class="is-2 column has-text-centered">
                     <span class="icon"><i class="fa fa-shopping-cart"></i></span>
                 </div>
@@ -39,7 +39,7 @@ window.exchange_rates = [
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-            <a class="columns vertical-center" href="/storist/v1/manage/sales">
+            <a class="columns align-vertical-center" href="/storist/v1/manage/sales">
                 <div class="is-2 column has-text-centered">
                     <span class="icon"><i class="fa fa-line-chart"></i></span>
                 </div>

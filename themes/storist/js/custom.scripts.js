@@ -12,8 +12,9 @@ Handlebars.registerHelper('ifEqual', function(a, b, options) {
 
 $(document).ready(function(e)
 {
-    var from        =   null,
-        to          =   null,
+    BulmaAlert();
+    var from        =   QueryString && QueryString.from ? QueryString.from : null,
+        to          =   QueryString && QueryString.to ? QueryString.to : null,
         enterframe  =   null,
         barcoding   =   null,
         data_maker  =   function()
@@ -38,6 +39,14 @@ $(document).ready(function(e)
                             return data;
                         };
 
+    if (from) {
+        $('.date-from.date-picker').val(from);
+    }
+
+    if (to) {
+        $('.date-to.date-picker').val(from);
+    }
+
     $('input.date-picker').datetimepicker(
     {
         timepicker: false,
@@ -60,7 +69,109 @@ $(document).ready(function(e)
                 }
             }
 
-            updateSalesList();
+            if (!$i.hasClass('do-sweep')) {
+                updateSalesList();
+            } else {
+                $('.product-list').html('');
+                if ($('input[name="search-target"]:checked').val() == 'freeview') {
+                    getRankingList();
+                }
+            }
+        }
+    });
+
+    function getRankingList()
+    {
+        $('#search-with-freeview').addClass('hide');
+        $('#spinner-loading').removeClass('hide');
+        $.get(
+            '/api/v/1/ranking/',
+            {
+                from    :   $.trim($('input.date-from').val()).length > 0 ? $.trim($('input.date-from').val()) : null,
+                to      :   $.trim($('input.date-to').val()).length > 0 ? $.trim($('input.date-to').val()) : null,
+                by      :   $('input[name="search-target"]:checked').val()
+            },
+            function(data)
+            {
+                $('#search-with-freeview').removeClass('hide');
+                $('#spinner-loading').addClass('hide');
+
+                if (!$.isArray(data)) {
+                    var template        =   Handlebars.compile(TemplateRankingItem),
+                        tmpRows         =   template(data);
+
+                    tmpRows = $($.trim(tmpRows));
+
+                    $('.product-list').prepend(tmpRows);
+                } else {
+                    var list            =   new RankingList(data);
+                    $('.product-list').prepend(list);
+                }
+            }
+        );
+    }
+
+    if ($('#search-ranking').length > 0) {
+        getRankingList();
+        $('input[name="search-target"]').change(function(e)
+        {
+            $('.product-list').html('');
+            if ($(this).val() == 'freeview') {
+                getRankingList();
+            }
+        });
+    }
+
+    $('#search-ranking').change(function(e)
+    {
+        var barcode = $(this).val().trim();
+        if (barcode.length > 0) {
+            if ($('.product-list .sales-record[data-barcode="' + barcode + '"]').length == 0) {
+                $.get(
+                    '/api/v/1/ranking/' + barcode,
+                    {
+                        from    :   $.trim($('input.date-from').val()).length > 0 ? $.trim($('input.date-from').val()) : null,
+                        to      :   $.trim($('input.date-to').val()).length > 0 ? $.trim($('input.date-to').val()) : null,
+                        by      :   $('input[name="search-target"]:checked').val()
+                    },
+                    function(data)
+                    {
+                        if (!$.isArray(data)) {
+                            var template        =   Handlebars.compile(TemplateRankingItem),
+                                tmpRows         =   template(data);
+
+                            tmpRows = $($.trim(tmpRows));
+
+                            $('.product-list').prepend(tmpRows);
+                        } else {
+                            var list            =   new RankingList(data);
+                            $('.product-list').prepend(list);
+                        }
+                    }
+                );
+            } else {
+                alert('You have already added this product');
+                setTimeout(function () {
+                    $('.bulification .delete').focus();
+                }, 100);
+            }
+            $('#search-ranking').val('');
+        }
+    }).keydown(function(e)
+    {
+        if (e.keyCode == 13)
+        {
+            $(this).change();
+        }
+    });
+
+    $('#btn-reset-ranking').click(function(e)
+    {
+        e.preventDefault();
+        $('.product-list').html('');
+        $('#search-ranking, .date-picker').val('');
+        if ($('input[name="search-target"]:checked').val() == 'freeview') {
+            getRankingList();
         }
     });
 
@@ -144,7 +255,7 @@ $(document).ready(function(e)
                                 e.preventDefault();
                                 $(this).editProduct();
                             });
-                            
+
                             $('.product-list').prepend(tmpRows);
 
                         } else {
@@ -279,7 +390,9 @@ $(document).ready(function(e)
             data_maker(),
             function(data)
             {
+                $('#main .total-items').html($(data).find('.total-items').html());
                 $('#main .sales-records').html($(data).find('.sales-records').html());
+                $('#main .sales-pagination').html($(data).find('.sales-pagination').html());
             }
         );
     }
@@ -391,9 +504,13 @@ $(document).ready(function(e)
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div.html(formatTime(d.date) + "<br/>" + d.close)
-                    .style("left", (d3.event.pageX - $('#exchange-trend-holder').offset().left) + "px")
-                    .style("top", (d3.event.pageY - $('#exchange-trend-holder').offset().top - 28) + "px");
+
+                var cx  =   $(d3.event.target).attr('cx'),
+                    cy  =   $(d3.event.target).attr('cy');
+
+                div.html('<span class="is-block tooltip-date">' + formatTime(d.date) + '</span><span class="is-block tooltip-rate">' + d.close + '</span>')
+                    .style("left", (cx) + "px")
+                    .style("top", (cy - 42) + "px");
             })
             .on("mouseout", function(d) {
                 div.transition()

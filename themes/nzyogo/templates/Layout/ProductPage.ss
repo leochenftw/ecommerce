@@ -4,7 +4,7 @@
     <% include PageHero %>
 <% end_if %>
 <div class="section product-details">
-    
+
     <script>console.log($ID);</script>
 
     <article class="container content">
@@ -64,7 +64,7 @@
     		<h2 class="text-center product-detailed-intro__title">商品详细介绍</h2>
     		<div class="imagery">
     		<% loop $ProductDescs.Sort('Title', 'ASC') %>
-    			<div class="imagery__item">$SetWidth(1200)</div>
+    			<div class="imagery__item">$SetWidth(1344)</div>
     		<% end_loop %>
     		</div>
     	</div>
@@ -73,20 +73,20 @@
 </div>
 <section class="section product-carousel-section">
 	<div class="container">
-		<header class="text-center"><h2>品牌其他商品</h2></header>
+		<header class="has-text-centered"><h2 class="title is-1 is-bold">品牌其他商品</h2></header>
 		<div class="row product-carousel owl-carousel">
 		<% loop $Category.Product.exclude('ID', $ID).limit(10) %>
-		<% include ProductTile %>
+		<% include ProductTile isOwlItem=true %>
 		<% end_loop %>
 		</div>
 	</div>
 </section>
-<section class="section product-carousel-section no-top-padding">
+<section class="section product-carousel-section">
 	<div class="container">
-		<header class="text-center"><h2>同类商品</h2></header>
+		<header class="has-text-centered"><h2 class="title is-1 is-bold">同类商品</h2></header>
 		<div class="row product-carousel owl-carousel">
 		<% loop $Tags.First.Products.exclude('ID', $ID).limit(10) %>
-		<% include ProductTile %>
+		<% include ProductTile isOwlItem=true %>
 		<% end_loop %>
 		</div>
 	</div>

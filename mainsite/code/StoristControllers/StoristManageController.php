@@ -21,20 +21,24 @@ class StoristManageController extends Page_Controller
         Requirements::block('themes/default/js/custom.scripts.js');
         Requirements::block('themes/default/js/components/parallax.js/parallax.min.js');
         Requirements::block('themes/default/js/components/owl.carousel/dist/owl.carousel.min.js');
-		Requirements::combine_files(
-	        'storist.js',
-	        array(
-                'themes/default/js/components/datetimepicker/build/jquery.datetimepicker.full.min.js',
-                'themes/default/js/components/JsBarcode/dist/JsBarcode.all.min.js',
-                'themes/storist/js/components/d3/d3.min.js',
-                'themes/storist/js/modules/previewable.js',
-                'themes/storist/js/modules/operator_work.js',
-                'themes/storist/js/modules/form_operator.js',
-                'themes/storist/js/modules/form_product.js',
-                'themes/storist/js/modules/msg_box.js',
-                'themes/storist/js/custom.scripts.js'
-	        )
-        );
+        if (!$this->request->isAjax()) {
+    		Requirements::combine_files(
+    	        'storist.js',
+    	        array(
+                    'themes/default/js/components/datetimepicker/build/jquery.datetimepicker.full.min.js',
+                    'themes/default/js/components/JsBarcode/dist/JsBarcode.all.min.js',
+                    'themes/storist/js/components/d3/d3.min.js',
+                    'themes/storist/js/modules/previewable.js',
+                    'themes/storist/js/modules/operator_work.js',
+                    'themes/storist/js/modules/form_operator.js',
+                    'themes/storist/js/modules/form_product.js',
+                    'themes/storist/js/modules/msg_box.js',
+                    'themes/storist/js/templates/product-rows.js',
+                    'themes/storist/js/templates/ranking-item.js',
+                    'themes/storist/js/custom.scripts.js'
+    	        )
+            );
+        }
         SSViewer::set_theme('storist');
 	}
 
@@ -75,6 +79,12 @@ class StoristManageController extends Page_Controller
                             return $this->renderWith('ManageSales');
                         }
                         return $this->renderWith(array('ManageSales', 'Page'));
+                        break;
+                    case 'ranking':
+                        if ($request->isAjax()) {
+                            return $this->renderWith('ManageRank');
+                        }
+                        return $this->renderWith(array('ManageRank', 'Page'));
                         break;
                 }
                 return $this->renderWith('Page');
@@ -158,11 +168,11 @@ class StoristManageController extends Page_Controller
 
         if (!empty($from) || !empty($to) || !empty($ex_ref) || !empty($ex_suc)) {
             if (!empty($from) && !empty($to)) {
-                $sales = $sales->filter(array('Created:GreaterThanOrEqual' => $from . '00:00:00', 'Created:LessThanOrEqual' => $to . '23:59:59'));
+                $sales = $sales->filter(array('Created:GreaterThanOrEqual' => $from . ' 00:00:00', 'Created:LessThanOrEqual' => $to . ' 23:59:59'));
             } elseif (!empty($from)) {
-                $sales = $sales->filter(array('Created:GreaterThanOrEqual' => $from . '00:00:00'));
+                $sales = $sales->filter(array('Created:GreaterThanOrEqual' => $from . ' 00:00:00'));
             } elseif (!empty($to)) {
-                $sales = $sales->filter(array('Created:LessThanOrEqual' => $to . '23:59:59'));
+                $sales = $sales->filter(array('Created:LessThanOrEqual' => $to . ' 23:59:59'));
             }
 
             if (!empty($ex_ref)) {
@@ -173,14 +183,19 @@ class StoristManageController extends Page_Controller
                 $sales = $sales->filter(array('Refunded' => true));
             }
 
-            return $sales;
+            $paged = new PaginatedList($sales, $this->request);
+            $paged->setPageLength(50);
+
+            return $paged;
         }
 
         if (empty($this->sales)) {
             $this->sales = $sales->filter(array('Created:GreaterThanOrEqual' => date('Y-m-d 00:00:00')));
         }
+        $paged = new PaginatedList($this->sales, $this->request);
+        $paged->setPageLength(50);
 
-        return $this->sales;
+        return $paged;
     }
 
     public function getProducts()
@@ -303,6 +318,11 @@ class StoristManageController extends Page_Controller
         return date('Y-m-d');
     }
 
+    public function getAWeekago()
+    {
+        return date('Y-m-d', strtotime('-1 week'));
+    }
+
     public function getOperators()
     {
         if ($member = Member::currentUser())
@@ -385,5 +405,55 @@ class StoristManageController extends Page_Controller
         }
 
         return $this->httpError(404);
+    }
+
+    public function getLastWeekSoldProducts()
+    {
+        if (Member::currentUser()->ClassName != 'Supplier') {
+            return null;
+        }
+
+
+        $sales      =   Member::currentUser()->StoreOrders()->filter(array('Refunded' => false));
+
+        $from       =   $this->request->getVar('from');
+        $to         =   $this->request->getVar('to');
+        $barcode    =   $this->request->getVar('barcode');
+
+        if (!empty($barcode)) {
+            return $sales->filter(array('Title' => $barcode));
+        }
+
+        $from       =   !empty($from) ? $from : (date('Y-m-d', strtotime('-1 week')) . ' 00:00:00');
+        $to         =   !empty($to) ? $to : (date('Y-m-d') . ' 00:00:00');
+
+        $sales      =   $sales->filter(array('Created:GreaterThanOrEqual' => $from, 'Created:LessThanOrEqual' => $to))->column();
+
+        $items      =   GroupedList::create(StoreOrderItem::get()->filter(array('StoreOrderID' => $sales))->sort('AltTitle ASC'))->GroupBy('AltTitle');
+
+        $list       =   [];
+
+        foreach ($items as $title => $item)
+        {
+            $data   =   array(
+                            'Barcode'   =>  $item->first()->AltBarcode,
+                            'Title'     =>  $title,
+                            'Chinese'   =>  $item->first()->AltChinese,
+                            'Provider'  =>  $item->first()->AltProvider,
+                            'Sales'     =>  0,
+                            'Quantity'  =>  0
+                        );
+
+            foreach ($item as $record)
+            {
+                $data['Sales']      +=  $record->AltAmount->Amount;
+                $data['Quantity']   +=  $record->Quantity;
+            }
+
+            $data['Sales']          =   '$' . number_format($data['Sales'], 2, '.', ',');
+            $list[]                 =   $data;
+        }
+
+        return new ArrayList($list);
     }
 }

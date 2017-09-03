@@ -1,4 +1,5 @@
 .sales {
+    padding-bottom: 0;
     header {
         padding-bottom: 2rem;
         border-bottom: 1px solid $grey-lighter;
@@ -7,7 +8,7 @@
             padding-bottom: 0;
 
             input.text {
-                padding-left: 28px;
+                padding-left: 32px;
                 color: $grey-light;
                 &:focus {
                     border-color: $blue;
@@ -50,6 +51,10 @@
                     &.left-more {
                         left: 24px;
                     }
+
+                    .fa {
+                        font-size: 14px;
+                    }
                     @include transform(translateY(-50%));
                 }
             }
@@ -58,7 +63,7 @@
 
     .sales-record {
         &s {
-            height: 68vh;
+            height: calc(100vh - 246px);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             &.filtering {
@@ -71,12 +76,25 @@
         &:not(:last-child) {
             border-bottom: 1px solid $grey-lighter;
         }
-        
+
         padding-bottom: 0.5rem;
         padding-top: 0.5rem;
 
         .payment-method {
             margin-right: 0.5em;
         }
+    }
+
+    &-search {
+        &-filter {
+            label {
+                margin-bottom: 0;
+                margin-right: 1em;
+            }
+        }
+    }
+
+    &-pagination {
+        padding: 12px 0;
     }
 }

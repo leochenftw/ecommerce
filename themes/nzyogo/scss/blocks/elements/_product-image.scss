@@ -41,8 +41,16 @@
 }
 
 .product-carousel-section {
+    header {
+        margin-bottom: 64px;
+    }
+
     .owl-carousel {
         .owl-nav {
+            position: absolute;
+            top: 50%;
+            @include transform(translateY(-50%));
+            width: 100%;
             .owl-prev,
             .owl-next {
                 height: 60px;
@@ -71,13 +79,13 @@
 
             .owl-prev {
         		// @extend .icon-left;
-        		left: -60px;
+        		left: -24px;
 
         	}
 
         	.owl-next {
         		// @extend .icon-right;
-        		right: -60px;
+        		right: -24px;
 
         	}
         }

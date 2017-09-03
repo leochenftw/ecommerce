@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,qBAQC;EAPC,IAAK;IACH,SAAS,EAAE,YAAY;;EAGzB,EAAG;IACD,SAAS,EAAE,cAAc",
-"sources": ["../../../../scss/bulma/scss/utilities/animations.scss"],
-"names": [],
-"file": "animations.css"
-}

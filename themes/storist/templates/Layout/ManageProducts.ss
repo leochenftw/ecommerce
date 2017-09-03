@@ -1,5 +1,5 @@
 <section class="section transparent products">
-    <header class="columns vertical-center is-marginless">
+    <header class="columns align-vertical-center is-marginless">
         <div class="column is-6"><h2 class="title is-2">Products</h2></div>
         <div class="product-search column is-relative">
             <input id="search-product" type="text" class="text" /><span class="icon is-absolute"><i class="fa fa-search"></i></span>

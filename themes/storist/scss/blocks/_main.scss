@@ -20,6 +20,24 @@
                 margin-left: 1em;
                 .icon {
                     line-height: 36px;
+                    .fa {
+                        font-size: 14px;
+                        margin-right: 0.25em;
+                    }
+                }
+            }
+        }
+    }
+
+    .main-body {
+        .tile {
+            #exchange-trend-holder {
+                @import 'elements/exchange-graph';
+            }
+
+            .icon {
+                .fa {
+                    margin-right: 0.25em;
                     font-size: 14px;
                 }
             }

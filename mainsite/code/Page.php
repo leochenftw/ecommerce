@@ -30,9 +30,7 @@ class Page extends SiteTree {
 }
 
 class Page_Controller extends ContentController {
-    protected static $extensions = array(
-        'SiteJSControllerExtension'
-    );
+
     /**
      * An array of actions that can be accessed via a request. Each array element should be an action name, and the
      * permissions or conditions required to allow the user to access it.
@@ -65,7 +63,25 @@ class Page_Controller extends ContentController {
         // Session::save();
 
         // SaltedHerring\Debugger::inspect(Session::get_all());
-        $this->initJS();
+        if (!$this->request->isAjax()) {
+            Requirements::combine_files(
+                'scripts.js',
+                array(
+                    'themes/default/js/components/jquery/dist/jquery.min.js',
+                    'themes/default/js/components/gsap/src/minified/TweenMax.min.js',
+                    'themes/default/js/components/gsap/src/minified/easing/EasePack.min.js',
+                    'themes/default/js/components/clipboard/dist/clipboard.min.js',
+                    'themes/default/js/components/owl.carousel/dist/owl.carousel.min.js',
+                    'themes/default/js/components/jarallax/dist/jarallax.min.js',
+                    'themes/default/js/components/nprogress/nprogress.js',
+                    'themes/default/js/components/jquery.scrollTo/jquery.scrollTo.min.js',
+                    'themes/default/js/components/salted-js/dist/salted-js.min.js',
+                    'themes/default/js/plugins/make-it-quick.js',
+                    'themes/default/js/custom.scripts.js'
+                )
+            );
+        }
+
         // Note: you should use SS template require tags inside your templates
         // instead of putting Requirements calls here.  However these are
         // included so that our older themes still work

@@ -9,7 +9,7 @@ class DummyFlusher extends BuildTask {
 	protected $title = 'Dummy Flusher';
 	protected $description = 'Flush dummies';
 
-	protected $enabled = true;
+	protected $enabled = false;
 
 	public function run($request)
     {

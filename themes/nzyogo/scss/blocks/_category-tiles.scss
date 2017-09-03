@@ -1,13 +1,70 @@
 #category-tiles {
+    .hot-spot {
+        position: relative;
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0);
+            z-index: 1;
+            @include transition(all 0.2s linear);
+        }
+        &:hover {
+            &:before {
+                background-color: rgba(black, 0.3);
+            }
+        }
+    }
+
     .columns {
         .column {
+
+            .title {
+                font-size: 64px;
+                word-break: normal;
+                font-weight: lighter;
+            }
+
             &.is {
                 &-half-screen-height {
+                    min-height: 720px;
                     height: calc(50vh - 40px);
+                    .subtitle {
+                        white-space: normal;
+                    }
                 }
 
                 &-full-screen-height {
+                    min-height: 1440px;
                     height: calc(100vh - 40px);
+                }
+            }
+
+            &.big-tile {
+                padding: 60px 30px;
+
+                .title {
+                    text-shadow: 0 0 5px white;
+                }
+
+                .subtitle {
+                    text-shadow: 0 0 5px white;
+                    margin-top: -1rem;
+                }
+
+                .button {
+                    padding: 6px 48px;
+                    font-size: 24px;
+                    position: absolute;
+                    bottom: 60px;
+                    z-index: 2;
+                    left: 50%;
+                    font-weight: lighter;
+                    @include transform(translateX(-50%));
                 }
             }
 
@@ -15,6 +72,41 @@
                 &-background {
                     background-size: cover;
                     background-position: center;
+                }
+                &-text {
+                    position: relative;
+                    padding: 60px 30px 60px 90px;
+
+                    &.order-1 {
+                        padding: 60px 90px 60px 30px;
+                        text-align: right;
+                        .link-alike {
+                            right: 90px;
+                            &:after {
+                                right: auto;
+                                left: 0;
+                            }
+                        }
+                    }
+
+                    .link-alike {
+                        display: block;
+                        text-decoration: none;
+                        bottom: 60px;
+                        font-size: 24px;
+                        color: $black;
+                        position: absolute;
+
+                        &:after {
+                            content: '';
+                            display: block;
+                            width: 200px;
+                            height: 1px;
+                            background-color: $black;
+                            position: absolute;
+                            right: 0;
+                        }
+                    }
                 }
             }
         }

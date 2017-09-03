@@ -22,4 +22,6 @@ Director:
     'api/v/1/addresses/$ID': 'AddressAPI'
     'api/v/1/pricings/$ID': 'PricingAPI'
     'api/v/1/variants/$ID': 'VariantAPI'
+    'api/v/1/quick/$ID/$todo': 'QuickAPI'
+    'api/v/1/ranking/$Barcode': 'RankingAPI'
     'loc-catcher': 'CatcherController'

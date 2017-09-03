@@ -11,7 +11,6 @@
 		$getCSS
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <script src="/$themeDir/js/components/handlebars/handlebars.min.js"></script>
-        <script src="/$themeDir/js/templates/product-rows.js"></script>
 		<% include GA %>
 	</head>
 	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase">

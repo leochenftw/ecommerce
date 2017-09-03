@@ -22,7 +22,7 @@ class HomePage_Controller extends Page_Controller {
 	}
 
 	public function getTags() {
-		return Tag::get()->sort("Rand()")->limit(20);
+		return Tag::get()->sort("Rand()")->limit(36);
 	}
 
 	public function getHotProducts() {

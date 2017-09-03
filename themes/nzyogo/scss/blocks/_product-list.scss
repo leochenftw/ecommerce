@@ -4,8 +4,164 @@
 
     }
 
+
+
+    &-options {
+        margin-bottom: 2em;
+        &.navbar {
+            min-height: 0;
+            height: 40px;
+        }
+
+        .navbar {
+            &-menu {
+                .view-mode {
+                    border-radius: 0;
+                    background-color: black;
+                    border: none;
+                    .fa {
+                        color: white;
+                    }
+                    width: 40px;
+                    &:hover,
+                    &:active,
+                    &:focus,
+                    &.is-active {
+                        background-color: $red;
+                    }
+                }
+            }
+
+            &-center {
+                font-size: 0;
+                .select {
+                    height: 40px;
+                    font-size: 16px;
+                    width: 140px;
+                    select {
+                        display: block;
+                        width: 100%;
+                        padding-left: 20px;
+                        border-radius: 0;
+                        height: 100%;
+                    }
+                }
+
+                .button {
+                    border-left: none;
+                    height: 40px;
+                    border-radius: 0;
+                    width: 40px;
+                    padding: 5px 10px;
+                    .fa {
+                        font-size: 14px;
+                    }
+                }
+            }
+
+            &-end {
+                .icon {
+                    font-size: 14px;
+                    .fa {
+                        margin-right: 0.25em;
+                        font-size: 16px;
+                        margin-top: 2px;
+                    }
+                }
+            }
+        }
+    }
+
     &-tile {
         margin-bottom: 50px;
+        display: block;
+
+        &__title,
+        &__price {
+            font-size: 18px;
+        }
+
+        &__title {
+            margin: 24px 0 12px;
+        }
+
+
+        &__poster {
+            position: relative;
+            padding: 30px;
+            border: 1px solid $light-grey;
+            &:after {
+                position: absolute;
+                content: '';
+                display: block;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: rgba(236, 173, 44, 0);
+                @include transition(all 0.3s);
+            }
+        }
+
+        &:hover {
+            .product-tile__poster {
+                &:after {
+                    background-color: rgba(236, 173, 44, 0.4);
+                }
+            }
+
+            .product-tile__quick-actions {
+                .btn-quick {
+                    @include transform(translateX(0));
+                }
+            }
+        }
+
+        &.owl-item-core {
+            width: 214px;
+        }
+
+        &__quick-actions {
+            top: 65px;
+            right: 1px;
+            width: 60px;
+            overflow: hidden;
+            padding-right: 10px;
+            .btn-quick {
+                @include transform(translateX(200%));
+                border: none;
+                outline: none;
+                border-radius: 0;
+                box-shadow: none;
+                margin-bottom: 10px;
+                padding: 0;
+                width: 50px;
+                height: 50px;
+                background-color: white;
+                line-height: 50px;
+                color: black;
+                @include transition(all ease-in 0.3s);
+                &.is-active,
+                &:hover {
+                    background-color: red;
+                    color: white;
+                }
+
+                .fa {
+                    font-size: 18px;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                @for $i from 1 through 4 {
+                    &:nth-child(#{$i}) {
+                        @include transition-delay( #{($i - 1) * 0.05}s );
+                    }
+                }
+            }
+        }
     }
 
     &-details {

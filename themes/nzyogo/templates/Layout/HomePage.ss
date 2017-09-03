@@ -22,7 +22,7 @@
 		</header>
 		<div class="columns wrap">
 		<% loop $HotProducts %>
-			<% include ProductTile %>
+			<% include ProductTile inList=true %>
 		<% end_loop %>
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 
 <% include TagTiles %>
 
-<section id="top-up-promitoin" class="section parallax-window is-relative" data-parallax="scroll" data-image-src="/themes/default/images/yogold-bg.jpg">
+<section id="top-up-promitoin" class="section jarallax is-relative" data-jarallax='{"speed": 0.2}' style="background-image: url(/themes/default/images/yogold-bg.jpg);">
 	<div class="container has-text-centered">
 		<header><h2 class="title is-1 is-bold">优Gold会员</h2></header>
 		<div class="columns">

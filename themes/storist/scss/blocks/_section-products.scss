@@ -5,6 +5,9 @@
         border-bottom: 1px solid $grey-lighter;
         .icon {
             font-size: 14px;
+            .fa {
+                font-size: 14px;
+            }
         }
 
         .product-tools {
@@ -15,7 +18,7 @@
             padding-top: 0;
             padding-bottom: 0;
             input.text {
-                padding-left: 28px;
+                padding-left: 32px;
                 color: $grey-light;
                 &:focus {
                     border-color: $blue;

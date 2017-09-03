@@ -6,8 +6,8 @@
     			<div class="product-options navbar">
                     <div class="navbar-menu">
         				<div class="view-modes navbar-start">
-        					<button class="view-mode as-grid active icon-grids">栅格</button>
-        					<button class="view-mode as-list icon-menu">列表</button>
+        					<a class="view-mode as-grid button is-active icon"><i class="fa fa-th"></i></a>
+        					<a class="view-mode as-list button icon"><i class="fa fa-list-ul"></i></a>
         				</div>
         				<div class="sortings navbar-center">
         					<div class="select">
@@ -18,16 +18,16 @@
         						</select>
         					</div>
         					<% if $isASC %>
-        						<a href="$LinkThis('sort', 'DESC')" class="btn-sort icon-down" title="使用倒序">倒序</a>
+        						<a href="$LinkThis('sort', 'DESC')" class="btn-sort button icon" title="使用倒序"><i class="fa fa-long-arrow-down"></i></a>
         					<% else %>
-        						<a href="$LinkThis('sort', 'ASC')" class="btn-sort icon-up" title="使用顺序">顺序</a>
+        						<a href="$LinkThis('sort', 'ASC')" class="btn-sort button icon" title="使用顺序"><i class="fa fa-long-arrow-up"></i></a>
         					<% end_if %>
         				</div>
         				<div class="groupon-only navbar-end">
         					<% if $grouponOnly %>
-        					<a href="$LinkThis('groupon-only')" class="icon-check">只看抢购活动</a>
+        					<a href="$LinkThis('groupon-only')" class="icon"><i class="fa fa-square-o"></i>只看抢购活动</a>
         					<% else %>
-        					<a href="$LinkThis('groupon-only', 1)" class="icon-uncheck">只看抢购活动</a>
+        					<a href="$LinkThis('groupon-only', 1)" class="icon"><i class="fa fa-check-square-o"></i>只看抢购活动</a>
         					<% end_if %>
         				</div>
                     </div>

@@ -26,7 +26,7 @@
     "zepto": "~1.0.0",
     "gsap": "^1.18.2",
     "salted-js": "*",
-    "owl.carousel": "~2.1.6",
+    "owl.carousel": "~2.2.0",
     "clipboard": "^1.5.12",
     "parallax.js": "^1.4.2",
     "lightbox2": "^2.8.2",
@@ -36,7 +36,8 @@
     "classnames": "^2.2.5",
     "jquery.scrollTo": "^2.1.2",
     "datetimepicker": "^2.5.4",
-    "JsBarcode": "jsbarcode#^3.6.0"
+    "JsBarcode": "jsbarcode#^3.6.0",
+    "jarallax": "^1.8.0"
   },
   "resolutions": {
     "fizzy-ui-utils": "^2.0.5"

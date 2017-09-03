@@ -22,7 +22,7 @@
 
 @import 'blocks/header',
         'blocks/main',
-        'blocks/owlcarousel',
+        'owlcarousel/owl.carousel',
         'blocks/category-tiles',
         'blocks/upcoming-groupon',
         'blocks/latest-update',
@@ -32,6 +32,7 @@
         'blocks/cart',
         'blocks/datetime-picker',
         'blocks/all-freights',
+        'blocks/all-tags',
         'blocks/page-hero',
         'blocks/product-list',
         'blocks/product-details',
@@ -39,6 +40,8 @@
         'blocks/payment',
         'blocks/member-area',
         'blocks/footer';
+
+@import 'blocks/elements/nprogressbar';
 
 body {
     color: $text-grey;

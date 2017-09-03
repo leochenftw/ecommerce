@@ -1,9 +1,10 @@
 #promotional-wrapper {
 	overflow: hidden;
 	.owl-nav {
-		// @include breakpoint($container) {
-		// 	display: none;
-		// }
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        @include transform(translateY(-50%));
 	}
 	.owl-prev,
 	.owl-next {
@@ -82,9 +83,7 @@
 		height: 100%;
 		position: relative;
 		z-index: 1;
-
-		.promotional-lines {
-			padding: 30px 40% 30px 65px;
+        padding: 30px 40% 30px 65px;
 			// @include breakpoint($container) {
 			// 	padding: 30px rem(65);
 			// 	.promo-content {
@@ -99,28 +98,29 @@
 			// 	}
 			// }
 
-			.promo-content,
-			.promo-title {
-				font-weight: lighter;
-				color: $white;
-				text-shadow: 0 0 5px $black;
-			}
+		.promo-content,
+		.promo-title {
+			font-weight: lighter;
+			color: $white;
+			text-shadow: 0 0 5px $black;
+		}
 
-			.promo-title {
-				font-size: 72px;
-				line-height: 1.4;
-				margin: 0;
-			}
-			.promo-content {
-				font-weight: lighter;
-				font-size: 32px;
-				color: rgba(255,255,255,0.8);
-				// @include breakpoint($fifth-break) {
-				// 	font-size: rem(24);
-				// }
-			}
+        .subtitle {
+            margin-top: 0;
+        }
 
-
+		.promo-title {
+			font-size: 72px;
+			line-height: 1.4;
+			margin: 0;
+		}
+		.promo-content {
+			font-weight: lighter;
+			font-size: 32px;
+			color: rgba(255,255,255,0.8);
+			// @include breakpoint($fifth-break) {
+			// 	font-size: rem(24);
+			// }
 		}
 
 		.call-to-action {
