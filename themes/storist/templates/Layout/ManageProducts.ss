@@ -5,9 +5,13 @@
             <input id="search-product" type="text" class="text" /><span class="icon is-absolute"><i class="fa fa-search"></i></span>
         </div>
         <div class="column has-text-right product-tools is-paddingless is-auto-width">
-            <a id="btn-new-product" href="#" class="font-blue">
+            <a id="btn-new-product" href="#" class="font-blue" style="margin-right: 1em;">
                 <span class="icon"><i class="fa fa-plus-circle"></i></span>
                 New product
+            </a>
+            <a id="btn-export-csv" href="/storist/v1/manage/products/export" target="_blank" class="font-blue">
+                <span class="icon"><i class="fa fa-download"></i></span>
+                Export
             </a>
         </div>
     </header>

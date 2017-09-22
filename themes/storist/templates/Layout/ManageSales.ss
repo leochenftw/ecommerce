@@ -36,7 +36,13 @@
             <div class="column sales-record__at font-grey-light">$Created</div>
             <div class="column sales-record__amount font-blue"><span class="icon payment-method"><i class="fa fa-<% if $PaymentMethod == 'Cash' %>money<% else %>credit-card<% end_if %>"></i></span>$Amount</div>
             <div class="column sales-record__operator font-orange">$Operator</div>
-            <div class="column sales-record__status is-auto-width"><span class="icon font-<% if $Refunded %>red<% else %>green<% end_if %>"><i class="fa fa-<% if $Refunded %>times-circle<% else %>check-circle-o<% end_if %>"></i></span></div>
+            <div class="column sales-record__status is-auto-width">
+                <span class="icon font-<% if $Refunded %>red<% else %>green<% end_if %>"><i class="fa fa-<% if $Refunded %>times-circle<% else %>check-circle-o<% end_if %>"></i></span>
+            </div>
+            <div class="column sales-record__action is-narrow">
+                <button class="button btn-refund is-danger is-small">Refund</button>
+                <button class="button btn-close is-small">Close</button>
+            </div>
         </div>
     <% end_loop %>
     </div>

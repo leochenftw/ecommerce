@@ -36,6 +36,7 @@ Object::add_extension('SiteConfig', 'Translatable');
 
 SS_Cache::set_cache_lifetime('Products', 86400, 1000);
 SS_Cache::set_cache_lifetime('Blogs', 86400, 1000);
+SS_Cache::set_cache_lifetime('StoreOrder', 31536000, 1000);
 // If memcached is available, use it, else fall back to file.
 if(class_exists('Memcache')){
 	SS_Cache::add_backend(

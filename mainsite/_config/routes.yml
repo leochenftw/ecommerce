@@ -24,4 +24,5 @@ Director:
     'api/v/1/variants/$ID': 'VariantAPI'
     'api/v/1/quick/$ID/$todo': 'QuickAPI'
     'api/v/1/ranking/$Barcode': 'RankingAPI'
+    'api/v/1/sales/$receipt': 'SaleDetailAPI'
     'loc-catcher': 'CatcherController'

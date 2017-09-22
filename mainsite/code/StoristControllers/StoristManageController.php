@@ -12,7 +12,8 @@ class StoristManageController extends Page_Controller
     private static $allowed_actions = array(
         'SupplierEditForm',
         'OperatorForm',
-        'DeleteOperator'
+        'DeleteOperator',
+        'export'
 	);
 
 	public function init() {
@@ -35,6 +36,7 @@ class StoristManageController extends Page_Controller
                     'themes/storist/js/modules/msg_box.js',
                     'themes/storist/js/templates/product-rows.js',
                     'themes/storist/js/templates/ranking-item.js',
+                    'themes/storist/js/templates/sale-details.js',
                     'themes/storist/js/custom.scripts.js'
     	        )
             );
@@ -455,5 +457,72 @@ class StoristManageController extends Page_Controller
         }
 
         return new ArrayList($list);
+    }
+
+    public function export()
+    {
+        if ($member = Member::currentUser()) {
+            if ($feature = $this->request->param('feature')) {
+                if ($feature == 'products') {
+
+                    $client = new Client([
+                        'base_uri' => 'https://merchantcloud.leochen.co.nz/'
+                    ]);
+
+                    $response = $client->request(
+                        'GET',
+                        'products',
+                        array(
+                            'query' =>  [
+                                            'supplier'  =>  $member->MCSupplierID,
+                                            'page'      =>  -1
+                                        ]
+                        )
+                    );
+
+                    $raw = json_decode($response->getBody());
+                    $page_count     =   $raw->page_count;
+                    $item_count     =   $raw->item_count;
+                    $products       =   $raw->data;
+
+
+                    $content        =   "Barcode\tEnglish\tChinese\tCost\tPrice\tStock\tSupplier\n";
+
+                    foreach ($products as $product)
+                    {
+                        $content    .=  trim($product->barcode);
+                        $content    .=  "\t";
+
+                        $content    .=  trim($product->title);
+                        $content    .=  "\t";
+
+                        $content    .=  trim($product->chinese_title);
+                        $content    .=  "\t";
+
+                        $content    .=  trim($product->cost);
+                        $content    .=  "\t";
+
+                        $content    .=  trim($product->price);
+                        $content    .=  "\t";
+
+                        $content    .=  trim($product->stock_count);
+                        $content    .=  "\t";
+
+                        $content    .=  trim($product->manufacturer);
+                        $content    .=  "\n";
+                    }
+
+
+                    $header     =   $this->getResponse();
+                    $header->addHeader('Content-Type', 'text/csv');
+                    $header->addHeader('Content-Disposition','attachment;filename="' . ((!empty($member->TradingName) ? $member->TradingName : 'Unknown') . ' - products.csv') . '"');
+                    $header->addHeader('Cache-Control', 'max-age=0');
+
+                    return chr(255) . chr(254) . mb_convert_encoding($content, 'UTF-16LE', 'UTF-8');
+                }
+            }
+        }
+
+        return $this->httpError(404);
     }
 }

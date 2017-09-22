@@ -289,6 +289,15 @@
                 &:before {
                     content: 'incl. GST ';
                 }
+                .refunding & {
+                    overflow: hidden;
+                    text-indent: -9999px;
+                    &:before {
+                        content: 'Refunded';
+                        display: block;
+                        text-indent: 0
+                    }
+                }
             }
         }
 

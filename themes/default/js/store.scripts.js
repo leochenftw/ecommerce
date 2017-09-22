@@ -4,6 +4,8 @@ const _MANUAL_WITHIN    =   2000;
 var _cumulatived        =   0,
     _timer              =   null,
     _isManualMode       =   false,
+    _isRefunding        =   false,
+    _discount           =   0,
     creating_order      =   false,
     btnStashTemplate    =   $('<button class="button icon-basket">\
                                 <span>\
@@ -114,6 +116,26 @@ $(document).ready(function(e)
                 $('body').addClass('pulling-product');
             },
 
+            validator: function()
+            {
+                var barcode     =   $('#StoreLookupForm_StoreLookupForm_Lookup').val().trim();
+
+                if (barcode == 'enterrefundmode') {
+                    if (!_isRefunding) {
+                        _isRefunding = true;
+                        $('body').addClass('refunding');
+                    } else {
+                        _isRefunding = false;
+                        $('body').removeClass('refunding');
+                    }
+
+                    $('#StoreLookupForm_StoreLookupForm_Lookup').val('');
+                    return false;
+                }
+
+                return true;
+            },
+
             success: function(data)
             {
                 data = JSON.parse(data);
@@ -140,20 +162,23 @@ $(document).ready(function(e)
     $('#StoreOrderForm_StoreOrderForm .Actions input.action').click(function(e)
     {
         e.preventDefault();
-        creating_order  =   true;
-        var data        =   {},
-            form        =   $('#StoreOrderForm_StoreOrderForm'),
-            name        =   $(e.target).attr('name'),
-            value       =   $(e.target).val();
+        creating_order      =   true;
+        var data            =   {},
+            form            =   $('#StoreOrderForm_StoreOrderForm'),
+            name            =   $(e.target).attr('name'),
+            value           =   $(e.target).val();
 
-        data.list       =   [];
-        data.SecurityID =   form.find('input[name="SecurityID"]').val();
-        data[name]      =   value;
+        data.list           =   [];
+        data.SecurityID     =   form.find('input[name="SecurityID"]').val();
+        data[name]          =   value;
+        data['isRefunding'] =   _isRefunding;
+
         form.find('tbody tr').each(function(i, el)
         {
-            var id      =   $(this).find('input[name="OrderID[]"]').val(),
-                qty     =   $(this).find('input[name="Quantity[]"]').val(),
-                amount  =   $(this).find('.to-buy__price').html().toFloat();
+            var id          =   $(this).find('input[name="OrderID[]"]').val(),
+                qty         =   $(this).find('input[name="Quantity[]"]').val(),
+                amount      =   $(this).find('.to-buy__price').html().toFloat();
+
             data.list.push({
                 MCProdID: id,
                 Quantity: qty,
@@ -191,8 +216,8 @@ $(document).ready(function(e)
     {
         e.preventDefault();
         if (creating_order) return;
-        var me = $(this);
-        if ($(this).data('target') == 'action_byCash') {
+        var me          =   $(this);
+        if ($(this).data('target') == 'action_byCash' && !_isRefunding) {
             CalculateChanges(function()
             {
                 me.removeClass('not-on-print');
@@ -322,8 +347,9 @@ function updateSum()
 
 function resetScreen()
 {
-    $('body').removeClass('has-queue');
+    $('body').removeClass('has-queue refunding');
     _suspendfocus = false;
+    _isRefunding = false;
     $('#StoreLookupForm_StoreLookupForm_Lookup').focus();
 }
 

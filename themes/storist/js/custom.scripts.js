@@ -383,6 +383,51 @@ $(document).ready(function(e)
         $(this).editProduct();
     });
 
+    $('.sales-record').dblclick(function(e)
+    {
+        e.preventDefault();
+        var thisRow     =   $(this),
+            records     =   null,
+            ajaxing     =   null,
+            btnRefund   =   thisRow.find('.btn-refund'),
+            btnClose    =   thisRow.find('.btn-close');
+
+        thisRow.parent().addClass('filtering');
+        thisRow.addClass('is-target inspecting');
+        btnRefund.addClass('is-loading');
+        btnClose.unbind('click').click(function(e)
+        {
+            e.preventDefault();
+            if (ajaxing) {
+                ajaxing.abort();
+                ajaxing =   null;
+            }
+            thisRow.parent().removeClass('filtering');
+            thisRow.removeClass('is-target inspecting');
+            if (records) {
+                records.remove();
+                records =   null;
+            }
+        });
+
+        btnRefund.unbind('click').click(function(e)
+        {
+            e.preventDefault();
+            alert('还没做好');
+        });
+
+        ajaxing         =   $.get(
+            'api/v/1/sales/' + thisRow.data('receipt'),
+            function(data)
+            {
+                btnRefund.removeClass('is-loading');
+                ajaxing =   null;
+                records =   new SaleDetail(data);
+                records.insertAfter(thisRow);
+            }
+        );
+    });
+
     function updateSalesList()
     {
         $.get(

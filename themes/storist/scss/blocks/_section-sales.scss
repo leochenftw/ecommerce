@@ -73,6 +73,20 @@
             }
         }
 
+        &__action {
+            display: none;
+        }
+
+        &.inspecting {
+            .sales-record__status {
+                display: none;
+            }
+
+            .sales-record__action {
+                display: block;
+            }
+        }
+
         &:not(:last-child) {
             border-bottom: 1px solid $grey-lighter;
         }

@@ -1,5 +1,5 @@
 <?php
-
+use SaltedHerring\SaltedCache;
 use SaltedHerring\Debugger;
 use GuzzleHttp\Client;
 
@@ -73,6 +73,13 @@ class StoreOrder extends DataObject
                 if ($this->Sold) {
                     $items = $this->OrderItems()->map('MCProdID', 'Quantity')->toArray();
 
+                    if ($this->Refunded) {
+                        foreach ($items as $key => &$value)
+                        {
+                            $value = $value * -1;
+                        }
+                    }
+
                     $client = new Client([
                         'base_uri' => 'https://merchantcloud.leochen.co.nz/'
                     ]);
@@ -127,6 +134,31 @@ class StoreOrder extends DataObject
         }
 
         return $returnFloat ? 0 : '$0.00';
+    }
+
+    public function getDetails()
+    {
+        $factory        =   $this->ClassName;
+        $key            =   '_' . $this->ID;
+        $data           =   SaltedCache::read($factory, $key);
+
+        if (empty($data)) {
+            $data       =   [];
+            $items      =   $this->OrderItems();
+            foreach ($items as $item)
+            {
+                $data[] =   [
+                                'title'     =>  $item->AltTitle,
+                                'chinese'   =>  $item->AltChinese,
+                                'quantity'  =>  $item->Quantity,
+                                'amount'    =>  $item->AltAmount->Amount
+                            ];
+            }
+
+            SaltedCache::save($factory, $key, $data);
+        }
+
+        return $data;
     }
 
 }

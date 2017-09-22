@@ -111,3 +111,37 @@
         }
     }
 }
+
+#supplier-logo {
+    .refunding & {
+        padding: 0.5em 2em;
+        background-color: $red;
+        color: white;
+        &:after {
+            content: 'REFUNDING';
+        }
+
+        img {
+            display: none;
+        }
+
+        @include animation(pulse 1s infinite linear);
+    }
+}
+
+@include keyframes(pulse) {
+    0% {
+        background-color: $red;
+        color: $white;
+    }
+
+    50% {
+        color: $red;
+        background-color: $white;
+    }
+
+    100% {
+        background-color: $red;
+        color: $white;
+    }
+}

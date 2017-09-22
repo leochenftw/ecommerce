@@ -6,25 +6,25 @@ class StoreOrderForm extends Form
 {
     public function __construct($controller) {
 
-		$fields = new FieldList();
-		//$fields->push(TextField::create('Lookup', 'Lookup')->setAttribute('autocomplete', 'off'));
+        $fields = new FieldList();
+        //$fields->push(TextField::create('Lookup', 'Lookup')->setAttribute('autocomplete', 'off'));
 
-		$actions = new FieldList(
+        $actions = new FieldList(
             FormAction::create('byCash','CASH'),
             // FormAction::create('byCredit','Credit'),
-    		FormAction::create('byEFTPOS','EFTPOS')
-		);
+            FormAction::create('byEFTPOS','EFTPOS')
+        );
 
-		// $required_fields = array(
-		// 	'Lookup'
-		// );
+        // $required_fields = array(
+        //     'Lookup'
+        // );
 
-		// $required = new RequiredFields($required_fields);
+        // $required = new RequiredFields($required_fields);
 
-		parent::__construct($controller, 'StoreOrderForm', $fields, $actions);
-		$this->setFormMethod('POST', true)
-			 ->setFormAction(Controller::join_links(BASE_URL, 'storist/v1/store', "StoreOrderForm"));
-	}
+        parent::__construct($controller, 'StoreOrderForm', $fields, $actions);
+        $this->setFormMethod('POST', true)
+             ->setFormAction(Controller::join_links(BASE_URL, 'storist/v1/store', "StoreOrderForm"));
+    }
 
     public function ProcessOrder($data, $method)
     {
@@ -45,7 +45,12 @@ class StoreOrderForm extends Form
                 $orderItem->write();
             }
 
-            $order->Sold = true;
+            $order->Sold                =   true;
+
+            if (!empty($data['isRefunding'])) {
+                $order->Refunded        =   true;
+            }
+
             $order->write();
 
             return json_encode(

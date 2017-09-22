@@ -2548,6 +2548,63 @@ textarea {
   opacity: 1;
 }
 
+.refunding #supplier-logo {
+  padding: 0.5em 2em;
+  background-color: #ed1c24;
+  color: white;
+  -moz-animation: pulse 1s infinite linear;
+  -webkit-animation: pulse 1s infinite linear;
+  animation: pulse 1s infinite linear;
+}
+.refunding #supplier-logo:after {
+  content: 'REFUNDING';
+}
+.refunding #supplier-logo img {
+  display: none;
+}
+
+@-moz-keyframes pulse {
+  0% {
+    background-color: #ed1c24;
+    color: #fff;
+  }
+  50% {
+    color: #ed1c24;
+    background-color: #fff;
+  }
+  100% {
+    background-color: #ed1c24;
+    color: #fff;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    background-color: #ed1c24;
+    color: #fff;
+  }
+  50% {
+    color: #ed1c24;
+    background-color: #fff;
+  }
+  100% {
+    background-color: #ed1c24;
+    color: #fff;
+  }
+}
+@keyframes pulse {
+  0% {
+    background-color: #ed1c24;
+    color: #fff;
+  }
+  50% {
+    color: #ed1c24;
+    background-color: #fff;
+  }
+  100% {
+    background-color: #ed1c24;
+    color: #fff;
+  }
+}
 #CartForm_CartForm {
   border: 4px solid #efefef;
   margin: 2em 0;
@@ -7358,6 +7415,15 @@ body.page-storiststorecontroller #footer .col#txt-sum #txt-gst {
 body.page-storiststorecontroller #footer .col#txt-sum #txt-gst:before {
   content: 'incl. GST ';
 }
+.refunding body.page-storiststorecontroller #footer .col#txt-sum #txt-gst {
+  overflow: hidden;
+  text-indent: -9999px;
+}
+.refunding body.page-storiststorecontroller #footer .col#txt-sum #txt-gst:before {
+  content: 'Refunded';
+  display: block;
+  text-indent: 0;
+}
 body.page-storiststorecontroller #footer .col label[for="do-print"] {
   margin-right: 1em;
 }
@@ -7434,6 +7500,17 @@ body.page-storiststorecontroller .notification.is-danger {
 body.page-security.page-type-page .section form + p {
   font-size: 0.875rem;
   text-align: center;
+}
+
+body.refunding #txt-sum-val:before {
+  content: 'Refund';
+  display: block;
+  text-align: right;
+  font-size: 16px;
+  padding-right: 0.5em;
+}
+body.refunding #txt-gst {
+  display: none !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
